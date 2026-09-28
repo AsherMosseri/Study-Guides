@@ -39,7 +39,7 @@
     html[data-theme="dark"] { color-scheme: dark; }
     html, body { background: #f7f7f5; background: light-dark(#f7f7f5, #0d1117); }
   </style>
-  <link rel="stylesheet" href="/assets/style.css?v=2a854ca6f9" data-turbo-track="reload">
+  <link rel="stylesheet" href="/assets/style.css?v=d57ea24a34" data-turbo-track="reload">
   <!-- Instant client-side navigation (no full reload): Turbo Drive swaps pages in place. Every
        script that sets up a page must also re-run on turbo:load. Paths are root-absolute so the
        tag is identical on every page; otherwise Turbo would treat it as new and run it again. -->
@@ -408,7 +408,7 @@
         </div>
       </div>
       <p class="tap-hint">Egypt's two bars are far apart (little farmland); Ukraine's are close (lots of farmland).</p>
-      <div class="apply"><span class="label">Apply it</span><p>The bigger the gap between a country's two bars, the less farmland it has. Egypt's physiologic density is about 28 times its arithmetic density, which predicts food imports; Ukraine's is only 1.46 times, which predicts a grain exporter.</p></div>
+      <div class="apply"><span class="label">Apply it</span><p>The bigger the gap between a country's two bars, the less of its land can be farmed. Egypt's physiologic density is about 28 times its arithmetic density, so every acre of farmland carries a heavy load; Ukraine's is only 1.46 times, so most of its land is farmable and each acre carries far less.</p></div>
     </figure>
 
     <p>
@@ -441,6 +441,26 @@
         physiologic density shows India has much more farmland per person than China.</button>
       </li>
     </ul>
+
+    <h4 class="cmp-title" id="densities-tell">What the two densities tell you</h4>
+    <div class="cmp-wrap">
+      <table class="cmp-table cmp-rows">
+        <thead>
+          <tr><th>If you see…</th><th>It tells you</th><th>Example from the reading</th></tr>
+        </thead>
+        <tbody>
+          <tr><th>Physiologic density <strong>far above</strong> arithmetic</th><td data-label="It tells you">Very little of the land can be farmed, so people pack onto a small area and every acre of farmland carries a heavy load</td><td data-label="Example from the reading">Egypt: 252 vs. 6,995 per sq mi (about 28 times); 98% of people on 3% of the land</td></tr>
+          <tr><th>Physiologic about <strong>10 times</strong> arithmetic</th><td data-label="It tells you">Only about 1 acre in 10 can be farmed</td><td data-label="Example from the reading">Switzerland (mountains)</td></tr>
+          <tr><th>Physiologic only <strong>a little above</strong> arithmetic</th><td data-label="It tells you">Most of the land can be farmed, so each acre supports relatively few people</td><td data-label="Example from the reading">Ukraine: 192 vs. 281 (1.46 times)</td></tr>
+          <tr><th>Physiologic density <strong>still rising</strong> over time</th><td data-label="It tells you">The population is growing faster than new farmland can be added</td><td data-label="Example from the reading">Egypt, despite its work to expand farmland</td></tr>
+          <tr><th>Two huge populations, one with <strong>lower</strong> physiologic density</th><td data-label="It tells you">The lower one has more farmland per person</td><td data-label="Example from the reading">India vs. China, both well over 1 billion</td></tr>
+          <tr><th>A <strong>high arithmetic</strong> density on its own</th><td data-label="It tells you">The country is crowded overall. On its own, that says nothing about farmland or wealth</td><td data-label="Example from the reading">Bangladesh (2,962): almost all small farmers, still growing. Japan (869): wealthy, in the global economic core, and shrinking</td></tr>
+          <tr><th>A <strong>low arithmetic</strong> density</th><td data-label="It tells you">Only the average is low. Crowded places can hide inside it</td><td data-label="Example from the reading">U.S.: 86 per sq mi, with empty parts of Alaska on one end and New York City (28,717) on the other</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tap-hint">Heavy pressure on farmland doesn't have to mean hunger. The reading gives three ways out: add farmland (Egypt's irrigation work), grow more on each acre (better seeds, fertilizer and irrigation), or import food (Norway farms only 2% of its land and imports most of its food).</p>
+    <div class="apply"><span class="label">Apply it</span><p>Egypt's arithmetic density (252) is far lower than Japan's (869), so on that number alone Egypt looks roomier. Divide by farmland and Egypt jumps to 6,995, because almost all of its farmland is the narrow strip along the Nile. For a question about food or pressure on the land, use physiologic density; for how crowded a country is overall, arithmetic works. And a physiologic density that keeps rising even as farmland expands, as Egypt's does, is Malthus's worry at the scale of one country.</p></div>
 
     <h3 id="distribution">Population distribution <span class="pages">pp. 6–7</span></h3>
 
@@ -518,6 +538,23 @@
       <p>World population density (dasymetric map). Tap for what to notice, and for a free interactive version.</p>
     </div>
 
+    <h4 class="cmp-title" id="maps-hide">Which map, and what it hides</h4>
+    <div class="cmp-wrap">
+      <table class="cmp-table ">
+        <thead>
+          <tr><th></th><th>Dot map (Fig. 2.4)</th><th>Dasymetric map (Fig. 2.5)</th><th>Map shaded country by country (Figs. 2.6–2.8)*</th></tr>
+        </thead>
+        <tbody>
+          <tr><th>How it works</th><td data-label="Dot map (Fig. 2.4)">Each dot stands for a set number of people (1 dot = 100,000)</td><td data-label="Dasymetric map (Fig. 2.5)">Uses land cover and terrain to estimate where people actually live</td><td data-label="Map shaded country by country (Figs. 2.6–2.8)*">One number colors each whole country</td></tr>
+          <tr><th>Best for</th><td data-label="Dot map (Fig. 2.4)">Where people are: clusters and empty areas</td><td data-label="Dasymetric map (Fig. 2.5)">How crowded places really are, inside countries</td><td data-label="Map shaded country by country (Figs. 2.6–2.8)*">Comparing countries</td></tr>
+          <tr><th>Can't show</th><td data-label="Dot map (Fig. 2.4)">Rates. At the world scale small places blur together (at a local scale, one dot could be a single farm)</td><td data-label="Dasymetric map (Fig. 2.5)">How many people live there: the same color means a similar density, not a similar total</td><td data-label="Map shaded country by country (Figs. 2.6–2.8)*">Differences inside a country</td></tr>
+          <tr><th>Example</th><td data-label="Dot map (Fig. 2.4)">The three giant clusters stand out</td><td data-label="Dasymetric map (Fig. 2.5)">East Asia, South Asia and Europe share a color, yet Europe has less than half South Asia's people</td><td data-label="Map shaded country by country (Figs. 2.6–2.8)*">The world growth map gives India one color and hides its fast-growing north and slow-growing south</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tap-hint">*AP calls a map shaded area by area a <strong>choropleth map</strong>. The reading doesn't use the word, but its world maps of natural increase, birth rates and death rates are examples.</p>
+    <div class="apply"><span class="label">Apply it</span><p>To show that Egyptians live along the Nile, a dot map or a dasymetric map works: both put the people on the river. A map that shades all of Egypt one color by its arithmetic density (252) hides the pattern completely. The world growth map has the same blind spot: India gets one color, so the gap between its northern and southern states disappears.</p></div>
+
     <h3 id="south-asia">South Asia <span class="pages">p. 9</span></h3>
 
     <ul>
@@ -571,7 +608,7 @@
           <span class="bar-val">55</span>
         </div>
       </div>
-      <div class="apply"><span class="label">Apply it</span><p>Rural Bangladesh packs many farmers onto small, intensively farmed plots; rural Iowa spreads a few farmers across huge mechanized farms. Same land use, opposite density, because of development and technology. (AP term: agricultural density.)</p></div>
+      <div class="apply"><span class="label">Apply it</span><p>Bangladesh and Iowa are about the same size, but rural Bangladesh holds 3,000–5,000 people per sq mi because nearly everyone there is a small farmer. Rural Iowa holds 55. Better farm technology and shipping of food let fewer people work the land, and more people cluster in cities: the same pattern as Europe, where so many people live in cities that the countryside is open. A packed countryside points to a country where most people still farm; an empty one points to an urbanized country, and the more urbanized a population, the lower its natural increase tends to be. (AP term: agricultural density, farmers per unit of farmland. Bangladesh's is very high.)</p></div>
     </figure>
 
     <h3 id="europe">Europe <span class="pages">pp. 9–10</span></h3>
@@ -660,8 +697,46 @@
           <span class="bar-val">122,700</span>
         </div>
       </div>
-      <div class="apply"><span class="label">Apply it</span><p>In a wealthy city, density is mostly vertical (towers and transit). In Dhaka much of it is crowded low-rise housing. The same kind of number can mean very different living conditions, which links back to the Yangon field note on vulnerability.</p></div>
+      <div class="apply"><span class="label">Apply it</span><p>Dhaka's density is more than four times New York City's, and Mumbai's is more than double. But a density doesn't tell you how well people live there. The Yangon field note shows why: crowding became deadly when it combined with poverty and weak infrastructure. A citywide figure is also an average, so like the U.S. figure of 86 per sq mi, it hides crowded and empty neighborhoods inside it.</p></div>
     </figure>
+
+    <h4 class="cmp-title" id="clusters-compared">The four clusters compared</h4>
+    <div class="cmp-wrap">
+      <table class="cmp-table ">
+        <thead>
+          <tr><th></th><th>East Asia</th><th>South Asia</th><th>Europe</th><th>North America</th></tr>
+        </thead>
+        <tbody>
+          <tr><th>Size</th><td data-label="East Asia">Almost ¼ of humanity; 1.4 billion in China</td><td data-label="South Asia">1.5 billion</td><td data-label="Europe">Over 725 million</td><td data-label="North America">About ¼ the size of Europe's cluster; 70+ million in the megalopolis</td></tr>
+          <tr><th>Where people live</th><td data-label="East Asia">Big cities, plus ribbons along the Huang He and Yangtze</td><td data-label="South Asia">Cities, coasts, and the Ganges, Indus and Brahmaputra basins</td><td data-label="Europe">Cities in old industrial areas</td><td data-label="North America">A city-to-city corridor: Boston–Washington, D.C. and Quebec City–Windsor</td></tr>
+          <tr><th>Why there</th><td data-label="East Asia">River-valley farming (wheat and rice) feeds the cities</td><td data-label="South Asia">River basins and coasts; mountains and ocean give it sharp edges</td><td data-label="Europe">Industrialized and urbanized first; follows terrain less than Asia does</td><td data-label="North America">Cities grew into one another (a megalopolis)</td></tr>
+          <tr><th>Countryside</th><td data-label="East Asia">Dense along the river valleys</td><td data-label="South Asia">Very dense: rural Bangladesh, 3,000–5,000 per sq mi</td><td data-label="Europe">Open: Germany 77%, the U.K. 83%, France 80% urban</td><td data-label="North America">Not described; rural Iowa has 55 per sq mi</td></tr>
+          <tr><th>Growth</th><td data-label="East Asia">China 0.56%, well below the world average; Japan shrinking</td><td data-label="South Asia">Fastest of the four: India 1.17%, on track to be the most populous country by 2030</td><td data-label="Europe">Negative natural increase</td><td data-label="North America">The U.S. and Canada are among the lowest growth rates</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tap-hint">The growth row fits a pattern from later in this reading (p. 22): the more urbanized a population, the lower its natural increase. South Asia, where most people still farm, grows fastest; Europe, mostly urban, is shrinking without immigration.</p>
+    <div class="apply"><span class="label">Apply it</span><p>Compare South Asia and Europe. South Asia's people crowd its river basins and even its countryside, where nearly everyone in Bangladesh is a small farmer, and the cluster is still growing fast. Europe industrialized first, so most people live in cities, the countryside is open, and natural increase is negative. Where people live and how they make a living line up with how fast they're growing.</p></div>
+
+    <h4 class="cmp-title" id="patterns-tell">What a population pattern tells you</h4>
+    <div class="cmp-wrap">
+      <table class="cmp-table cmp-rows">
+        <thead>
+          <tr><th>If the map shows…</th><th>It tells you</th><th>Example from the reading</th></tr>
+        </thead>
+        <tbody>
+          <tr><th>A thin <strong>ribbon</strong> of people along a river, with empty land around it</th><td data-label="It tells you">People follow water and farmland, so the country's physiologic density is far above its arithmetic density</td><td data-label="Example from the reading">The Nile valley and delta; the Huang He and Yangtze</td></tr>
+          <tr><th>Heavy clusters along <strong>coasts and river basins</strong></th><td data-label="It tells you">For most of history, people clustered where food was easiest to grow</td><td data-label="Example from the reading">South Asia's Ganges, Indus and Brahmaputra basins</td></tr>
+          <tr><th>A cluster that <strong>stops sharply</strong> at its edges</th><td data-label="It tells you">A physical barrier, like mountains or ocean, blocks settlement</td><td data-label="Example from the reading">South Asia: the Himalayas, the western mountains and the Indian Ocean</td></tr>
+          <tr><th>Large, nearly <strong>empty</strong> areas</th><td data-label="It tells you">Desert, mountains or extreme cold</td><td data-label="Example from the reading">China's interior desert, India's Himalayas, Egypt's desert, Alaska</td></tr>
+          <tr><th>People packed <strong>even in the countryside</strong></th><td data-label="It tells you">Most people still farm small plots; the country isn't very urbanized</td><td data-label="Example from the reading">Rural Bangladesh: 3,000–5,000 per sq mi</td></tr>
+          <tr><th><strong>Dense cities</strong> with open countryside between them</th><td data-label="It tells you">Most people live in cities; farm technology and shipping food let fewer people work the land</td><td data-label="Example from the reading">Europe; rural Iowa at 55 per sq mi</td></tr>
+          <tr><th>Dense even in <strong>rugged, mountainous</strong> areas</th><td data-label="It tells you">Settlement follows cities and industry more than terrain</td><td data-label="Example from the reading">Europe</td></tr>
+          <tr><th>An <strong>unbroken line</strong> of dense settlement from city to city</th><td data-label="It tells you">A megalopolis, which a national average hides</td><td data-label="Example from the reading">Boston to Washington, D.C.; Quebec City to Windsor</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="apply"><span class="label">Apply it</span><p>On a dot map, first ask whether people follow the land (rivers, coasts, farmland) or the cities. In Egypt and along China's Huang He and Yangtze, they follow the water and farmland, the pattern for most of history. In Europe, where most people live in cities, the countryside is emptier and people follow industry more than terrain. Then look at the edges: South Asia's sharp borders come from the Himalayas and the Indian Ocean, not from any line people drew.</p></div>
 
     <h3 id="data">Reliability of population data <span class="pages">pp. 11–12</span></h3>
 
@@ -727,9 +802,25 @@
       </li>
     </ul>
 
+    <h4 class="cmp-title" id="scale-tell">What each scale shows and hides</h4>
+    <div class="cmp-wrap">
+      <table class="cmp-table ">
+        <thead>
+          <tr><th></th><th>What you can see</th><th>What disappears</th><th>Example from the reading</th></tr>
+        </thead>
+        <tbody>
+          <tr><th>Local</th><td data-label="What you can see">Moves within a city; each farm on a dot map</td><td data-label="What disappears">Invisible on a world map</td><td data-label="Example from the reading">Moving from downtown to the suburbs</td></tr>
+          <tr><th>Inside a country</th><td data-label="What you can see">Big differences between regions and states</td><td data-label="What disappears">Vanish in the national average</td><td data-label="Example from the reading">China's north lives 5.5 years less than the south; Egypt's 98% on 3%; India's north grows far faster than its south</td></tr>
+          <tr><th>Country</th><td data-label="What you can see">Comparisons between countries</td><td data-label="What disappears">Hides unevenness inside each one</td><td data-label="Example from the reading">The U.S. average of 86 per sq mi hides empty parts of Alaska and New York City's 28,717</td></tr>
+          <tr><th>World</th><td data-label="What you can see">The big clusters and broad patterns</td><td data-label="What disappears">Hides what's happening inside each country</td><td data-label="Example from the reading">The three giant clusters; the world growth map is only an overview</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="apply"><span class="label">Apply it</span><p>Any single number for a whole country is an average. China's life expectancy is one figure, yet people in the polluted north live about 5.5 years less than people in the south. Egypt's density is one figure, yet nearly everyone lives on 3% of the land. When a question asks why a map or statistic might mislead, ask what it hides one scale down.</p></div>
+
     <a class="check-cta" href="/human-geo/quiz/reading-2.1-2.2/flashcard/#part-2-1">
       <span class="cta-title">Flashcards: the intro and 2.1</span>
-      <span class="cta-sub">45 cards, one for every quizzable fact. Flip each one to check yourself.</span>
+      <span class="cta-sub">51 cards, one for every quizzable fact. Flip each one to check yourself.</span>
     </a>
 
     <!-- ================= 2.2 ================= -->
@@ -999,7 +1090,9 @@
       <li>Demographers expect world population to level off at <strong>10 to 11 billion</strong> sometime between <strong>2050 and 2100</strong>.</li>
       <li>
         Because birth rates are falling and lifespans are rising, the mix of young vs. old people in 2050 will look very
-        different from 1900.
+        different from 1900. <strong>What it means:</strong> the world as a whole is getting older. Longer lives first
+        sped up growth; together with fewer births, they now leave a bigger share of older people, the same trend that
+        has Europe's old-age dependency ratio climbing.
       </li>
     </ul>
 
@@ -1250,6 +1343,28 @@
       </li>
     </ul>
 
+    <h4 class="cmp-title" id="growth-drivers">What changed the growth rate</h4>
+    <p>Every change in natural increase comes from births, deaths or both. The reading's examples fall into three groups: <strong>deaths falling</strong> (growth speeds up), <strong>births falling</strong> (growth slows as a country develops or adopts family planning) and <strong>deaths rising</strong> (growth slows because of a crisis).</p>
+    <div class="cmp-wrap">
+      <table class="cmp-table cmp-rows">
+        <thead>
+          <tr><th>Case</th><th>What changed</th><th>What drove it</th><th>What it shows</th></tr>
+        </thead>
+        <tbody>
+          <tr><th><strong>Britain</strong>, 1750–1850</th><td data-label="What changed">Deaths fell from about 35 per 1,000 (Europe's average before 1750) to about 16 by 1850; population exploded</td><td data-label="What drove it">A steadier food supply, sanitation, soap and modern medicine</td><td data-label="What it shows">Growth speeds up when <strong>deaths fall</strong> and births don't (stage 2)</td></tr>
+          <tr><th><strong>The world</strong>, 1900–2016</th><td data-label="What changed">1.6 billion to 6.1 billion by 2000</td><td data-label="What drove it">Life expectancy rose from 30 to 72, not just more births</td><td data-label="What it shows">Longer lives alone add people</td></tr>
+          <tr><th><strong>World doubling time</strong></th><td data-label="What changed">Shrank to 39 years (mid-1980s), then lengthened to 54</td><td data-label="What drove it">Policies meant to slow growth, such as China's one-child policy</td><td data-label="What it shows">Policy can bend the world's growth curve</td></tr>
+          <tr><th><strong>Brazil</strong></th><td data-label="What changed">2.9% (mid-1960s) to 0.8%</td><td data-label="What drove it">Wider access to modern contraceptives</td><td data-label="What it shows">Growth slows when <strong>births fall</strong> (stage 3)</td></tr>
+          <tr><th><strong>Iran</strong></th><td data-label="What changed">TFR 6.8 (1980) to 1.7 (2016)</td><td data-label="What drove it">The government began allowing family planning</td><td data-label="What it shows">A policy change can cut births within a few decades</td></tr>
+          <tr><th><strong>Indonesia</strong></th><td data-label="What changed">High growth in 1970 to 1.6% (2000) and 1.1% (2016)</td><td data-label="What drove it">Nationwide family planning, pushed with coercion and inducement despite religious objections</td><td data-label="What it shows">A government program can outweigh religious objections</td></tr>
+          <tr><th><strong>Parts of sub-Saharan Africa</strong></th><td data-label="What changed">Growth held down</td><td data-label="What drove it">HIV/AIDS killed millions and cut life expectancy</td><td data-label="What it shows">Growth can slow because <strong>deaths rise</strong>: a sign of crisis, not development</td></tr>
+          <tr><th><strong>Russia</strong> and other former Soviet states</th><td data-label="What changed">Vigorous growth to negative growth after 1991</td><td data-label="What drove it">Worse health, alcoholism and drug use, more male suicides, economic trouble; births also stayed low</td><td data-label="What it shows">Social upheaval can shrink a population</td></tr>
+          <tr><th><strong>North Africa and Southwest Asia</strong></th><td data-label="What changed">Growth rose in the late 1900s while most of the world's fell</td><td data-label="What drove it">Where custom limits women's schooling and careers, birth rates stay high</td><td data-label="What it shows">Women's opportunities, not income alone, shape births</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="apply"><span class="label">Apply it</span><p>Brazil and parts of sub-Saharan Africa both saw growth slow, for opposite reasons. In Brazil, modern contraceptives cut births. In parts of sub-Saharan Africa, HIV/AIDS raised deaths and cut life expectancy. Before you call a falling growth rate a sign of progress, check whether births fell or deaths rose.</p></div>
+
     <h3 id="tfr">Total fertility rates <span class="pages">pp. 22–25</span></h3>
 
     <p>
@@ -1324,7 +1439,7 @@
           <span class="bar-val">1.2</span>
         </div>
       </div>
-      <div class="apply"><span class="label">Apply it</span><p>Every bar shorter than the gray replacement bar (Iran, China, South Korea) belongs to a population that will shrink without immigration. Niger's 7.2 means its population can double in about one generation.</p></div>
+      <div class="apply"><span class="label">Apply it</span><p>Every bar shorter than the gray replacement bar (Iran, China, South Korea) belongs to a population that will shrink without immigration. Niger's 7.2, far above 2.1, means each generation is much bigger than the one before, which is why its pyramid has such a wide base.</p></div>
     </figure>
 
     <p>
@@ -1476,6 +1591,27 @@
       offset by countries still adding lots of people: <strong>India, Indonesia, Bangladesh, Pakistan and Nigeria</strong>.
     </p>
 
+    <h4 class="cmp-title" id="which-number">Which number answers which question</h4>
+    <div class="cmp-wrap">
+      <table class="cmp-table ">
+        <thead>
+          <tr><th></th><th>What it counts</th><th>A high value tells you</th><th>A low value tells you</th><th>Watch out</th></tr>
+        </thead>
+        <tbody>
+          <tr><th>Crude birth rate (CBR)</th><td data-label="What it counts">Live births per year per 1,000 people</td><td data-label="A high value tells you">Many births; highest in Africa, higher in the south than the north</td><td data-label="A low value tells you">Few births</td><td data-label="Watch out">Only half the story: it doesn't subtract deaths</td></tr>
+          <tr><th>Crude death rate (CDR)</th><td data-label="What it counts">Deaths per year per 1,000 people</td><td data-label="A high value tells you">Disease or crisis (the Black Death, HIV/AIDS, Russia after 1991), or an aging stage 5 population</td><td data-label="A low value tells you">Deaths have fallen, as they have wherever countries reached stage 3 or beyond</td><td data-label="Watch out">Not just a poor-country number: a few countries in the global north, like Russia, have fairly high death rates</td></tr>
+          <tr><th>Natural increase rate (NIR)</th><td data-label="What it counts">CBR minus CDR</td><td data-label="A high value tells you">Fast growth from births (Africa 2.43%, the Palestinian territories 2.83%)</td><td data-label="A low value tells you">Slow growth; the lowest rates are in the global economic core</td><td data-label="Watch out">Leaves out migration. A negative NIR (Europe, Russia) means shrinking <em>without</em> immigration. Low can mean wealth <em>or</em> crisis</td></tr>
+          <tr><th>Doubling time</th><td data-label="What it counts">Years to double at today's growth rate</td><td data-label="A high value tells you">Slow growth (the world today: 54 years)</td><td data-label="A low value tells you">Explosive growth (39 years in the mid-1980s)</td><td data-label="Watch out">Assumes the rate never changes</td></tr>
+          <tr><th>Total fertility rate (TFR)</th><td data-label="What it counts">Average children per woman, ages 15–49</td><td data-label="A high value tells you">Above 2.1: the population keeps growing (Niger 7.2)</td><td data-label="A low value tells you">Below 2.1: it can't replace itself without immigration (South Korea 1.2)</td><td data-label="Watch out">The world figure blends very low Europe with very high Africa</td></tr>
+          <tr><th>Old-age dependency ratio</th><td data-label="What it counts">People 65+ per 100 people ages 15–64</td><td data-label="A high value tells you">An aging population: fewer workers paying for pensions and medical care (Europe 29.9, heading to 47)</td><td data-label="A low value tells you">A young population (sub-Saharan Africa 5.7)</td><td data-label="Watch out">Low doesn't mean no burden: check the child ratio too</td></tr>
+          <tr><th>Child dependency ratio</th><td data-label="What it counts">Children per 100 working-age people</td><td data-label="A high value tells you">Many children for each working-age adult (Africa 74)</td><td data-label="A low value tells you">Few children (Europe 23)</td><td data-label="Watch out">Low, with a high old-age ratio, means few young workers are coming</td></tr>
+          <tr><th>Contraceptive prevalence rate</th><td data-label="What it counts">% of women 15–49 who (or whose partner) use birth control</td><td data-label="A high value tells you">Slower growth (Andhra Pradesh 69.8% in India)</td><td data-label="A low value tells you">Faster growth (Bihar 26.0%)</td><td data-label="Watch out">Measures a <em>cause</em> of fewer births, not births themselves</td></tr>
+          <tr><th>Life expectancy</th><td data-label="What it counts">Average length of life</td><td data-label="A high value tells you">Fuller top brackets on a pyramid</td><td data-label="A low value tells you">Short lives: a narrow pyramid top</td><td data-label="Watch out">Rising life expectancy adds people <em>and</em> ages the population</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="apply"><span class="label">Apply it</span><p>To show whether Japan's population can replace itself, use TFR: below 2.1 means it can't without immigration. To show what that costs Japan's government, use the old-age dependency ratio. To show whether it's actually shrinking, use natural increase plus migration, since Japan discourages immigration. Pick the number that answers the question being asked.</p></div>
+
     <h3 id="pyramids">Population pyramids <span class="pages">pp. 25–28</span></h3>
 
     <p>
@@ -1581,7 +1717,7 @@
           <span class="paxis"><span>8%</span><span>0</span><span>8%</span></span>
         </button>
       </div>
-      <div class="apply"><span class="label">Apply it</span><p>Nearly straight sides mean each generation is about the same size, so TFR is near or below replacement. Wide top brackets, especially for women, mean long lives. The U.S. bulge at ages 55–64 is the baby boom approaching retirement. If the young bars were clearly <em>shorter</em> than the middle ones, you'd be looking at a <button class="term" data-note="pyramid-contracting">contracting pyramid</button>, the stage 5 shape.</p></div>
+      <div class="apply"><span class="label">Apply it</span><p>Nearly straight sides mean each generation is about the same size, so TFR is near or below replacement. Wide top brackets, especially for women, mean long lives. The U.S. bulge at ages 55–64 is a large group nearing retirement. If the young bars were clearly <em>shorter</em> than the middle ones, you'd be looking at a <button class="term" data-note="pyramid-contracting">contracting pyramid</button>, the stage 5 shape.</p></div>
     </figure>
 
     <div class="figure-card" data-note="fig-2-16" role="button" tabindex="0">
@@ -1594,22 +1730,22 @@
       <table class="cmp-table">
         <thead>
           <tr><th></th>
-            <th><button class="term" data-note="pyramid-expanding">Expanding</button><span>wide base, narrow top</span></th>
-            <th><button class="term" data-note="pyramid-stable">Chimney</button><span>straight sides, bulge in the middle</span></th>
-            <th><button class="term" data-note="pyramid-contracting">Contracting</button><span>narrower at the base than the middle*</span></th></tr>
+            <th><button class="term" data-note="pyramid-expanding">Expansive</button><span>“expanding”: wide base, narrow top</span></th>
+            <th><button class="term" data-note="pyramid-stable">Stationary</button><span>“chimney”: straight sides, bulge in the middle</span></th>
+            <th><button class="term" data-note="pyramid-contracting">Constrictive</button><span>“contracting”: narrower at the base than the middle</span></th></tr>
         </thead>
         <tbody>
-          <tr><th>Births</th><td data-label="Expanding">High TFR: many children</td><td data-label="Chimney">Low TFR, near or below 2.1</td><td data-label="Contracting">Very low TFR, well below 2.1</td></tr>
-          <tr><th>Deaths and lifespans</th><td data-label="Expanding">High infant mortality, short lives (narrow top)</td><td data-label="Chimney">Long lives (fuller top brackets)</td><td data-label="Contracting">Long lives, but deaths rising as the population ages</td></tr>
-          <tr><th>Growth</th><td data-label="Expanding">Fast</td><td data-label="Chimney">Slow or stable</td><td data-label="Contracting">Shrinking</td></tr>
-          <tr><th>Income</th><td data-label="Expanding">Lower-income countries</td><td data-label="Chimney">Higher-income countries</td><td data-label="Contracting">Wealthy, aging countries</td></tr>
-          <tr><th>Biggest burden</th><td data-label="Expanding">Children: a high child dependency ratio (Africa: 74 per 100 working-age). Schools, health care, then jobs.</td><td data-label="Chimney">A rising old-age dependency ratio (Europe: 29.9, heading to 47 by 2050)</td><td data-label="Contracting">Too few young taxpayers for pensions and care; fixes are raising TFR or immigration</td></tr>
-          <tr><th>DTM stage</th><td data-label="Expanding">2 (early 3)</td><td data-label="Chimney">4</td><td data-label="Contracting">5</td></tr>
-          <tr><th>Examples</th><td data-label="Expanding">Niger, Guatemala (Fig. 2.15); Pakistan, Yemen, Cameroon, Laos</td><td data-label="Chimney">France, the U.S. (Fig. 2.16); Italy, Sweden</td><td data-label="Contracting">Japan (stage 5: Japan and Russia)</td></tr>
+          <tr><th>Births</th><td data-label="Expansive">High TFR: many children</td><td data-label="Stationary">Low TFR, near or below 2.1</td><td data-label="Constrictive">Very low TFR, well below 2.1</td></tr>
+          <tr><th>Deaths and lifespans</th><td data-label="Expansive">High infant mortality, short lives (narrow top)</td><td data-label="Stationary">Long lives (fuller top brackets)</td><td data-label="Constrictive">Long lives, but deaths rising as the population ages</td></tr>
+          <tr><th>Growth</th><td data-label="Expansive">Fast</td><td data-label="Stationary">Slow or stable</td><td data-label="Constrictive">Shrinking</td></tr>
+          <tr><th>Income</th><td data-label="Expansive">Lower-income countries</td><td data-label="Stationary">Higher-income countries</td><td data-label="Constrictive">Wealthy, aging countries</td></tr>
+          <tr><th>Biggest burden</th><td data-label="Expansive">Children: a high child dependency ratio (Africa: 74 per 100 working-age). Schools, health care, then jobs.</td><td data-label="Stationary">A rising old-age dependency ratio (Europe: 29.9, heading to 47 by 2050)</td><td data-label="Constrictive">Too few young taxpayers for pensions and care; fixes are raising TFR or immigration</td></tr>
+          <tr><th>DTM stage</th><td data-label="Expansive">2 (early 3)</td><td data-label="Stationary">4</td><td data-label="Constrictive">5</td></tr>
+          <tr><th>Examples</th><td data-label="Expansive">Niger, Guatemala (Fig. 2.15); Pakistan, Yemen, Cameroon, Laos</td><td data-label="Stationary">France, the U.S. (Fig. 2.16); Italy, Sweden</td><td data-label="Constrictive">Japan (stage 5: Japan and Russia)</td></tr>
         </tbody>
       </table>
     </div>
-    <p class="tap-hint">*The reading doesn't name the contracting shape; it's what stage 5 looks like. Figure captions: high TFR, high infant mortality and low life expectancy give wide bases and narrow tops (Fig. 2.15); lower TFRs and longer lives give more uniform shapes (Fig. 2.16).</p>
+    <p class="tap-hint">The names on top are the AP exam's. The reading calls the first shape a true pyramid (or an evergreen tree) and the second a lopsided chimney, and doesn't name the third, which is what stage 5 looks like. Don't confuse a stationary pyramid with the stationary population level (SPL) in stage 5: SPL is the size a population levels off at, not a shape. Figure captions: high TFR, high infant mortality and low life expectancy give wide bases and narrow tops (Fig. 2.15); lower TFRs and longer lives give more uniform shapes (Fig. 2.16).</p>
     <div class="apply"><span class="label">Apply it</span><p>Read the shape, then the story. Niger's wide base means many births and early deaths in a lower-income country, so its challenge is children. France's straight sides and full top mean few births and long lives in a wealthy one, so its challenge is retirees. The shape tells you which dependency problem a government faces, and which policies (family planning vs. incentives to have children) it's likely to use.</p></div>
 
     <h3 id="religion">Religion and growth <span class="pages">pp. 26–28</span></h3>
@@ -1676,6 +1812,28 @@
       </li>
       <li>Growth fell to <strong>1.6% by 2000</strong> and <strong>1.1% by 2016</strong>.</li>
     </ul>
+
+    <h4 class="cmp-title" id="policies-compared">Population policies in the reading: what worked?</h4>
+    <div class="cmp-wrap">
+      <table class="cmp-table cmp-rows">
+        <thead>
+          <tr><th>Policy</th><th>Aim</th><th>Method</th><th>Result</th></tr>
+        </thead>
+        <tbody>
+          <tr><th><strong>India</strong>, 1952</th><td data-label="Aim">Fewer births</td><td data-label="Method">The world's first national population planning program</td><td data-label="Result">No result given. Growth was still nearly 3% about 30 years ago; it's 1.17% today</td></tr>
+          <tr><th><strong>India</strong>, 1976</th><td data-label="Aim">Fewer births</td><td data-label="Method"><strong>Force</strong>: sterilizing men with 3 or more children</td><td data-label="Result">About 6 million men sterilized; riots in Maharashtra; abandoned</td></tr>
+          <tr><th><strong>Maharashtra</strong>, today</th><td data-label="Aim">Later first births</td><td data-label="Method"><strong>Reward</strong>: cash for newlyweds who wait 2 years</td><td data-label="Result">No result given</td></tr>
+          <tr><th><strong>India</strong>, today</th><td data-label="Aim">Fewer births</td><td data-label="Method"><strong>Access and persuasion</strong>: birth control for women, posters, village clinics</td><td data-label="Result">Contraceptive use rising, highest in the slower-growing south and west</td></tr>
+          <tr><th><strong>Indonesia</strong>, from 1970</th><td data-label="Aim">Fewer births</td><td data-label="Method">Nationwide family planning, with coercion and inducement</td><td data-label="Result">Growth down to 1.6% (2000) and 1.1% (2016)</td></tr>
+          <tr><th><strong>Iran</strong></th><td data-label="Aim">Not stated</td><td data-label="Method">Began allowing family planning</td><td data-label="Result">TFR 6.8 (1980) to 1.7 (2016)</td></tr>
+          <tr><th><strong>China</strong></th><td data-label="Aim">Fewer births</td><td data-label="Method">The one-child policy</td><td data-label="Result">Helped stretch the world's doubling time to 54 years</td></tr>
+          <tr><th><strong>Sweden, Russia</strong> and other European countries</th><td data-label="Aim"><strong>More</strong> births</td><td data-label="Method">Long maternity leave, state-paid daycare</td><td data-label="Result">Only limited success</td></tr>
+          <tr><th><strong>Japan</strong></th><td data-label="Aim"><strong>More</strong> births</td><td data-label="Method">Campaigns urging men to do more housework</td><td data-label="Result">Only limited success; Japan also discourages immigration, and its population is falling</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tap-hint">AP calls policies that aim for fewer births <strong>antinatalist</strong> (India, Indonesia, China here) and ones that aim for more births <strong>pronatalist</strong> (Sweden, Russia, Japan).</p>
+    <div class="apply"><span class="label">Apply it</span><p>Lowering births has worked through nationwide family planning: Iran's TFR fell from 6.8 to 1.7 once family planning was allowed, and Indonesia's program, which mixed coercion and inducement, cut growth to 1.1%. Raising births has proved much harder: Sweden's and Russia's maternity leave and daycare have had only limited success. India's 1976 sterilization drive shows how force alone can backfire: it set off riots and was dropped, and the government turned to giving women birth control.</p></div>
 
     <h3 id="dtm">The demographic transition <span class="pages">pp. 28–31</span></h3>
 
@@ -1901,6 +2059,39 @@
       </li>
     </ul>
 
+    <h4 class="cmp-title" id="stages-tell">What each stage tells you</h4>
+    <div class="cmp-wrap">
+      <table class="cmp-table ">
+        <thead>
+          <tr><th></th><th>Stage 1</th><th>Stage 2</th><th>Stage 3</th><th>Stage 4</th><th>Stage 5</th></tr>
+        </thead>
+        <tbody>
+          <tr><th>Births</th><td data-label="Stage 1">High</td><td data-label="Stage 2">Stay high</td><td data-label="Stage 3">Falling fast</td><td data-label="Stage 4">Low</td><td data-label="Stage 5">Very low</td></tr>
+          <tr><th>Deaths</th><td data-label="Stage 1">Just as high, swinging up and down</td><td data-label="Stage 2">Falling fast in Europe; more slowly in today's stage 2 countries</td><td data-label="Stage 3">Still falling</td><td data-label="Stage 4">Low</td><td data-label="Stage 5">Rising</td></tr>
+          <tr><th>Growth</th><td data-label="Stage 1">Low; deaths sometimes beat births</td><td data-label="Stage 2">Very high: the population explosion</td><td data-label="Stage 3">Still growing, but more slowly</td><td data-label="Stage 4">Slow or stable</td><td data-label="Stage 5">Negative</td></tr>
+          <tr><th>What pushes a country here</th><td data-label="Stage 1">Nothing yet: disease, crop failures and war keep deaths high</td><td data-label="Stage 2">Deaths drop: steadier food, sanitation, soap, medicine (Europe after 1750). Today: medicine and childhood vaccines spread in from outside</td><td data-label="Stage 3">Births drop: more chances for women, later marriage, fewer infant deaths, modern contraceptives (Brazil)</td><td data-label="Stage 4">Births settle low: contraceptives, legal abortion, women choosing fewer children or having them later</td><td data-label="Stage 5">Births so low that an aging population's deaths overtake them (Japan), or a crisis raises deaths (Russia)</td></tr>
+          <tr><th>Pyramid shape (AP name)</th><td data-label="Stage 1"><strong>Expansive</strong> (expanding): wide base, narrow top. Disease and famine kill at every age</td><td data-label="Stage 2"><strong>Expansive</strong> (expanding): each younger group is bigger than the one above it</td><td data-label="Stage 3"><strong>Expansive, base narrowing</strong>: the youngest bars stop outgrowing the ones above</td><td data-label="Stage 4"><strong>Stationary</strong> (chimney): nearly straight sides, biggest groups in the middle</td><td data-label="Stage 5"><strong>Constrictive</strong> (contracting): narrower at the base than the middle</td></tr>
+          <tr><th>Biggest burden</th><td data-label="Stage 1">Not covered in the reading</td><td data-label="Stage 2">Children: a high child dependency ratio (Africa: 74 per 100 working-age)</td><td data-label="Stage 3">Still children, but a shrinking share</td><td data-label="Stage 4">A rising old-age dependency ratio (Europe: 29.9, heading to 47)</td><td data-label="Stage 5">Too few young taxpayers for pensions and medical care (Japan)</td></tr>
+          <tr><th>Income</th><td data-label="Stage 1">Every place, for most of history</td><td data-label="Stage 2">Much lower-income countries</td><td data-label="Stage 3">Middle-income countries</td><td data-label="Stage 4">Higher-income countries</td><td data-label="Stage 5">Wealthy and aging (Japan), or in crisis (Russia)</td></tr>
+          <tr><th>Examples</th><td data-label="Stage 1">Europe in the Black Death (1300s)</td><td data-label="Stage 2">Britain 1750–1850. Today: Afghanistan, the Palestinian territories</td><td data-label="Stage 3">Britain 1870 to the world wars. Today: Brazil</td><td data-label="Stage 4">Britain after 1950. Today: the U.S., the U.K.</td><td data-label="Stage 5">Japan, Russia</td></tr>
+          <tr><th>The government's worry</th><td data-label="Stage 1">Not covered in the reading</td><td data-label="Stage 2">Lowering births (programs like Indonesia's, begun when growth was high)</td><td data-label="Stage 3">Keeping births falling (contraceptives; schooling for girls, which the Mali studies link to fewer births)</td><td data-label="Stage 4">Paying for retirees as the population ages</td><td data-label="Stage 5">Raising births (Russia's incentives, Japan's campaigns) or allowing immigration, which Japan discourages</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tap-hint">The reading draws pyramids only for high-growth (Fig. 2.15) and low-growth (Fig. 2.16) countries; the stage 1, 3 and 5 shapes follow from each stage's birth and death rates. AP calls the three shapes <strong>expansive</strong>, <strong>stationary</strong> and <strong>constrictive</strong>.</p>
+    <div class="apply"><span class="label">Apply it</span><p>Brazil is in stage 3: its growth fell from 2.9% in the mid-1960s to 0.8% as modern contraceptives spread, so its pyramid's base is narrowing and its worry is shifting from children toward retirees. Japan has gone all the way to stage 5: a constrictive pyramid, a population that fell from 128.06 million (2008) to 126.8 million (2017), and a choice between more births and more immigrants. Read any one row of a column and you can predict the rest.</p></div>
+
+    <h4 class="cmp-title" id="dtm-limits">Where the model falls short</h4>
+    <p>The DTM was built from one region's history: western Europe after the Industrial Revolution. The reading shows other countries taking different routes:</p>
+    <ul>
+      <li><strong>Deaths can fall without industrializing first.</strong> Today's stage 2 countries, like Afghanistan and the Palestinian territories, lowered death rates partly because western medicine and childhood vaccines spread to them (diffusion, from Chapter 1). In Britain, deaths fell with its own industrialization.</li>
+      <li><strong>Births fall by different routes.</strong> Britain's fell as people married later. Brazil's fell because of modern contraceptives, not later marriage. Iran's TFR fell from 6.8 to 1.7 once the government allowed family planning.</li>
+      <li><strong>Low growth doesn't always mean development.</strong> Russia reached negative growth through a crisis after 1991, not through wealth. In parts of sub-Saharan Africa, HIV/AIDS held growth down by raising deaths.</li>
+      <li><strong>It leaves out migration.</strong> The model tracks only births and deaths. An aging country can add young workers through immigration.</li>
+      <li><strong>It can't tell you when.</strong> The World Bank's late-1980s forecasts of when countries would stop growing turned out to be unrealistic.</li>
+    </ul>
+    <div class="apply"><span class="label">Apply it</span><p>Afghanistan is in stage 2, but its death rate fell partly because vaccines arrived from abroad, not because it industrialized the way Britain did after 1750. Russia is in stage 5 alongside Japan, but it got there through a crisis, not through wealth and long lives. The stages describe birth and death rates well, but they don't always explain <em>why</em> a country is where it is.</p></div>
+
     <h3 id="summary-2-2">Section 2.2 in a nutshell <span class="pages">pp. 54–55</span></h3>
     <ul>
       <li>
@@ -1932,7 +2123,7 @@
 
     <a class="check-cta" href="/human-geo/quiz/reading-2.1-2.2/flashcard/#part-2-2">
       <span class="cta-title">Flashcards: 2.2</span>
-      <span class="cta-sub">67 cards, one for every quizzable fact. Flip each one to check yourself.</span>
+      <span class="cta-sub">74 cards, one for every quizzable fact. Flip each one to check yourself.</span>
     </a>
   </main>
 
@@ -2087,15 +2278,15 @@
   </template>
 
   <template id="note-japan-density" data-title="Japan">
-    <p>869 people per sq mile (335 per sq km). Japan is mountainous, so like Egypt, real crowding is worse than the average suggests: most people live on narrow coastal plains.</p>
+    <p>869 people per sq mile (335 per sq km). Crowded, but wealthy: Japan is in the global economic core, and its population is shrinking. A high density on its own doesn't tell you a country is poor or growing fast.</p>
   </template>
 
   <template id="note-netherlands-density" data-title="Netherlands">
-    <p>1,068 people per sq mile (412 per sq km). A small, flat, wealthy country: very dense, but with plenty of usable land and the ability to import food.</p>
+    <p>1,068 people per sq mile (412 per sq km), denser than Japan. Like Japan, it's a crowded country in the wealthy global economic core, which stretches from the U.S. and Canada through Europe to Japan.</p>
   </template>
 
   <template id="note-bangladesh-density" data-title="Bangladesh">
-    <p>2,962 people per sq mile (1,144 per sq km), the highest of these countries. It's a fertile river delta, which is why so many people can farm there, and also why cyclones and floods are so dangerous.</p>
+    <p>2,962 people per sq mile (1,144 per sq km), the highest of these countries. More than 156 million people, nearly all farming small plots, share a country roughly as big as Iowa.</p>
   </template>
 
   <template id="note-uneven" data-title="Why the average misleads">
@@ -2115,7 +2306,7 @@
     <h3>Go deeper</h3>
     <p>This one fact is why Egypt is the go-to example for physiologic density. When nearly everyone lives on 3% of the land, dividing by all the land makes the country look 30 times emptier than it feels on the ground.</p>
     <h3>Apply it</h3>
-    <p class="apply-p">Ask where the water is. In any dry country (Egypt, Pakistan along the Indus, Iraq along the Tigris and Euphrates), the population map traces the river. So a question about Egypt's density should bring up the Nile and physiologic density, not the arithmetic figure.</p>
+    <p class="apply-p">Ask where the water and farmland are. Egypt's population map traces the Nile, and China's densest inland areas follow the Huang He and Yangtze. So a question about Egypt's density should bring up the Nile and physiologic density, not the arithmetic figure.</p>
     <p class="ap"><strong>AP tip:</strong> memorize "Egypt: ~98% on ~3% (the Nile)". It's the standard example for why arithmetic density misleads.</p>
   </template>
 
@@ -2187,7 +2378,7 @@
 
   <template id="note-india-china-arable" data-title="India vs. China: farmland per person">
     <h3>Go deeper</h3>
-    <p>Both have well over a billion people (China 1.4 billion, and India is predicted to be the most populous country by 2030), but much of China is desert (west and north), high plateau (Tibet) or mountains, so its farmland is concentrated in the east. India has a much larger share of flat, farmable land, especially the huge Ganges plain.</p>
+    <p>Both have well over a billion people (China 1.4 billion, and India is predicted to be the most populous country by 2030), but both have large empty areas where few people live: a vast interior desert in China and the Himalayas in India. Physiologic density shows that India still has much more arable land per person.</p>
     <p>So even with a population as large as China's, India has much more farmland per person, which gives India a <em>lower</em> physiologic density.</p>
   </template>
 
@@ -2211,11 +2402,11 @@
 
   <template id="note-food-link" data-title="People follow food">
     <h3>Go deeper</h3>
-    <p>Before modern transport, food spoiled and was expensive to move, so people had to live near where it grew. That's why the world's oldest dense populations are in fertile river valleys and plains.</p>
+    <p>For most of history, people lived near the land that fed them, and cities began in farming areas. That's why the biggest clusters still center on productive river valleys and coasts.</p>
     <p>Two changes loosened the link. <strong>Farming technology</strong> means fewer farmers can feed more people, so people leave farms for cities. <strong>Transportation</strong> means food can travel long distances, so cities can grow far from farmland.</p>
     <p>Result: people are more clustered in cities, and the countryside empties out.</p>
     <h3>Apply it</h3>
-    <p class="apply-p">The oldest clusters (Nile, Ganges, Yangtze) follow farmland. Places that grew without farmland, such as desert cities, grew on jobs and trade instead. When a place is dense without good farmland, the explanation is modern transportation and economics.</p>
+    <p class="apply-p">Dense populations along the Nile, the Ganges and the Huang He and Yangtze follow farmland. Where cities are dense but the countryside is open (Europe; rural Iowa at 55 per sq mi), farm technology and shipping food let fewer people work the land, and more people cluster in cities.</p>
   </template>
 
   <template id="note-dot-map" data-title="Dot maps">
@@ -2259,7 +2450,7 @@
   <template id="note-north-america" data-title="Cluster #4: North America">
     <p><strong>Where:</strong> the Boston–Washington, D.C. megalopolis and Canada's Quebec City–Windsor corridor.</p>
     <p><strong>How big:</strong> 70+ million in the megalopolis; the combined cluster is about ¼ the size of Europe's.</p>
-    <p><strong>Why here:</strong> historic ports, early industry and a chain of large cities that grew into each other.</p>
+    <p><strong>Why here:</strong> a chain of big cities along the east coast grew until dense settlement runs from one to the next, which is what makes it a megalopolis.</p>
   </template>
 
   <template id="note-dasymetric" data-title="Dasymetric maps">
@@ -2273,8 +2464,8 @@
 
   <template id="note-river-ribbons" data-title="Ribbons along rivers">
     <h3>Go deeper</h3>
-    <p>The Huang He (Yellow River) in the north and the Yangtze (Chang Jiang) in the center carry water and rich sediment through otherwise hillier or drier land. Farming, and therefore people, follow them, making long narrow bands of high density far inland.</p>
-    <p>Roughly, the drier north grows wheat and the wetter south grows rice.</p>
+    <p>Farming, and therefore people, follow the Huang He (Yellow River) and the Yangtze far inland, making long, narrow bands of high density.</p>
+    <p>Farmers in these valleys grow wheat and rice, feeding themselves and big cities like Shanghai and Beijing.</p>
   </template>
 
   <template id="note-fig-2-5" data-title="Figure 2.5: World population density">
@@ -2287,9 +2478,9 @@
   <template id="note-barriers" data-title="Physical barriers">
     <h3>Go deeper</h3>
     <p>Mountains and oceans act like walls. Few people live in or beyond them, so the population inside ends abruptly at the edge. That sharp boundary makes South Asia look more concentrated on a map than East Asia, whose population fades out more gradually westward.</p>
-    <p>The barriers: the Himalayas (north), the Hindu Kush and other ranges in Afghanistan and Pakistan (west), and the Indian Ocean (south and east).</p>
+    <p>The barriers: the Himalayas (north), mountain chains in Afghanistan and Pakistan (west), and the Indian Ocean (south and east).</p>
     <h3>Apply it</h3>
-    <p class="apply-p">Look for physical barriers whenever you explain where a cluster ends. The Sahara confines North Africa's people to the coast and the Nile; mountains and deserts leave much of the U.S. interior West sparsely settled.</p>
+    <p class="apply-p">Look for physical barriers whenever you explain where a cluster ends. South Asia's people stop sharply at the Himalayas and the Indian Ocean. Deserts and mountains do the same inside countries: Egypt's desert, China's interior desert and India's Himalayas are nearly empty.</p>
   </template>
 
   <template id="note-growth-rates" data-title="India 1.17 vs. China 0.56">
@@ -2311,7 +2502,7 @@
     <h3>Go deeper</h3>
     <p>Bangladesh and Iowa are about the same size, but Bangladesh held over 156 million people versus Iowa's 3.15 million.</p>
     <p>Rural density: 3,000–5,000 per sq mi in Bangladesh vs. 55 in Iowa, roughly 55 to 90 times more crowded.</p>
-    <p><strong>Why it's possible:</strong> Bangladesh sits on the fertile Ganges–Brahmaputra delta, where rice can be grown intensively, often more than one crop a year. Iowa's farms are huge, mechanized and need very few workers.</p>
+    <p><strong>Why:</strong> almost all of Bangladesh's people are small farmers, so the countryside itself is crowded. In places like Iowa, better farm technology and shipping of food let fewer people work the land, so the countryside is thin.</p>
     <p class="ap"><strong>AP tip:</strong> a perfect contrast for <strong>agricultural density</strong>: Bangladesh has many farmers per acre, Iowa very few.</p>
   </template>
 
@@ -2358,8 +2549,8 @@
   <template id="note-nyc-compare" data-title="New York vs. Mumbai vs. Dhaka">
     <p><strong>New York City:</strong> 28,717 per sq mi (11,000 per sq km)<br><strong>Mumbai, India:</strong> 68,400 per sq mi (26,400 per sq km)<br><strong>Dhaka, Bangladesh:</strong> 122,700 per sq mi (47,400 per sq km)</p>
     <h3>Go deeper</h3>
-    <p>Dhaka is over 4 times as dense as New York. Much of that density is in informal settlements (slums), where many people share small spaces. New York's density comes from tall buildings, so it's crowded vertically instead.</p>
-    <p class="ap"><strong>AP tip:</strong> "dense" can mean very different living conditions depending on wealth and infrastructure. That links back to the Yangon field note.</p>
+    <p>Dhaka is over 4 times as dense as New York, and Mumbai more than twice. The reading's point is that even New York (28,717 per sq mi) doesn't come close to the most crowded cities in South Asia.</p>
+    <p class="ap"><strong>AP tip:</strong> a density doesn't tell you how well people live. The Yangon field note shows crowding turning deadly when it combines with poverty and weak infrastructure.</p>
   </template>
 
   <template id="note-census" data-title="Census">
@@ -2453,7 +2644,7 @@
   </template>
 
   <template id="note-mercantilism" data-title="Mercantilism, colonialism, capitalism">
-    <p><strong>Mercantilism:</strong> an economic system (roughly 1500s–1700s) in which European powers built wealth by controlling trade and colonies.</p>
+    <p><strong>Mercantilism:</strong> an economic system in which European powers built wealth by controlling trade and colonies.</p>
     <p><strong>Colonialism:</strong> ruling territories overseas, often reorganizing their farming around exports.</p>
     <p><strong>Capitalism:</strong> private businesses trading for profit, which drives global markets.</p>
     <h3>Connects to</h3>
@@ -2591,7 +2782,7 @@
   <template id="note-women-opportunity" data-title="Women's opportunities and growth">
     <h3>Why this is the big one</h3>
     <p>When women have more education and job options:</p>
-    <p>• they marry and have children later<br>• they know about and can get contraception<br>• children cost more (time out of a career) and bring in less<br>• they have more say in family decisions</p>
+    <p>• they marry and have children later<br>• they know about and can get contraception<br>• they have more say in family decisions</p>
     <p>All of these push fertility down. Where tradition keeps women out of school and work, and men decide family matters, birth rates stay high.</p>
     <h3>Apply it</h3>
     <p class="apply-p">India shows it inside one country: women in the south and west have higher literacy, more land ownership, better health care and more access to birth control, and those states grow much more slowly than the north (Kerala vs. Bihar). Women's opportunities are the common thread.</p>
@@ -2748,7 +2939,7 @@
   </template>
 
   <template id="note-population-explosion" data-title="The population explosion">
-    <p>The 1900s, especially after 1950, saw the fastest growth in human history. Death rates collapsed thanks to vaccines, antibiotics, clean water and more food, while birth rates in most of the world stayed high for decades. The result: population more than tripled in a century.</p>
+    <p>The 1900s, especially after 1950, saw the fastest growth in human history. Death rates collapsed thanks to a steadier food supply, sanitation and modern medicine, including childhood vaccinations, while birth rates in most of the world stayed high for decades. The result: population more than tripled in a century.</p>
   </template>
 
   <template id="note-fig-2-13" data-title="Figure 2.13: World population, 1650–2050">
@@ -2772,11 +2963,9 @@
 
   <template id="note-urban-nir" data-title="More urban = lower natural increase">
     <h3>Why</h3>
-    <p>On a farm, children are an economic <strong>asset</strong>: they help with work from a young age. In a city, children are an economic <strong>cost</strong>: housing, schooling and childcare are expensive, and kids don't bring in income.</p>
-    <p>Cities also offer more education, jobs for women and access to health care and contraception.</p>
+    <p>The reading ties it to economic well-being, which comes with urbanization: more education, later marriage and family planning, and all of these lower growth.</p>
     <h3>Apply it</h3>
     <p class="apply-p">Start China's slowdown (to 0.56%) with population policies such as the one-child policy, which the reading credits with slowing growth. The book's general link also fits: China's people have been moving to cities in droves (the chapter's opening story), and the more urbanized a country is, the lower its natural increase tends to be.</p>
-    <p class="ap"><strong>AP tip:</strong> "children as an economic asset vs. cost" is a strong explanation to use in free-response answers about urbanization and fertility.</p>
   </template>
 
   <template id="note-tfr" data-title="Total fertility rate (TFR)">
@@ -2785,7 +2974,7 @@
     <h3>TFR vs. CBR</h3>
     <p>CBR counts births per 1,000 <em>people</em> (everyone). TFR is per <em>woman</em>, so it isn't distorted by how many men, kids or elderly people there are. That makes TFR the better way to compare fertility.</p>
     <h3>Apply it</h3>
-    <p class="apply-p">Niger's 7.2 and South Korea's 1.2 mark the two ends: Niger in stage 2 with an expanding pyramid, South Korea heading into stage 5 with a contracting one.</p>
+    <p class="apply-p">Niger's 7.2 and South Korea's 1.2 mark the two ends: Niger in stage 2 with an expansive pyramid, South Korea heading into stage 5 with a constrictive one.</p>
     <p class="ap"><strong>AP tip:</strong> TFR is the best single predictor of future population growth. Memorize 2.1 as the replacement level.</p>
   </template>
 
@@ -2829,7 +3018,7 @@
     <h3>Related ratios</h3>
     <p><strong>Child dependency:</strong> ages 0–14 per 100 working-age people.<br><strong>Total dependency:</strong> (0–14 + 65+) per 100 working-age people.</p>
     <h3>Apply it</h3>
-    <p class="apply-p">Europe's ratio rising from 29.9 to 47 by 2050 means roughly two workers per retiree instead of three. Typical responses: raise the retirement age, encourage immigration, or adopt pronatalist policies.</p>
+    <p class="apply-p">Europe's ratio rising from 29.9 to 47 by 2050 means roughly two workers per retiree instead of three. The reading's two fixes: encourage more births (incentives like Sweden's) or allow immigration.</p>
     <p class="ap"><strong>AP tip:</strong> "dependents" are people who mostly don't work and rely on workers' taxes and support. Both very young and very old countries have high dependency, just different kinds.</p>
   </template>
 
@@ -2853,7 +3042,7 @@
     <p><strong>1. Raise TFR:</strong> encourage more births (pronatalist policies). Slow to work, since a baby born today won't pay taxes for about 20 years, and often not very effective.</p>
     <p><strong>2. Immigration:</strong> immigrants are usually young adults who start working and paying taxes right away (on wages, homes and purchases).</p>
     <h3>Apply it</h3>
-    <p class="apply-p">Compare Japan, which limits immigration and is shrinking, with countries that use immigration to offset low TFR, like Canada or Germany. Same problem, different policy, so different population outcomes.</p>
+    <p class="apply-p">Japan discourages immigration, and its population is shrinking as it ages. A country that lets in young immigrants adds workers and taxpayers to the middle of its pyramid. Same problem, different policy, so different outcomes.</p>
     <p class="ap"><strong>AP tip:</strong> immigration is the faster fix, but it can face political and cultural resistance, which is the Japan case study.</p>
   </template>
 
@@ -2926,9 +3115,9 @@
     <p><strong>5. Bulges and dents:</strong> a bulge is a baby boom; a dent is a war, famine, epidemic or a drop in births.</p>
   </template>
 
-  <template id="note-pyramid-expanding" data-title="Expanding pyramid (lower-income)">
+  <template id="note-pyramid-expanding" data-title="Expansive pyramid (lower-income)">
     <h3>Shape</h3>
-    <p>Wide base, narrow top, like an evergreen tree.</p>
+    <p>Wide base, narrow top, like an evergreen tree. AP calls it <strong>expansive</strong>; the guide also calls it expanding.</p>
     <h3>What it tells you</h3>
     <p>High TFR, high infant mortality, low life expectancy, and fast future growth. Ages 0–14 are over 40% of the population; the three oldest groups are under 10%.</p>
     <p><strong>Examples:</strong> Niger, Guatemala (Fig. 2.15), Pakistan, Yemen, Cameroon, Laos.</p>
@@ -2937,9 +3126,9 @@
     <p class="apply-p">Niger's and Guatemala's pyramids (Fig. 2.15) predict huge demand for schools now and jobs in 15–20 years. Expect a high child dependency ratio (the book's Africa figure: 74 per 100 working-age people).</p>
   </template>
 
-  <template id="note-pyramid-stable" data-title="Stable pyramid ('chimney')">
+  <template id="note-pyramid-stable" data-title="Stationary pyramid ('chimney')">
     <h3>Shape</h3>
-    <p>Roughly straight sides, with the largest groups in the middle instead of at the bottom. Think of a slightly lopsided chimney.</p>
+    <p>Roughly straight sides, with the largest groups in the middle instead of at the bottom. Think of a slightly lopsided chimney. AP calls it <strong>stationary</strong>; don't confuse it with the stationary population level (SPL), which is a population size, not a shape.</p>
     <h3>What it tells you</h3>
     <p>Low TFR, long life expectancy, slow growth. The middle-age bulge moves up over time as the population ages.</p>
     <p><strong>Examples:</strong> France, the U.S. (Fig. 2.16), Italy, Sweden.</p>
@@ -2948,9 +3137,9 @@
     <p class="apply-p">France and the U.S. (Fig. 2.16) have nearly straight sides and a wide top bracket for women (women live longer). A bulge in the middle, like the U.S. at 55–64, predicts a retirement wave and a rising old-age dependency ratio.</p>
   </template>
 
-  <template id="note-pyramid-contracting" data-title="Contracting pyramid">
+  <template id="note-pyramid-contracting" data-title="Constrictive pyramid">
     <h3>Shape</h3>
-    <p>Narrower at the bottom than in the middle, so it looks top-heavy.</p>
+    <p>Narrower at the bottom than in the middle, so it looks top-heavy. AP calls it <strong>constrictive</strong>; the guide also calls it contracting.</p>
     <h3>What it tells you</h3>
     <p>Very low TFR for a long time and many older people. Deaths will soon outnumber births, or already do.</p>
     <h3>Connects to</h3>
@@ -2966,7 +3155,7 @@
 
   <template id="note-fig-2-16" data-title="Figure 2.16: Low-growth pyramids (2019)">
     <h3>What to notice</h3>
-    <p><strong>Higher-income countries (average):</strong> a column, widest in the middle ages (around 50–59).<br><strong>France:</strong> nearly straight sides, with a very wide female 80+ bar (women live longer).<br><strong>United States:</strong> also chimney-shaped, with a bulge around ages 55–64 (the baby boomers).</p>
+    <p><strong>Higher-income countries (average):</strong> a column, widest in the middle ages (around 50–59).<br><strong>France:</strong> nearly straight sides, with a very wide female 80+ bar (women live longer).<br><strong>United States:</strong> also chimney-shaped, with a bulge around ages 55–64.</p>
     <p>The caption: lower TFRs and longer life expectancy produce more uniform shapes.</p>
   </template>
 
@@ -2996,7 +3185,7 @@
     <p>The field note captures an aging society through one moment: after weeks surrounded by young children in sub-Saharan Africa, de Blij noticed that most of the people he saw in Bordeaux were adults.</p>
     <p>It's the same contrast as the pyramids: Niger's wide base (Fig. 2.15) vs. France's chimney (Fig. 2.16).</p>
     <h3>Apply it</h3>
-    <p class="apply-p">Match the scene to the data: in France's pyramid (Fig. 2.16) the youngest bars are about 6% of each sex, while Niger's youngest bar is about 18% (Fig. 2.15). Few children on the street = low TFR = chimney-shaped pyramid = stage 4.</p>
+    <p class="apply-p">Match the scene to the data: in France's pyramid (Fig. 2.16) the youngest bars are about 6% of each sex, while Niger's youngest bar is about 18% (Fig. 2.15). Few children on the street = low TFR = stationary (chimney) pyramid = stage 4.</p>
   </template>
 
   <template id="note-fig-2-17" data-title="Figure 2.17: Bordeaux, France">
@@ -3030,10 +3219,10 @@
     <h3>Why</h3>
     <p>No reliable food supply, no modern medicine, frequent epidemics, famines and wars. Families had many children, but many died young.</p>
     <h3>Examples</h3>
-    <p>All of humanity for most of history, until about 1750 in Europe. No country is in stage 1 today; only a few isolated groups are.</p>
+    <p>All of humanity for most of history, until about 1750 in Europe. The reading gives no stage 1 country today.</p>
     <p>Famous crisis: the <strong>Black Death</strong> of the 1300s.</p>
     <h3>Apply it</h3>
-    <p class="apply-p">No country is in stage 1 today, so exam examples are historical: medieval Europe during the Black Death, when deaths sometimes exceeded births.</p>
+    <p class="apply-p">The reading's stage 1 examples are historical: medieval Europe during the Black Death, when deaths sometimes exceeded births.</p>
   </template>
 
   <template id="note-black-death" data-title="The Black Death">
@@ -3067,7 +3256,7 @@
     <h3>Examples</h3>
     <p>Britain after 1750; today, lower-income countries like Afghanistan and the Palestinian territories, and high-growth countries such as Niger (TFR 7.2).</p>
     <h3>Apply it</h3>
-    <p class="apply-p">Afghanistan (2.65%) and the Palestinian territories (2.83%) are among the fastest-growing places the reading names: births stay high while deaths have fallen. Expect expanding pyramids and high child dependency.</p>
+    <p class="apply-p">Afghanistan (2.65%) and the Palestinian territories (2.83%) are among the fastest-growing places the reading names: births stay high while deaths have fallen. Expect expansive pyramids and high child dependency.</p>
   </template>
 
   <template id="note-britain-rates" data-title="Britain's death rate drop">
@@ -3116,10 +3305,10 @@
     <h3>Why</h3>
     <p>Modern contraception and legal abortion (widely available in Britain after the 1950s), women's careers, later childbearing, and many people choosing small families or no children.</p>
     <h3>Examples</h3>
-    <p>Britain after 1950; today the U.S., UK, France, Australia and Canada.</p>
-    <p><strong>Pyramid:</strong> the "chimney."</p>
+    <p>Britain after 1950; today, higher-income countries like the U.S. and the U.K.</p>
+    <p><strong>Pyramid:</strong> stationary (the "chimney").</p>
     <h3>Apply it</h3>
-    <p class="apply-p">The U.S. and UK are stage 4: births only slightly above deaths, with immigration adding growth. Their pyramids are chimneys (Fig. 2.16).</p>
+    <p class="apply-p">The U.S. and UK are stage 4: births only slightly above deaths, with low births and low deaths. Their pyramids are stationary chimneys (Fig. 2.16).</p>
   </template>
 
   <template id="note-stage-5" data-title="Stage 5: Negative growth">
@@ -3130,7 +3319,6 @@
     <p>It depends on the country. In <strong>Japan</strong>, it's <strong>aging</strong>: so many people are old that deaths go up. In <strong>Russia</strong>, the reading points to worsening health conditions, alcoholism and drug use, more male suicides and economic trouble after 1991.</p>
     <h3>Examples</h3>
     <p>Japan and Russia. Countries with very low TFRs in the reading, like South Korea (1.2), are headed the same way.</p>
-    <p><em>Stage 5 wasn't in the original DTM. It was added later as countries fell below replacement.</em></p>
     <h3>Apply it</h3>
     <p class="apply-p">Japan (128.06 million in 2008 → 126.8 million in 2017) is the model stage 5 country. With deaths above births, the only ways to stop the decline are a higher TFR or immigration.</p>
   </template>
@@ -3140,7 +3328,7 @@
     <p>When births + immigration equal deaths + emigration, so the population stays the same size.</p>
     <p>Demographers predicted the world could reach ZPG within about 50 years as more countries enter stage 5.</p>
     <h3>Apply it</h3>
-    <p class="apply-p">A country can reach zero population growth with births below deaths if immigration fills the gap, which is roughly the situation in several European countries today.</p>
+    <p class="apply-p">A country can reach zero population growth even with births below deaths, if immigration fills the gap. That's why natural increase alone doesn't tell you whether a population is growing.</p>
   </template>
 
   <template id="note-spl" data-title="Stationary population level (SPL)">
@@ -3170,7 +3358,7 @@
     <h3>The numbers</h3>
     <p>Ages 0–14: about <strong>48%</strong> of males and <strong>47%</strong> of females.<br>Ages 70 and up: about <strong>1.4%</strong> of males and <strong>1.4%</strong> of females.<br>Youngest group (0–4): 18.6% of males, 18.2% of females.</p>
     <h3>What it shows</h3>
-    <p>The most extreme expanding pyramid here: every age group is much larger than the one above it. That comes from a TFR of 7.2 (the world's highest) plus high infant mortality and low life expectancy. Stage 2.</p>
+    <p>The most extreme expansive pyramid here: every age group is much larger than the one above it. That comes from a TFR of 7.2 (the world's highest) plus high infant mortality and low life expectancy. Stage 2.</p>
     <h3>Apply it</h3>
     <p class="apply-p">Nearly half the population is under 15, so Niger's child dependency ratio is very high, and even if TFR fell tomorrow, all those children reaching adulthood would keep the population growing for decades (population momentum).</p>
   </template>
@@ -3209,9 +3397,9 @@
     <h3>The numbers</h3>
     <p>Ages 0–14: about <strong>19%</strong> of males and <strong>18%</strong> of females.<br>Ages 70 and up: about <strong>9.5%</strong> of males and <strong>12.1%</strong> of females.<br>Youngest group (0–4): 6.4% of males, 5.8% of females.</p>
     <h3>What it shows</h3>
-    <p>Chimney-shaped with a bulge at about ages 55–64: the baby boom generation (born about 1946–1964). The youngest groups are about the same size as the 20s and 30s, helped by immigration. Stage 4.</p>
+    <p>A stationary, chimney shape with a bulge at about ages 55–64. The youngest groups are about the same size as the 20s and 30s. Stage 4.</p>
     <h3>Apply it</h3>
-    <p class="apply-p">As the boomer bulge retires, Social Security and Medicare costs rise while the share of workers falls. The U.S. offsets part of this with immigration, which adds young adults to the middle of the pyramid.</p>
+    <p class="apply-p">As that bulge retires, the costs of pensions and medical care rise while the share of workers falls: a rising old-age dependency ratio. Immigration is one fix the reading gives, since it adds young workers who pay taxes.</p>
   </template>
   <template id="note-world-pop" data-title="World population growth (Fig. 2.13)">
     <h3>The numbers</h3>
