@@ -558,12 +558,16 @@
       // Priority: this page's own state (a Back/Forward restore), then the deck saved in this
       // tab (coming back from the reading), then a fresh deck.
       let s = getState(page) || savedDeck(page);
-      // A link like flashcard/#part-2-2 opens a fresh deck on that part (once per page visit).
+      // A link opens a fresh deck (once per page visit): flashcard/#part-2-2 or #malthus deals every
+      // card in that part or section; #due and #review deal those decks for the whole reading.
       const hash = decodeURIComponent(location.hash.slice(1));
       const sel = page.querySelector(".fc-section");
-      if (hash && page.dataset.hashUsed !== hash && Array.prototype.some.call(sel.options, function (o) { return o.value === hash; })) {
+      const deckHash = hash === "due" || hash === "review";
+      if (hash && page.dataset.hashUsed !== hash &&
+          (deckHash || Array.prototype.some.call(sel.options, function (o) { return o.value === hash; }))) {
         page.dataset.hashUsed = hash;
-        sel.value = hash;
+        sel.value = deckHash ? "" : hash;
+        pick(page, "[data-deck]", deckHash ? hash : "all");
         s = null;
       }
       if (s && s.opts && s.order.every(function (id) { return document.getElementById(id); })) {

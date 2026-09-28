@@ -7,7 +7,8 @@ study.thejunkdrawerapp.com. Work directly on `main`.
 /                                   subject picker
 /human-geo/                         AP Human Geography hub
 /human-geo/quiz/                    reading-quiz study guides   e.g. /human-geo/quiz/reading-2.1-2.2/
-  <reading>/                        options page: Reading guide, Flashcards, Match, Practice quiz
+  <reading>/                        options page: What to study next, then Reading guide, Flashcards,
+                                    Match, Practice quiz
   <reading>/reading/                the guide itself
   <reading>/flashcard/              one card per quizzable fact (checklist/, flashcards/ redirect here)
   <reading>/match/                  timed matching game: terms, examples, facts
@@ -20,6 +21,7 @@ assets/notes.js                     click-to-explain panel, chart tooltips
 assets/flashcards.js                flashcard deck: flip, swipe, Got it / Review marks
 assets/match.js                     matching game; a miss marks the linked flashcard Review
 assets/quiz.js                      practice quiz; a miss marks the linked flashcard Review
+assets/plan.js                      "What to study next" panel: reads every tool's saved progress
 assets/calc.js                      natural increase calculator
 assets/js/turbo.min.js              Turbo Drive (copied from the main site)
 tools/version-assets.py             stamps ?v=<hash> on every local .css/.js link
@@ -80,7 +82,9 @@ an "Update" box; book errors get a short note saying which value to use on the q
 situation, then apply an idea), never copied from AP Classroom or released exams (College Board
 owns those). Five choices (A–E, as on the AP exam), the right one written first (the page shuffles), and every choice
 carries a `data-why`: why it's right, or why it's wrong. Each question names its flashcard in
-`data-card`. A chart inside a question skips the "Apply it" box, since the explanation shown after
+`data-card`. Questions are `data-kind="ap"` (apply an idea to a pyramid, table, passage or
+situation) or `"detail"` (a fact straight from the reading); questions sharing a stimulus share a
+`data-set` and are always dealt together, in order. A chart inside a question skips the "Apply it" box, since the explanation shown after
 answering does that job; pyramids there come from the guide's own charts with the country renamed.
 
 **Apply it.** Every chart has an "Apply it" box and every key-concept note (`class="term key"`) has

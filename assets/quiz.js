@@ -2,7 +2,9 @@
 // answer is always written first there; each quiz shuffles the choices).
 //
 // Modes: "practice" checks each answer as you go; "test" saves the answers for the end.
-// A missed question marks its flashcard Review and due now, like a miss in Match.
+// A missed question marks its flashcard Review and due now, like a miss in Match, and joins the
+// "missed" list (data-miss) until it's answered right, which "Only ones I've missed" draws from.
+// Questions with the same data-set share one stimulus; they're always dealt together, in order.
 //
 // The quiz in progress lives in data-state (survives a Back/Forward clone) and in sessionStorage
 // (survives leaving for the reading through "In the reading" and coming back), so you land on
@@ -13,12 +15,13 @@
   window.__qzInit = true;
 
   const LETTERS = "ABCDE";   // five choices, like the AP exam
-  const SKILL = { concept: "Concept", data: "Data", visual: "Visual", scale: "Scale" };
+  const SKILL = { concept: "Concept", data: "Data", visual: "Visual", scale: "Scale", detail: "Reading detail" };
   const SKILL_NOTE = {
     concept: "Apply an idea to a situation",
     data: "Read numbers and calculate",
     visual: "Read a pyramid or chart",
     scale: "Think about local vs. global",
+    detail: "Recall a fact from the reading",
   };
 
   function calm() { return window.matchMedia("(prefers-reduced-motion: reduce)").matches; }
@@ -70,16 +73,41 @@
   }
 
   // ---------- Starting ----------
-  function start(page, only) {
+  // The questions the start screen's filters allow (part of the reading, type, missed-only).
+  function eligible(page, fromOverride) {
     const part = page.querySelector(".qz-part").value;
+    const type = pressed(page, "data-type") || "all";
+    const from = fromOverride || pressed(page, "data-from") || "all";
+    const missed = load(page.dataset.miss);
+    return Array.prototype.filter.call(page.querySelectorAll(".qz-item"), function (li) {
+      return (!part || li.dataset.part === part) && (type === "all" || li.dataset.kind === type) &&
+        (from !== "missed" || missed[li.id]);
+    }).map(function (li) { return li.id; });
+  }
+
+  // Shuffle whole sets (and single questions), then deal them until the quiz is long enough.
+  // A set is never split, so a quiz can run a question or two past the chosen length.
+  function deal(ids, len) {
+    const groups = [], seen = {};
+    ids.forEach(function (id) {
+      const set = item(id).dataset.set;
+      if (!set) { groups.push([id]); return; }
+      if (!seen[set]) { seen[set] = []; groups.push(seen[set]); }
+      seen[set].push(id);
+    });
+    shuffle(groups);
+    const out = [];
+    groups.forEach(function (g) { if (len === "all" || out.length < Number(len)) out.push.apply(out, g); });
+    return out;
+  }
+
+  function start(page, only) {
     const len = pressed(page, "data-len") || "10";
     const mode = pressed(page, "data-mode") || "practice";
-    let pool = Array.prototype.filter.call(page.querySelectorAll(".qz-item"), function (li) {
-      return !part || li.dataset.part === part;
-    }).map(function (li) { return li.id; });
-    if (only && only.length) pool = only.slice();
-    shuffle(pool);
-    if (!only && len !== "all") pool = pool.slice(0, Number(len));
+    const from = pressed(page, "data-from") || "all";
+    const pool = only && only.length ? deal(only, "all")
+      : deal(eligible(page), from === "missed" ? "all" : len);
+    if (!pool.length) return;
     const perm = {};
     pool.forEach(function (id) { perm[id] = shuffle(choicesOf(id).length === 5 ? [0, 1, 2, 3, 4] : [0, 1, 2, 3]); });
     const s = { mode: mode, order: pool, perm: perm, picked: {}, checked: {}, index: 0, used: 0, done: false };
@@ -105,6 +133,18 @@
     skill.title = SKILL_NOTE[li.dataset.skill];
     page.querySelector(".qz-bar span").style.width = (100 * s.index / total) + "%";
     page.querySelector(".qz-stimbox").innerHTML = li.querySelector(".stim").innerHTML;
+    // "Questions 4–6 use this table": the run of neighbors in this quiz from the same set.
+    const note = page.querySelector(".qz-setnote");
+    let a = s.index, b = s.index;
+    if (li.dataset.set) {
+      while (a > 0 && item(s.order[a - 1]).dataset.set === li.dataset.set) a--;
+      while (b < total - 1 && item(s.order[b + 1]).dataset.set === li.dataset.set) b++;
+    }
+    note.hidden = a === b;
+    if (a !== b) {
+      const what = li.querySelector(".qz-pyr") ? "pyramid" : li.querySelector(".qz-passage") ? "passage" : "table";
+      note.textContent = "Questions " + (a + 1) + "–" + (b + 1) + " use this " + what + ".";
+    }
     page.querySelector(".qz-stem").textContent = li.querySelector(".stem").textContent;
 
     const box = page.querySelector(".qz-choices");
@@ -200,6 +240,13 @@
     play(b, [{ transform: "scale(.98)" }, { transform: "scale(1.01)" }, { transform: "none" }], 220);
   }
 
+  // Keep the "missed" list: a wrong answer adds the question, a right one clears it.
+  function record(page, id, right) {
+    const missed = load(page.dataset.miss);
+    if (right) delete missed[id]; else missed[id] = 1;
+    save(page.dataset.miss, missed);
+  }
+
   // A miss marks the question's flashcard Review and due now.
   function markMiss(page, id) {
     const card = item(id).dataset.card;
@@ -216,6 +263,7 @@
     if (s.picked[id] === undefined || s.checked[id]) return;
     s.checked[id] = true;
     setState(page, s);
+    record(page, id, s.picked[id] === 0);
     if (s.picked[id] !== 0) markMiss(page, id);
     paintAnswer(page, s);
     const chosen = page.querySelector(".qz-choice[aria-pressed='true']");
@@ -246,6 +294,7 @@
     s.order.forEach(function (id) {
       if (!s.checked[id]) {
         s.checked[id] = true;
+        record(page, id, s.picked[id] === 0);
         if (s.picked[id] !== 0) markMiss(page, id);
       }
     });
@@ -333,7 +382,26 @@
     play(page.querySelector(".qz-results"), [{ opacity: 0, transform: "translateY(10px)" }, { opacity: 1, transform: "none" }], 420);
   }
 
+  // Start screen: counts on the Type and "Only ones I've missed" buttons for the chosen part.
+  function counts(page) {
+    ["all", "ap", "detail"].forEach(function (t) {
+      const b = page.querySelector("[data-type='" + t + "'] .n");
+      const part = page.querySelector(".qz-part").value;
+      b.textContent = Array.prototype.filter.call(page.querySelectorAll(".qz-item"), function (li) {
+        return (!part || li.dataset.part === part) && (t === "all" || li.dataset.kind === t);
+      }).length;
+    });
+    const n = eligible(page, "missed").length;
+    const mb = page.querySelector("[data-from='missed']");
+    mb.querySelector(".n").textContent = n;
+    mb.disabled = !n;
+    if (!n && pressed(page, "data-from") === "missed") pick(page, "data-from", "all");
+    page.querySelector(".qz-len").hidden = pressed(page, "data-from") === "missed";
+    page.querySelector("[data-qz='start']").disabled = !eligible(page).length;
+  }
+
   function lastLine(page) {
+    counts(page);
     const el = page.querySelector(".qz-last");
     const last = load(page.dataset.last);
     el.hidden = !last.total;
@@ -355,6 +423,10 @@
     if (len) { pick(page, "data-len", len.dataset.len); return; }
     const mode = e.target.closest("[data-mode]");
     if (mode) { pick(page, "data-mode", mode.dataset.mode); return; }
+    const type = e.target.closest("[data-type]");
+    if (type) { pick(page, "data-type", type.dataset.type); counts(page); return; }
+    const from = e.target.closest("[data-from]");
+    if (from && !from.disabled) { pick(page, "data-from", from.dataset.from); counts(page); return; }
     const rx = e.target.closest("[data-qz-explain]");
     if (rx) { explain(page, rx.dataset.qzExplain, rx); return; }
     const act = e.target.closest("[data-qz]");
@@ -372,6 +444,10 @@
           .then(function (yes) { if (yes && document.contains(page)) { setState(page, null); show(page, null); } });
         break;
     }
+  });
+
+  document.addEventListener("change", function (e) {
+    if (e.target.matches && e.target.matches(".qz-part")) counts(e.target.closest(".qz-page"));
   });
 
   document.addEventListener("keydown", function (e) {
@@ -409,8 +485,18 @@
       let s = getState(page) || load("qzstate:" + page.dataset.store, sessionStorage);
       // Drop a saved quiz whose questions (or number of choices) no longer match the page.
       if (!s.order || !s.order.every(function (id) { return item(id) && s.perm[id] && s.perm[id].length === choicesOf(id).length; })) s = null;
-      if (s) setState(page, s);
+      // Arriving from "What to study next" with ?mode=missed: a fresh missed-only quiz, whatever
+      // was open before (the link is an explicit choice). The parameter is dropped at once, so a
+      // reload keeps the new quiz instead of starting yet another.
+      const wantMissed = new URLSearchParams(location.search).get("mode") === "missed";
+      if (wantMissed) { history.replaceState(history.state, "", location.pathname); s = null; }
+      if (s) setState(page, s); else setState(page, null);
       show(page, s);
+      if (wantMissed) {
+        page.querySelector(".qz-part").value = "";
+        pick(page, "data-type", "all");
+        if (eligible(page, "missed").length) { pick(page, "data-from", "missed"); counts(page); start(page); }
+      }
     });
     lastOf();
   }

@@ -1417,3 +1417,82 @@ a.card p.card-progress { margin-top: 6px; font-size: 0.9rem; font-weight: 600; c
 @media (prefers-reduced-motion: reduce) {
   .qz-sk-bar span { transition: none; }
 }
+
+/* Practice quiz: passages, question sets, the start screen's extra options */
+.qz-passage figcaption { font-weight: 700; margin-bottom: 6px; text-align: left; font-size: 0.92rem; color: var(--text); }
+.qz-passage blockquote {
+  margin: 0;
+  padding: 12px 16px;
+  border-left: 3px solid var(--accent);
+  background: var(--term-bg);
+  border-radius: 0 8px 8px 0;
+  font-size: 0.95rem;
+}
+.qz-setnote {
+  display: inline-block;
+  margin: 0 0 12px;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: var(--grid-line);
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.qz-setnote[hidden] { display: none; }
+.qz-opt[hidden] { display: none; }
+.fc-seg button:disabled { opacity: 0.45; cursor: default; }
+.qz-go:disabled { opacity: 0.45; cursor: default; }
+
+/* ---------- What to study next (reading options page) ---------- */
+.plan {
+  margin: 0 0 24px;
+  padding: 20px 22px;
+  border-radius: 16px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  box-shadow: var(--fc-shadow);
+}
+.plan[hidden] { display: none; }
+.plan h2 { margin: 0 0 12px; font-size: 1.15rem; }
+.plan-next { display: flex; flex-direction: column; gap: 8px; margin: 0 0 16px; }
+.plan-step {
+  display: flex;
+  flex-direction: column;
+  padding: 11px 14px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  color: var(--text);
+  text-decoration: none;
+  transition: background-color .15s ease, border-color .15s ease, transform .12s ease;
+}
+.plan-step-label { font-weight: 650; }
+.plan-step-label::after { content: " →"; color: var(--accent); }
+.plan-step-why { font-size: 0.86rem; color: var(--muted); }
+.plan-step.first { border-color: var(--accent); background: var(--term-bg); }
+.plan-step.first .plan-step-label { color: var(--accent); }
+.plan-step:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.plan-step:active { transform: scale(0.99); background: var(--term-bg-hover); }
+@media (hover: hover) { .plan-step:hover { border-color: var(--accent); background: var(--card-hover); } .plan-step.first:hover { background: var(--term-bg-hover); } }
+.plan-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 0 0 12px; }
+.plan-stat { display: flex; flex-direction: column; padding: 8px 10px; border-radius: 10px; background: var(--bg); }
+.plan-stat strong { font-size: 1.15rem; font-variant-numeric: tabular-nums; }
+.plan-stat span { font-size: 0.76rem; color: var(--muted); line-height: 1.3; }
+.plan-more summary { cursor: pointer; color: var(--accent); font-size: 0.92rem; font-weight: 600; padding: 4px 0; border-radius: 6px; }
+.plan-more summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+@media (hover: hover) { .plan-more summary:hover { text-decoration: underline; } }
+.plan-secs { list-style: none; padding: 0; margin: 8px 0 0; display: grid; gap: 6px; }
+.plan-sec { display: grid; grid-template-columns: minmax(0, 1.4fr) 1fr 2.6rem 3.4rem; align-items: center; gap: 10px; font-size: 0.88rem; }
+.plan-sec-title { color: var(--text); text-decoration: none; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.plan-sec-title:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+@media (hover: hover) { .plan-sec-title:hover { color: var(--accent); text-decoration: underline; } }
+.plan-bar { display: flex; height: 8px; border-radius: 999px; overflow: hidden; background: var(--grid-line); }
+.plan-bar .g { background: var(--good); }
+.plan-bar .r { background: var(--review); }
+.plan-sec-n { text-align: right; font-variant-numeric: tabular-nums; color: var(--muted); }
+.plan-tag { justify-self: start; font-size: 0.7rem; font-weight: 700; padding: 1px 8px; border-radius: 999px; background: var(--review-bg); color: var(--review); }
+.plan-sec.focus .plan-sec-title { font-weight: 650; }
+@media (max-width: 480px) {
+  .plan { padding: 16px; }
+  .plan-stats { grid-template-columns: repeat(2, 1fr); }
+  .plan-sec { grid-template-columns: minmax(0, 1fr) 4.5rem 2.4rem 3.2rem; gap: 8px; font-size: 0.84rem; }
+}
