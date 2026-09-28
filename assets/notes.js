@@ -184,7 +184,7 @@
     });
   };
 
-  // "Print" on a night-before sheet prints its PDF, which looks the same everywhere, instead of
+  // "Print" on a study sheet prints its PDF, which looks the same everywhere, instead of
   // the web page. Chrome, Edge and Firefox can print a PDF loaded into a hidden frame; Safari
   // (Mac and iOS) and Android can't, so there the PDF opens in a new tab to print from.
   function printPdf(url) {
@@ -209,6 +209,32 @@
     f.src = url;
     document.body.appendChild(f);
   }
+  // The study sheet's Color / Black and white switch points Download and Print at that PDF.
+  // The choice is remembered on this device.
+  function setInk(box, ink) {
+    const url = box.getAttribute(ink === "bw" ? "data-pdf-bw" : "data-pdf-color");
+    if (!url) return;
+    box.querySelectorAll("[data-ink]").forEach(function (b) { b.setAttribute("aria-pressed", String(b.dataset.ink === ink)); });
+    const a = box.querySelector("a[download]");
+    if (a) a.setAttribute("href", url);
+    const p = box.querySelector("[data-print-pdf]");
+    if (p) p.setAttribute("data-print-pdf", url);
+  }
+  function applyInk() {
+    let ink = null;
+    try { ink = localStorage.getItem("sheetink"); } catch (err) {}
+    if (ink !== "bw") return;
+    document.querySelectorAll("[data-pdf-bw]").forEach(function (box) { setInk(box, ink); });
+  }
+  document.addEventListener("DOMContentLoaded", applyInk);
+  document.addEventListener("turbo:load", applyInk);
+  document.addEventListener("click", function (e) {
+    const b = e.target.closest && e.target.closest("[data-ink]");
+    const box = b && b.closest("[data-pdf-bw]");
+    if (!box) return;
+    setInk(box, b.dataset.ink);
+    try { localStorage.setItem("sheetink", b.dataset.ink); } catch (err) {}
+  });
   document.addEventListener("click", function (e) {
     const b = e.target.closest && e.target.closest("[data-print-pdf]");
     if (!b) return;

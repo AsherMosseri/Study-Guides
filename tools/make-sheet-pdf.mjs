@@ -1,4 +1,4 @@
-// Render each night-before sheet to a PDF next to its page, so it prints the same everywhere.
+// Render each study sheet to a color PDF and a black-and-white PDF next to its page, so it prints the same everywhere.
 // Browsers' own printing varies (Safari and Chrome split and scale pages differently); a PDF
 // doesn't. Rerun after changing a sheet or its styles:
 //
@@ -38,11 +38,15 @@ try {
     const page = await browser.newPage({ colorScheme: "light" });
     await page.goto(base + sheet, { waitUntil: "load" });
     await page.emulateMedia({ media: "print" });
-    const out = path.join(ROOT, sheet, "night-before-sheet.pdf");
-    await page.pdf({ path: out, format: "Letter", printBackground: true, margin: { top: "0.35in", bottom: "0.35in", left: "0.35in", right: "0.35in" } });
-    const pages = (fs.readFileSync(out, "latin1").match(/\/Type\s*\/Page[^s]/g) || []).length;
-    if (pages !== 2) throw new Error(`${sheet}: expected 2 pages, got ${pages}`);
-    console.log("wrote", path.relative(ROOT, out), "(" + pages + " pages)");
+    // .print-bw switches the print styles to black on white (see style.css).
+    for (const [file, bw] of [["study-sheet.pdf", false], ["study-sheet-bw.pdf", true]]) {
+      await page.evaluate((on) => document.documentElement.classList.toggle("print-bw", on), bw);
+      const out = path.join(ROOT, sheet, file);
+      await page.pdf({ path: out, format: "Letter", printBackground: true, margin: { top: "0.35in", bottom: "0.35in", left: "0.35in", right: "0.35in" } });
+      const pages = (fs.readFileSync(out, "latin1").match(/\/Type\s*\/Page[^s]/g) || []).length;
+      if (pages !== 2) throw new Error(`${sheet}${file}: expected 2 pages, got ${pages}`);
+      console.log("wrote", path.relative(ROOT, out), "(" + pages + " pages)");
+    }
     await page.close();
   }
 } finally {

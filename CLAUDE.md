@@ -13,7 +13,7 @@ study.thejunkdrawerapp.com. Work directly on `main`.
   <reading>/flashcard/              one card per quizzable fact (checklist/, flashcards/ redirect here)
   <reading>/match/                  timed matching game: terms, examples, facts
   <reading>/practice/               AP-style multiple choice with an explanation for every answer
-  <reading>/review/                 night-before sheet (+ night-before-sheet.pdf, generated)
+  <reading>/review/                 study sheet (+ study-sheet.pdf and study-sheet-bw.pdf, generated)
 /human-geo/test/                    chapter-test study guides   e.g. /human-geo/test/chapter-2/
 /bio/                               Biology (planned; same quiz/ and test/ layout)
 /quiz/..., /test/...                redirect pages for the old addresses; keep them
@@ -26,7 +26,7 @@ assets/plan.js                      "What to study next" panel: reads every tool
 assets/calc.js                      natural increase calculator
 assets/js/turbo.min.js              Turbo Drive (copied from the main site)
 tools/version-assets.py             stamps ?v=<hash> on every local .css/.js link
-tools/make-sheet-pdf.mjs            renders each night-before sheet to a 2-page Letter PDF
+tools/make-sheet-pdf.mjs            renders each study sheet to 2-page Letter PDFs (color, black and white)
 ```
 
 **Adding a subject:** create `/<subject>/index.html` (copy `/human-geo/index.html`), give it
@@ -107,12 +107,12 @@ an "Apply it" section that uses an example from the reading to show the concept 
   A new subject adds an entry there. Scrapers cache images for a long time, so a redesign ships
   under a NEW filename (`og-2.png`), never a re-upload; icons likewise change by filename, not `?v=`.
 
-- **After changing a night-before sheet or its styles, regenerate its PDF:**
+- **After changing a study sheet or its styles, regenerate its PDFs:**
   `NODE_PATH=$(npm root -g) node tools/make-sheet-pdf.mjs` (it fails unless the sheet is exactly two
   pages). The sheet's print layout is two fixed blocks of three columns, never flowing CSS columns,
-  which Chrome and Safari split differently. The print styles keep the light theme's colors, and the
-  sheet's Print button (`data-print-pdf`) prints that PDF rather than the web page, so paper matches
-  the download.
+  which Chrome and Safari split differently. The color PDF keeps the light theme's colors; the
+  black-and-white one adds `.print-bw` to `<html>`. The sheet's Color / Black and white switch picks
+  which PDF Download and Print (`data-print-pdf`) use, so paper always matches the download.
 - **After editing anything in `assets/`, run `python3 tools/version-assets.py`.** Cloudflare and
   browsers cache CSS/JS for hours; the hash in `?v=` is what makes them fetch the new file.
 - **Asset paths are root-absolute (`/assets/...`)** so each `<head>` tag is identical on every page.

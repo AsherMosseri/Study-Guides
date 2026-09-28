@@ -1497,16 +1497,16 @@ a.card p.card-progress { margin-top: 6px; font-size: 0.9rem; font-weight: 600; c
   .plan-sec { grid-template-columns: minmax(0, 1fr) 4.5rem 2.4rem 3.2rem; gap: 8px; font-size: 0.84rem; }
 }
 
-/* ---------- Night-before sheet ----------
+/* ---------- Study sheet ----------
    Two fixed "pages", each three columns (the DTM and traps span the second). On screen they
    stack on phones; in print each block is exactly one printed page, so every browser prints the
-   same layout (flowing CSS columns split differently in Chrome and Safari). Print is always black
-   on white, whatever the theme. */
+   same layout (flowing CSS columns split differently in Chrome and Safari). Print always uses the
+   light theme's colors, whatever the screen's theme; .print-bw turns them black on white. */
 .sheet-page main { max-width: 1040px; }
 .sheet-page .site-header { max-width: 1040px; }
 .sheet-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
 .sheet-top .subtitle { margin-bottom: 8px; }
-.sheet-actions { flex: none; display: flex; gap: 8px; margin-top: 6px; }
+.sheet-actions { flex: none; display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 8px; margin-top: 6px; }
 .sheet-actions a.fc-btn { text-decoration: none; display: inline-block; }
 .sheet-note { margin: 0 0 18px; color: var(--muted); font-size: 0.92rem; }
 .spage { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; align-items: start; margin: 0 0 14px; }
@@ -1553,7 +1553,7 @@ a.card p.card-progress { margin-top: 6px; font-size: 0.9rem; font-weight: 600; c
 @media (max-width: 640px) {
   .dtm-table td:nth-child(-n+4) { white-space: normal; }
   .sheet-top { flex-direction: column; gap: 0; }
-  .sheet-actions { margin: 0 0 12px; }
+  .sheet-actions { margin: 0 0 12px; justify-content: flex-start; }
 }
 @media print {
   /* Always the light theme's colors on paper, even when the screen is dark. Tints and colored
@@ -1578,6 +1578,15 @@ a.card p.card-progress { margin-top: 6px; font-size: 0.9rem; font-weight: 600; c
   .traps { border-color: var(--review); border-top-color: var(--review); background: var(--review-bg); }
   .traps h2 { color: var(--review); }
   .traps strong { color: var(--review); }
+  /* The black-and-white PDF (make-sheet-pdf.mjs adds .print-bw): black on white, no tints. Same
+     specificity as the color tokens above and later, so it wins in every theme. */
+  :root.print-bw, :root.print-bw[data-theme="dark"], :root.print-bw:not([data-theme="light"]) {
+    --text: #000 !important; --muted: #333 !important; --border: #888 !important; --accent: #000 !important;
+    --review: #000 !important; --good: #000 !important; --series-1: #555 !important; --series-2: #999 !important;
+    --term-bg: #fff !important; --review-bg: #fff !important; --good-bg: #fff !important;
+  }
+  .print-bw .sbox { border-top: 1px solid var(--border); }
+  .print-bw .sbox.traps { border-color: var(--review); }
   .site-header, .sheet-actions, .sheet-note, .fc-return, .panel { display: none !important; }
   .sheet-page main { max-width: none; padding: 0; margin: 0; }
   .sheet-top h1 { font-size: 15pt; margin: 0; }
