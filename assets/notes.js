@@ -30,9 +30,6 @@
     p.querySelector(".panel-close").focus({ preventScroll: true });
   }
 
-  // Other scripts (the flashcards' "Explain it") open a note by id through this.
-  window.siteNote = openNote;
-
   function closeNote(restoreFocus) {
     const p = panel();
     if (!p || !p.classList.contains("open")) return;
@@ -90,6 +87,55 @@
     t.style.top = e.clientY + 16 + "px";
     t.classList.add("show");
   });
+
+  // "Explain it" for pages that don't carry the notes themselves (flashcards, match). The notes
+  // live in the reading guide as <template id="note-...">: fetch that page once, copy the wanted
+  // notes into one template on this page (inside `host`, so it leaves with the page on the next
+  // Turbo visit), and open it in the panel. The first note gives the title; later ones follow
+  // under an "Also:" heading.
+  const guides = {};
+  function guideDoc(url) {
+    if (!guides[url]) {
+      guides[url] = fetch(url)
+        .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+        .then(function (t) { return new DOMParser().parseFromString(t, "text/html"); })
+        .catch(function (err) { delete guides[url]; throw err; });
+    }
+    return guides[url];
+  }
+  window.siteExplain = function (key, ids, from, trigger, host) {
+    if (!ids.length) return;
+    if (document.getElementById("note-x-" + key)) { openNote("x-" + key, trigger); return; }
+    trigger.setAttribute("aria-busy", "true");
+    guideDoc(from).then(function (doc) {
+      const tpl = document.createElement("template");
+      tpl.id = "note-x-" + key;
+      ids.forEach(function (n, i) {
+        const src = doc.getElementById("note-" + n);
+        if (!src) return;
+        if (!tpl.dataset.title) tpl.dataset.title = src.dataset.title;
+        if (i > 0) {
+          const h = document.createElement("p");
+          h.className = "note-also";
+          h.textContent = "Also: " + src.dataset.title;
+          tpl.content.appendChild(h);
+        }
+        tpl.content.appendChild(document.importNode(src.content, true));
+      });
+      host.appendChild(tpl);
+      openNote("x-" + key, trigger);
+    }).catch(function () {
+      let tpl = document.getElementById("note-x-offline");
+      if (!tpl) {
+        tpl = document.createElement("template");
+        tpl.id = "note-x-offline";
+        tpl.dataset.title = "Couldn't load the explanation";
+        tpl.innerHTML = "<p>Check your connection and try again, or open the reading guide.</p>";
+        host.appendChild(tpl);
+      }
+      openNote("x-offline", trigger);
+    }).then(function () { trigger.removeAttribute("aria-busy"); });
+  };
 
   // A styled stand-in for window.confirm, which looks different in every browser and can't be
   // themed. siteConfirm({ title, text, ok, cancel, danger }) returns a Promise of true/false.

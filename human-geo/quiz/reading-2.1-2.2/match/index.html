@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reading 2.1–2.2 match | AP Human Geography</title>
+  <meta name="description" content="A matching game for Chapter 2, sections 2.1–2.2: terms, concepts and examples, and the reading's facts and figures. 103 pairs." />
+  <link rel="canonical" href="https://study.thejunkdrawerapp.com/human-geo/quiz/reading-2.1-2.2/match/" />
+  <!-- Link previews (iMessage, Discord, X...). og:image must be an absolute URL, and scrapers cache it hard:
+       a redesign needs a NEW filename, not a re-upload. Regenerate with tools/make-social-images.mjs. -->
+  <meta property="og:site_name" content="Study Guides" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Reading 2.1–2.2 match: Population and Health" />
+  <meta property="og:description" content="A matching game for Chapter 2, sections 2.1–2.2: terms, concepts and examples, and the reading's facts and figures. 103 pairs." />
+  <meta property="og:url" content="https://study.thejunkdrawerapp.com/human-geo/quiz/reading-2.1-2.2/match/" />
+  <meta property="og:image" content="https://study.thejunkdrawerapp.com/og-human-geo-3.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="AP Human Geography study guides" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://study.thejunkdrawerapp.com/og-human-geo-3.png" />
+  <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <!-- Colors the browser's own chrome (Safari's toolbar, the iOS address bar) to match the page.
+       Both tags are rewritten to the color actually in use by the script below and by the toggle,
+       because older Safari ignores the media attribute and always takes the first tag. -->
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7f7f5" />
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0d1117" />
+  <!-- The saved theme is read HERE, by a CLASSIC script, before the stylesheet: resolve it any
+       later and the first paint is the wrong color before the right one arrives. data-theme
+       (written by the toggle, absent when following the system) overrides the system preference.
+       The background is declared here too, so a fast refresh never shows a ghost of the old page. -->
+  <script>(function(){try{var d=document.documentElement,t=localStorage.getItem("tjd:theme");if(t==="dark"||t==="light")d.setAttribute("data-theme",t);var k=t==="dark"||(t!=="light"&&matchMedia("(prefers-color-scheme: dark)").matches),c=k?"#0d1117":"#f7f7f5",m=document.querySelectorAll('meta[name="theme-color"]');for(var i=0;i<m.length;i++)m[i].setAttribute("content",c);}catch(e){}})();</script>
+  <style>
+    :root { color-scheme: light dark; }
+    html[data-theme="light"] { color-scheme: light; }
+    html[data-theme="dark"] { color-scheme: dark; }
+    html, body { background: #f7f7f5; background: light-dark(#f7f7f5, #0d1117); }
+  </style>
+  <link rel="stylesheet" href="/assets/style.css?v=308ef1b84d" data-turbo-track="reload">
+  <!-- Instant client-side navigation (no full reload): Turbo Drive swaps pages in place. Every
+       script that sets up a page must also re-run on turbo:load. Paths are root-absolute so the
+       tag is identical on every page; otherwise Turbo would treat it as new and run it again. -->
+  <script src="/assets/js/turbo.min.js?v=4b476e13a2" defer data-turbo-track="reload"></script>
+  <script>
+    /* Scroll restoration on reload.
+       Safari records a history entry's scroll position on a LAG, so a fast flick followed
+       immediately by a refresh restores where you were BEFORE the flick; Chrome records it
+       eagerly and gets it right. Reading window.scrollY at pagehide is exact regardless of that
+       lag, so on a reload we take restoration off the browser and do it ourselves. Turbo visits
+       keep native "auto" - Turbo handles those itself.
+       NOTE: an earlier version saved from a throttled scroll listener, which is what made the
+       saved value stale in the first place. The pagehide read is the whole point; don't move it
+       back into a scroll handler. */
+    (function () {
+      /* Computed at USE, never cached. Turbo does not re-run this script on a client-side visit:
+         it merges the head, and this tag is byte-identical on every page, so it is treated as
+         already present. A cached key therefore stayed pinned to whichever page was FIRST loaded,
+         and every later scroll position was filed under that page's name. Land on /, click Pricing
+         in the footer, scroll, refresh - the position was saved as "tjd:y:/" while the reload
+         looked up "tjd:y:/pricing", found something stale or nothing, and left you near the top.
+         Typing the URL never showed it, because that is a full load and the key was right. */
+      function KEY() { return "tjd:y:" + location.pathname; }
+      var nav = performance.getEntriesByType && performance.getEntriesByType("navigation")[0];
+      var isReload = nav ? nav.type === "reload" : (performance.navigation || {}).type === 1;
+      var settled = !isReload;
+
+      function setMode(m) { try { history.scrollRestoration = m; } catch (e) {} }
+      function remember() { try { sessionStorage.setItem(KEY(), String(window.scrollY || 0)); } catch (e) {} }
+
+      /* pagehide covers reload / navigation / close; visibilitychange catches iOS Safari, which
+         can discard a tab without ever firing pagehide. */
+      addEventListener("pagehide", remember);
+      addEventListener("visibilitychange", function () {
+        if (document.visibilityState === "hidden") remember();
+      });
+      /* Turbo forces "manual" when it boots (defer); re-assert "auto" once we're not mid-restore. */
+      addEventListener("turbo:load", function () { if (settled) setMode("auto"); });
+
+      if (settled) { setMode("auto"); return; }
+
+      setMode("manual");            /* stop Safari restoring its own stale value */
+      var target = 0;
+      try { target = parseInt(sessionStorage.getItem(KEY()), 10) || 0; } catch (e) {}
+      if (target <= 0) { settled = true; setMode("auto"); return; }
+
+      function done() { settled = true; setMode("auto"); }
+      /* The moment the visitor scrolls themselves, stop fighting them. */
+      addEventListener("wheel", done, { passive: true, once: true });
+      addEventListener("touchstart", done, { passive: true, once: true });
+      /* Only keys that actually scroll count. Canceling on ANY key meant that holding Cmd+R
+         to refresh repeatedly landed the next R keydown on the freshly loading document, which
+         read as "the visitor scrolled themselves", abandoned the restore and left them at the
+         top. That is exactly the "refresh really fast and it jumps to the top" report. It shows
+         up on the demo pages first because their content is drawn by script, so the restore is
+         still running when the next keypress arrives; everywhere else it had already finished. */
+      addEventListener("keydown", function (ev) {
+        if (ev.metaKey || ev.ctrlKey || ev.altKey) return;
+        if (/^(Arrow|Page)|^( |Home|End|Spacebar)$/.test(ev.key)) done();
+      });
+
+      var frames = 0, steady = 0, lastH = -1, loaded = false;
+      addEventListener("load", function () { loaded = true; });
+      function restore() {
+        if (settled) return;
+        var h = document.documentElement.scrollHeight;
+        /* Clamp to what the page can actually scroll right now, so a still-growing document
+           doesn't read as "we landed". */
+        var want = Math.min(target, Math.max(0, h - innerHeight));
+        if (Math.abs(window.scrollY - want) >= 2) window.scrollTo(0, want);
+        /* Settle only once we are at the REAL target - not merely parked at the bottom of a
+           document that is still growing. That distinction is the whole fix: on the first
+           refresh the page is still short, so the clamped position looked like a successful
+           landing, we stopped, and then the content grew underneath us and left the view at the
+           top. Later refreshes hit warm caches, reached full height sooner, and happened to look
+           correct. Height must also be stable and the load finished. */
+        var atTarget = want === target && Math.abs(window.scrollY - want) < 2;
+        if (loaded && h === lastH && atTarget) steady++; else steady = 0;
+        lastH = h;
+        /* Give up 180 frames after the page has LOADED, not 180 frames after this started. The
+           old cap fired at roughly 3s whatever the document was doing, so a slow load that had
+           not yet reached full height was abandoned mid-grow and left near the top: the clamp had
+           nothing to clamp to yet. On a normal load nothing changes at all, because load fires
+           long before the cap and the behavior is identical. The absolute ceiling is the
+           backstop for a load event that never arrives. */
+        frames++;
+        if (steady >= 10 || (loaded && frames > 180) || frames > 600) { done(); return; }
+        requestAnimationFrame(restore);
+      }
+      requestAnimationFrame(restore);
+    })();
+  </script>
+  <script src="/assets/notes.js?v=5d92723a56" defer data-turbo-track="reload"></script>
+  <script src="/assets/calc.js?v=43068d8bba" defer data-turbo-track="reload"></script>
+  <script src="/assets/flashcards.js?v=df840c3205" defer data-turbo-track="reload"></script>
+  <script src="/assets/match.js?v=731f5dcd5f" defer data-turbo-track="reload"></script>
+</head>
+<body class="guide">
+  <header class="site-header">
+    <nav class="breadcrumbs">
+      <a href="/">Home</a><span>/</span><a href="/human-geo/">Human Geo</a><span>/</span><a href="/human-geo/quiz/">Quizzes</a><span>/</span><a href="/human-geo/quiz/reading-2.1-2.2/">Reading 2.1–2.2</a><span>/</span><span class="here">Match</span>
+    </nav>
+    <button type="button" class="theme-toggle" id="themeToggle" hidden>
+      <svg class="i-light" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="10" cy="10" r="3.9" /><path d="M10 1.5v2M10 16.5v2M18.5 10h-2M3.5 10h-2M15.96 4.04l-1.42 1.42M5.46 14.54l-1.42 1.42M15.96 15.96l-1.42-1.42M5.46 5.46 4.04 4.04" /></svg>
+      <svg class="i-dark" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><path d="M16.9 12.6A7.4 7.4 0 0 1 7.4 3.1a7.4 7.4 0 1 0 9.5 9.5Z" /></svg>
+    </button>
+  </header>
+  <main class="mt-page" data-store="marks:/human-geo/quiz/reading-2.1-2.2/" data-srs="srs:/human-geo/quiz/reading-2.1-2.2/" data-best="matchbest:/human-geo/quiz/reading-2.1-2.2/" data-notes-from="/human-geo/quiz/reading-2.1-2.2/reading/">
+    <h1>Match</h1>
+    <p class="subtitle">Reading 2.1–2.2 · Chapter 2: Population and Health</p>
+
+    <div class="mt-options">
+      <label class="fc-pick">
+        <span>Pairs from</span>
+        <select class="mt-part">
+          <option value="">The whole reading (103)</option>
+          <option value="part-2-1">The intro and 2.1 (36)</option>
+          <option value="part-2-2">2.2 (67)</option>
+        </select>
+      </label>
+      <div class="fc-seg" role="group" aria-label="Kind of pairs">
+        <button type="button" data-kind-pick="mix" aria-pressed="true">Mix</button>
+        <button type="button" data-kind-pick="term" aria-pressed="false">Terms</button>
+        <button type="button" data-kind-pick="example" aria-pressed="false">Examples</button>
+        <button type="button" data-kind-pick="fact" aria-pressed="false">Facts</button>
+      </div>
+      <p class="fc-focus-note mt-kind-note"></p>
+    </div>
+
+    <div class="mt-status">
+      <span class="mt-time" aria-label="Time">0:00.0</span>
+      <span class="mt-penalty" aria-hidden="true"></span>
+      <span class="mt-misses">0 misses</span>
+      <span class="mt-best"></span>
+    </div>
+
+    <div class="mt-board" aria-live="polite">
+      <div class="mt-col mt-left" role="group" aria-label="Match these"></div>
+      <div class="mt-col mt-right" role="group" aria-label="to these"></div>
+    </div>
+
+    <div class="mt-results" hidden>
+      <p class="mt-r-time"></p>
+      <p class="mt-r-best" hidden>New best!</p>
+      <p class="mt-r-text"></p>
+      <div class="mt-missed" hidden>
+        <p class="mt-missed-title">Mixed up this round <span>(marked Review in your flashcards)</span></p>
+        <ul></ul>
+      </div>
+      <div class="fc-done-actions">
+        <button type="button" class="fc-btn review" data-mt="retry" hidden>Retry the ones I missed</button>
+        <button type="button" class="fc-btn got" data-mt="again">Play again</button>
+      </div>
+    </div>
+
+    <p class="fc-how">Tap a tile on the left, then its match on the right. Each wrong match adds 2 seconds,
+      and both pairs get marked Review in your flashcards.</p>
+
+    <ol class="mt-data" hidden>
+        <li data-kind="term" data-group="demography" data-card="in-demog" data-part="part-2-1" data-notes="demography pop-geographers"><span class="l">Demography</span><span class="r">The study of overall population trends</span></li>
+        <li data-kind="term" data-group="density" data-card="de-def" data-part="part-2-1" data-notes="pop-density"><span class="l">Population density</span><span class="r">People compared with land area, as if spread out evenly</span></li>
+        <li data-kind="term" data-group="arith" data-card="de-arith" data-part="part-2-1" data-notes="arithmetic-density us-area"><span class="l">Arithmetic density</span><span class="r">People divided by all the land</span></li>
+        <li data-kind="term" data-group="phys" data-card="ph-def" data-part="part-2-1" data-notes="physiologic-density arable"><span class="l">Physiologic density</span><span class="r">People per unit of arable (farmable) land</span></li>
+        <li data-kind="term" data-group="arable" data-card="ph-def" data-part="part-2-1" data-notes="physiologic-density arable"><span class="l">Arable land</span><span class="r">Land that can be farmed</span></li>
+        <li data-kind="term" data-group="distribution" data-card="di-def" data-part="part-2-1" data-notes="pop-distribution cluster-disperse"><span class="l">Population distribution</span><span class="r">The pattern people make across space</span></li>
+        <li data-kind="term" data-group="clustered" data-card="di-def" data-part="part-2-1" data-notes="pop-distribution cluster-disperse"><span class="l">Clustered</span><span class="r">Many people close together</span></li>
+        <li data-kind="term" data-group="dispersed" data-card="di-def" data-part="part-2-1" data-notes="pop-distribution cluster-disperse"><span class="l">Dispersed</span><span class="r">Few people, spread out</span></li>
+        <li data-kind="term" data-group="dotmap" data-card="di-dot" data-part="part-2-1" data-notes="dot-map"><span class="l">Dot map</span><span class="r">Each dot stands for a set number of people</span></li>
+        <li data-kind="term" data-group="dasy" data-card="di-dasy" data-part="part-2-1" data-notes="dasymetric"><span class="l">Dasymetric map</span><span class="r">Uses land cover and terrain to estimate where people actually live</span></li>
+        <li data-kind="term" data-group="mega" data-card="cl-mega" data-part="part-2-1" data-notes="megalopolis"><span class="l">Megalopolis</span><span class="r">A giant urban region where one city runs into the next</span></li>
+        <li data-kind="term" data-group="census" data-card="da-census" data-part="part-2-1" data-notes="census apportionment"><span class="l">Census</span><span class="r">A count of every person, taken every 10 years in the U.S.</span></li>
+        <li data-kind="term" data-group="cbr" data-card="ni-rates" data-part="part-2-2" data-notes="cbr cdr"><span class="l">Crude birth rate</span><span class="r">Live births per year for every 1,000 people</span></li>
+        <li data-kind="term" data-group="cdr" data-card="ni-rates" data-part="part-2-2" data-notes="cbr cdr"><span class="l">Crude death rate</span><span class="r">Deaths per year for every 1,000 people</span></li>
+        <li data-kind="term" data-group="nir" data-card="ni-formula" data-part="part-2-2" data-notes="nir migration-excluded"><span class="l">Natural increase rate</span><span class="r">Birth rate minus death rate, leaving out migration</span></li>
+        <li data-kind="term" data-group="doubling" data-card="do-def" data-part="part-2-2" data-notes="doubling-time rule-of-70"><span class="l">Doubling time</span><span class="r">How long a population takes to double at its current growth rate</span></li>
+        <li data-kind="term" data-group="tfr" data-card="tf-def" data-part="part-2-2" data-notes="tfr replacement"><span class="l">Total fertility rate</span><span class="r">Average number of children born to women ages 15–49</span></li>
+        <li data-kind="term" data-group="replacement" data-card="tf-def" data-part="part-2-2" data-notes="tfr replacement"><span class="l">Replacement level</span><span class="r">A TFR of 2.1: enough to stay stable without immigration</span></li>
+        <li data-kind="term" data-group="oadr" data-card="tf-oadr" data-part="part-2-2" data-notes="old-age-dependency child-dependency"><span class="l">Old-age dependency ratio</span><span class="r">People over 65 compared with people 15–64</span></li>
+        <li data-kind="term" data-group="cdep" data-card="tf-oadr" data-part="part-2-2" data-notes="old-age-dependency child-dependency"><span class="l">Child dependency ratio</span><span class="r">Children compared with working-age people</span></li>
+        <li data-kind="term" data-group="composition" data-card="py-def" data-part="part-2-2" data-notes="composition pyramid"><span class="l">Population composition</span><span class="r">A population&#x27;s makeup by age, sex and other traits</span></li>
+        <li data-kind="term" data-group="pyramid" data-card="py-def" data-part="part-2-2" data-notes="composition pyramid"><span class="l">Population pyramid</span><span class="r">A graph of a population&#x27;s age and sex structure</span></li>
+        <li data-kind="term" data-group="cpr" data-card="in-cpr" data-part="part-2-2" data-notes="cpr"><span class="l">Contraceptive prevalence rate</span><span class="r">% of women 15–49 using at least one birth control method</span></li>
+        <li data-kind="term" data-group="dtm" data-card="dt-def" data-part="part-2-2" data-notes="dtm"><span class="l">Demographic transition model</span><span class="r">Birth and death rates change in predictable ways as a country develops</span></li>
+        <li data-kind="term" data-group="zpg" data-card="dt-zpg" data-part="part-2-2" data-notes="zpg spl"><span class="l">Zero population growth</span><span class="r">Births and deaths balance, so growth stops</span></li>
+        <li data-kind="term" data-group="spl" data-card="dt-zpg" data-part="part-2-2" data-notes="zpg spl"><span class="l">Stationary population level</span><span class="r">The size a population holds at once growth stops</span></li>
+        <li data-kind="term" data-group="malthus" data-card="ma-claim" data-part="part-2-2" data-notes="malthus linear-exp"><span class="l">Malthus</span><span class="r">Food grows linearly, population grows exponentially</span></li>
+        <li data-kind="term" data-group="neo" data-card="ma-neo" data-part="part-2-2" data-notes="neo-malthusians environmental-costs"><span class="l">Neo-Malthusians</span><span class="r">Say growth will hit the limits of food, energy and water</span></li>
+        <li data-kind="term" data-group="exp" data-card="ma-claim" data-part="part-2-2" data-notes="malthus linear-exp"><span class="l">Exponential growth</span><span class="r">Each year&#x27;s growth builds on the last, like compound interest</span></li>
+        <li data-kind="term" data-group="linear" data-card="ma-claim" data-part="part-2-2" data-notes="malthus linear-exp"><span class="l">Linear growth</span><span class="r">About the same amount added each year</span></li>
+        <li data-kind="term" data-group="s1" data-card="dt-s1" data-part="part-2-2" data-notes="stage-1"><span class="l">Stage 1</span><span class="r">High birth and death rates that swing with disease, famine and war</span></li>
+        <li data-kind="term" data-group="s2" data-card="dt-s2" data-part="part-2-2" data-notes="stage-2 britain-rates"><span class="l">Stage 2</span><span class="r">Births stay high, deaths drop fast: very high growth</span></li>
+        <li data-kind="term" data-group="s3" data-card="dt-s3" data-part="part-2-2" data-notes="stage-3"><span class="l">Stage 3</span><span class="r">Births fall quickly, deaths keep falling: growth slows</span></li>
+        <li data-kind="term" data-group="s4" data-card="dt-s4" data-part="part-2-2" data-notes="stage-4"><span class="l">Stage 4</span><span class="r">Low births and low deaths: growth stable or slowing</span></li>
+        <li data-kind="term" data-group="s5" data-card="dt-s5" data-part="part-2-2" data-notes="stage-5"><span class="l">Stage 5</span><span class="r">Very low births, rising deaths: the population shrinks</span></li>
+        <li data-kind="example" data-group="phys" data-card="de-egypt" data-part="part-2-1" data-notes="egypt-density 98-3"><span class="l">Physiologic density</span><span class="r">98% of Egyptians live on about 3% of the land</span></li>
+        <li data-kind="example" data-group="arith" data-card="de-mislead" data-part="part-2-1" data-notes="uneven"><span class="l">Arithmetic density misleads</span><span class="r">The U.S. average hides how empty Alaska is</span></li>
+        <li data-kind="example" data-group="scale" data-card="in-scale" data-part="part-2-1" data-notes="scale"><span class="l">Scale</span><span class="r">A move from downtown to the suburbs vanishes on a world map</span></li>
+        <li data-kind="example" data-group="scale-in" data-card="in-lesson" data-part="part-2-2" data-notes="scale-india"><span class="l">Differences inside a country</span><span class="r">India&#x27;s north grows fast; its south and west grow slowly</span></li>
+        <li data-kind="example" data-group="vuln" data-card="in-yangon" data-part="part-2-1" data-notes="vulnerability"><span class="l">Density and vulnerability</span><span class="r">A 2008 cyclone near Yangon killed about 100,000 people</span></li>
+        <li data-kind="example" data-group="mega" data-card="cl-mega" data-part="part-2-1" data-notes="megalopolis"><span class="l">Megalopolis</span><span class="r">Boston to Washington, D.C.</span></li>
+        <li data-kind="example" data-group="barriers" data-card="cl-sa-walls" data-part="part-2-1" data-notes="barriers"><span class="l">Physical barriers</span><span class="r">The Himalayas and the Indian Ocean hem in South Asia</span></li>
+        <li data-kind="example" data-group="rivers" data-card="cl-ea" data-part="part-2-1" data-notes="east-asia river-ribbons"><span class="l">People cluster along rivers</span><span class="r">Dense ribbons follow the Huang He and Yangtze valleys</span></li>
+        <li data-kind="example" data-group="open" data-card="ma-examples" data-part="part-2-2" data-notes="potato norway"><span class="l">Countries aren&#x27;t closed systems</span><span class="r">Norway farms 2% of its land and imports most of its food</span></li>
+        <li data-kind="example" data-group="crops" data-card="ma-examples" data-part="part-2-2" data-notes="potato norway"><span class="l">Crops spread between continents</span><span class="r">The potato reached Ireland from South America</span></li>
+        <li data-kind="example" data-group="negative" data-card="ni-negative" data-part="part-2-2" data-notes="europe-negative"><span class="l">Negative natural increase</span><span class="r">Europe and Russia</span></li>
+        <li data-kind="example" data-group="core" data-card="ni-core" data-part="part-2-2" data-notes="core-low-growth"><span class="l">Global economic core: lowest growth</span><span class="r">The U.S., Canada, Europe and Japan</span></li>
+        <li data-kind="example" data-group="disease" data-card="ni-hiv" data-part="part-2-2" data-notes="india-africa"><span class="l">Disease holding down growth</span><span class="r">HIV/AIDS in parts of sub-Saharan Africa</span></li>
+        <li data-kind="example" data-group="women" data-card="dt-s3-today" data-part="part-2-2" data-notes="brazil mali"><span class="l">Women&#x27;s education lowers births</span><span class="r">Girls who go to school in Mali have about half as many children</span></li>
+        <li data-kind="example" data-group="lower" data-card="in-1976" data-part="part-2-2" data-notes="india-1976"><span class="l">Policy to lower birth rates</span><span class="r">India&#x27;s 1976 sterilization drive</span></li>
+        <li data-kind="example" data-group="raise" data-card="tf-incentives" data-part="part-2-2" data-notes="pronatalist low-tfr-worry"><span class="l">Policy to raise birth rates</span><span class="r">Sweden&#x27;s long maternity leave and state-paid daycare</span></li>
+        <li data-kind="example" data-group="aging" data-card="tf-japan" data-part="part-2-2" data-notes="japan"><span class="l">Aging without immigration</span><span class="r">Japan: 128 million in 2008, about 100 million by 2050</span></li>
+        <li data-kind="example" data-group="cdep" data-card="tf-oadr" data-part="part-2-2" data-notes="old-age-dependency child-dependency"><span class="l">High child dependency</span><span class="r">Sub-Saharan Africa: 74 children per 100 working-age people</span></li>
+        <li data-kind="example" data-group="oadr" data-card="tf-oadr" data-part="part-2-2" data-notes="old-age-dependency child-dependency"><span class="l">High old-age dependency</span><span class="r">Europe: 29.9 per 100, heading to 47 by 2050</span></li>
+        <li data-kind="example" data-group="expanding" data-card="py-low" data-part="part-2-2" data-notes="pyramid-expanding"><span class="l">Wide base, narrow top</span><span class="r">Niger: children are nearly half the population</span></li>
+        <li data-kind="example" data-group="chimney" data-card="py-high" data-part="part-2-2" data-notes="pyramid-stable"><span class="l">Lopsided chimney</span><span class="r">Italy, France and Sweden</span></li>
+        <li data-kind="example" data-group="relig" data-card="re-oppose" data-part="part-2-2" data-notes="religion nigeria"><span class="l">Religion raising growth</span><span class="r">Northern Nigeria grows faster than the south</span></li>
+        <li data-kind="example" data-group="catholic" data-card="re-catholic" data-part="part-2-2" data-notes="catholic-paradox"><span class="l">Religion not predicting growth</span><span class="r">Slow growth in the Catholic heartland</span></li>
+        <li data-kind="example" data-group="s1" data-card="dt-plague" data-part="part-2-2" data-notes="black-death contagious-diffusion"><span class="l">Stage 1</span><span class="r">The Black Death pushes deaths above births in the 1300s</span></li>
+        <li data-kind="example" data-group="s2" data-card="dt-s2" data-part="part-2-2" data-notes="stage-2 britain-rates"><span class="l">Stage 2</span><span class="r">Britain&#x27;s death rate falls from 35 to 16 while births stay high</span></li>
+        <li data-kind="example" data-group="s3" data-card="dt-s3-today" data-part="part-2-2" data-notes="brazil mali"><span class="l">Stage 3</span><span class="r">Brazil&#x27;s birth rate falls as modern contraceptives spread</span></li>
+        <li data-kind="example" data-group="s4" data-card="dt-s4" data-part="part-2-2" data-notes="stage-4"><span class="l">Stage 4</span><span class="r">The U.S. and the U.K. today</span></li>
+        <li data-kind="example" data-group="s5" data-card="dt-s5" data-part="part-2-2" data-notes="stage-5"><span class="l">Stage 5</span><span class="r">Japan and Russia</span></li>
+        <li data-kind="example" data-group="medicine" data-card="dt-s2-today" data-part="part-2-2" data-notes="western-medicine"><span class="l">Spread of Western medicine</span><span class="r">Childhood vaccinations cut deaths in Afghanistan</span></li>
+        <li data-kind="fact" data-group="shanghai" data-card="sh-people" data-part="part-2-1" data-notes="urbanization"><span class="l">Shanghai&#x27;s population</span><span class="r">About 22 million people</span></li>
+        <li data-kind="fact" data-group="china" data-card="sh-people" data-part="part-2-1" data-notes="urbanization"><span class="l">China&#x27;s population</span><span class="r">1.4 billion people</span></li>
+        <li data-kind="fact" data-group="north" data-card="sh-north" data-part="part-2-1" data-notes="north-south-china"><span class="l">Northern China</span><span class="r">Lives 5.5 years less than the south</span></li>
+        <li data-kind="fact" data-group="phys" data-card="ph-def" data-part="part-2-1" data-notes="physiologic-density arable"><span class="l">Egypt&#x27;s physiologic density</span><span class="r">6,995 per sq mi</span></li>
+        <li data-kind="fact" data-group="bangla" data-card="de-three" data-part="part-2-1" data-notes="bangladesh-density netherlands-density"><span class="l">Bangladesh&#x27;s density</span><span class="r">2,962 people per sq mi</span></li>
+        <li data-kind="fact" data-group="nl" data-card="de-three" data-part="part-2-1" data-notes="bangladesh-density netherlands-density"><span class="l">The Netherlands&#x27; density</span><span class="r">1,068 people per sq mi</span></li>
+        <li data-kind="fact" data-group="jp" data-card="de-three" data-part="part-2-1" data-notes="bangladesh-density netherlands-density"><span class="l">Japan&#x27;s density</span><span class="r">869 people per sq mi</span></li>
+        <li data-kind="fact" data-group="us" data-card="de-arith" data-part="part-2-1" data-notes="arithmetic-density us-area"><span class="l">U.S. arithmetic density</span><span class="r">86 people per sq mi</span></li>
+        <li data-kind="fact" data-group="ukr" data-card="ph-ukraine" data-part="part-2-1" data-notes="ukraine"><span class="l">Ukraine</span><span class="r">Physiologic density 1.46 times arithmetic</span></li>
+        <li data-kind="fact" data-group="swiss" data-card="ph-swiss" data-part="part-2-1" data-notes="ratio-trick"><span class="l">Switzerland</span><span class="r">Only 1 acre in 10 is arable</span></li>
+        <li data-kind="fact" data-group="dhaka" data-card="cl-cities" data-part="part-2-1" data-notes="nyc-compare"><span class="l">Dhaka</span><span class="r">122,700 people per sq mi</span></li>
+        <li data-kind="fact" data-group="mumbai" data-card="cl-cities" data-part="part-2-1" data-notes="nyc-compare"><span class="l">Mumbai</span><span class="r">68,400 people per sq mi</span></li>
+        <li data-kind="fact" data-group="nyc" data-card="cl-cities" data-part="part-2-1" data-notes="nyc-compare"><span class="l">New York City</span><span class="r">28,717 people per sq mi</span></li>
+        <li data-kind="fact" data-group="rbang" data-card="cl-bang" data-part="part-2-1" data-notes="bangladesh-rural"><span class="l">Rural Bangladesh</span><span class="r">3,000–5,000 people per sq mi</span></li>
+        <li data-kind="fact" data-group="iowa" data-card="cl-bang" data-part="part-2-1" data-notes="bangladesh-rural"><span class="l">Rural Iowa</span><span class="r">55 people per sq mi</span></li>
+        <li data-kind="fact" data-group="canada" data-card="cl-mega-nums" data-part="part-2-1" data-notes="north-america"><span class="l">Quebec City–Windsor</span><span class="r">Home to half of Canada&#x27;s people</span></li>
+        <li data-kind="fact" data-group="mega" data-card="cl-mega-nums" data-part="part-2-1" data-notes="north-america"><span class="l">Boston–Washington corridor</span><span class="r">Home to about 20% of Americans</span></li>
+        <li data-kind="fact" data-group="open" data-card="ma-examples" data-part="part-2-2" data-notes="potato norway"><span class="l">Norway&#x27;s farmland</span><span class="r">Only 2% of its land is arable</span></li>
+        <li data-kind="fact" data-group="s3" data-card="ni-samerica" data-part="part-2-2" data-notes="south-america"><span class="l">Brazil&#x27;s growth</span><span class="r">Growth fell from 2.9% to 0.8%</span></li>
+        <li data-kind="fact" data-group="africa" data-card="ni-india-africa" data-part="part-2-2" data-notes="india-africa"><span class="l">Africa&#x27;s growth rate</span><span class="r">2.43% a year</span></li>
+        <li data-kind="fact" data-group="india-g" data-card="ni-india-africa" data-part="part-2-2" data-notes="india-africa"><span class="l">India&#x27;s growth rate</span><span class="r">1.17% a year</span></li>
+        <li data-kind="fact" data-group="pal" data-card="ni-muslim" data-part="part-2-2" data-notes="muslim-sw-asia"><span class="l">Palestinian territories</span><span class="r">2.83% growth a year</span></li>
+        <li data-kind="fact" data-group="expanding" data-card="tf-range" data-part="part-2-2" data-notes="world-tfr"><span class="l">Niger&#x27;s TFR</span><span class="r">TFR 7.2, the highest</span></li>
+        <li data-kind="fact" data-group="korea" data-card="tf-range" data-part="part-2-2" data-notes="world-tfr"><span class="l">South Korea&#x27;s TFR</span><span class="r">TFR 1.2, the lowest</span></li>
+        <li data-kind="fact" data-group="iran" data-card="tf-drops" data-part="part-2-2" data-notes="tfr-falling"><span class="l">Iran&#x27;s TFR</span><span class="r">TFR 6.8 in 1980, 1.7 in 2016</span></li>
+        <li data-kind="fact" data-group="china-tfr" data-card="tf-drops" data-part="part-2-2" data-notes="tfr-falling"><span class="l">China&#x27;s TFR</span><span class="r">6.1 down to 1.75 in 35 years</span></li>
+        <li data-kind="fact" data-group="i1952" data-card="in-1952" data-part="part-2-2" data-notes="india-1952"><span class="l">India, 1952</span><span class="r">First country with a population planning program</span></li>
+        <li data-kind="fact" data-group="lower" data-card="in-1976" data-part="part-2-2" data-notes="india-1976"><span class="l">Maharashtra, 1976</span><span class="r">3.7 million people sterilized</span></li>
+        <li data-kind="fact" data-group="icpr" data-card="in-cpr" data-part="part-2-2" data-notes="cpr"><span class="l">India&#x27;s contraceptive use</span><span class="r">55.1% of women 15–49</span></li>
+        <li data-kind="fact" data-group="w1900" data-card="ni-world" data-part="part-2-2" data-notes="world-growth life-expectancy-growth"><span class="l">World population, 1900</span><span class="r">1.6 billion</span></li>
+        <li data-kind="fact" data-group="w2019" data-card="ni-world" data-part="part-2-2" data-notes="world-growth life-expectancy-growth"><span class="l">World population, 2019</span><span class="r">7.7 billion</span></li>
+        <li data-kind="fact" data-group="life" data-card="ni-world" data-part="part-2-2" data-notes="world-growth life-expectancy-growth"><span class="l">World life expectancy</span><span class="r">30 in 1900, 72 in 2016</span></li>
+        <li data-kind="fact" data-group="y1820" data-card="do-steps" data-part="part-2-2" data-notes="doubling-years"><span class="l">1820</span><span class="r">The world reaches 1 billion</span></li>
+        <li data-kind="fact" data-group="y1975" data-card="do-steps" data-part="part-2-2" data-notes="doubling-years"><span class="l">1975</span><span class="r">The world reaches 4 billion</span></li>
+        <li data-kind="fact" data-group="low39" data-card="do-low" data-part="part-2-2" data-notes="doubling-years population-explosion"><span class="l">Mid-1980s</span><span class="r">Doubling time hits its low: 39 years</span></li>
+        <li data-kind="fact" data-group="below" data-card="tf-below" data-part="part-2-2" data-notes="fig-2-14"><span class="l">Below replacement</span><span class="r">95+ countries, 41% of the world&#x27;s people</span></li>
+        <li data-kind="fact" data-group="s1" data-card="dt-plague" data-part="part-2-2" data-notes="black-death contagious-diffusion"><span class="l">Black Death in Britain</span><span class="r">Nearly 4 million down to just over 2 million</span></li>
+        <li data-kind="fact" data-group="indo" data-card="re-islam" data-part="part-2-2" data-notes="islam-contrast"><span class="l">Indonesia&#x27;s growth</span><span class="r">1.6% in 2000, 1.1% in 2016</span></li>
+        <li data-kind="fact" data-group="saudi" data-card="re-islam" data-part="part-2-2" data-notes="islam-contrast"><span class="l">Saudi Arabia&#x27;s growth</span><span class="r">About 2% a year</span></li>
+    </ol>
+  </main>
+
+  <!-- Explanation panel ("Explain it" fills it with the guide's own notes) -->
+  <aside class="panel" id="panel" aria-hidden="true" aria-labelledby="panel-title" role="dialog">
+    <div class="panel-head">
+      <h2 id="panel-title"></h2>
+      <button class="panel-close" aria-label="Close">×</button>
+    </div>
+    <div class="panel-body" id="panel-body"></div>
+  </aside>
+  <script>
+    /* Theme toggle: system → light → dark → system. The pre-paint script in <head> is what
+       actually applies a stored choice; this only cycles it, so the two have to agree on the
+       storage key and on the attribute name. Choosing "system" REMOVES both rather than storing
+       a third value, which is what keeps the system preference the default and lets it go on
+       working after the visitor stops overriding it. */
+    (function () {
+      var KEY = "tjd:theme";
+      var LABEL = { light: "Switch to the dark theme", dark: "Switch to the light theme" };
+      /* The theme you are LOOKING AT, which is not the same as the one that is stored: with
+         nothing stored the page follows the system, and the button still has to flip away from
+         whatever that produced. Reading the effective theme is the whole reason one press is
+         enough - cycling the STORED value meant a visitor on a light system pressed once to go
+         from light to light, saw nothing happen, and had to press again. */
+      function shown() {
+        var t = document.documentElement.getAttribute("data-theme");
+        if (t === "light" || t === "dark") return t;
+        try { return matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"; }
+        catch (e) { return "light"; }
+      }
+      /* Safari tints its toolbar from theme-color, and it supported theme-color BEFORE it
+         supported the media attribute on it. Such a Safari ignores media and takes the FIRST
+         tag, which was the light one - so a dark page got a white band across the top of the
+         window, which is what "a white frame around the favicon" turned out to be. Setting
+         every tag to the color actually in use means it no longer matters which one a browser
+         picks, or whether it understands media at all. */
+      function chrome() {
+        var el = document.querySelectorAll('meta[name="theme-color"]');
+        var c = shown() === "dark" ? "#0d1117" : "#f7f7f5";
+        for (var i = 0; i < el.length; i++) el[i].setAttribute("content", c);
+      }
+      function bind() {
+        var btn = document.getElementById("themeToggle");
+        if (!btn) return;
+        chrome();
+        /* A JS property, not a data- attribute: Turbo restores Back/Forward pages from a cloned
+           snapshot that keeps attributes but drops listeners, so an attribute made the restored
+           button look bound when it was dead. */
+        if (btn._tjdBound) { btn.setAttribute("aria-label", LABEL[shown()]); return; }
+        btn._tjdBound = true;
+        btn.hidden = false;
+        btn.setAttribute("aria-label", LABEL[shown()]);
+        btn.addEventListener("click", function () {
+          var next = shown() === "dark" ? "light" : "dark";
+          document.documentElement.setAttribute("data-theme", next);
+          /* Agreeing with the system stores NOTHING, so the page goes back to following it.
+             Without this the override is permanent and invisible: one press months ago pins the
+             site to light forever, and a visitor whose phone is in dark mode gets flashed white
+             with no control that undoes it - the button only ever writes another override. This
+             is the way back, and it needs no third state on a two-state button: press until the
+             page matches your system and the override is gone. */
+          try {
+            var sys = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+            if (next === sys) localStorage.removeItem(KEY); else localStorage.setItem(KEY, next);
+          } catch (e) {}
+          btn.setAttribute("aria-label", LABEL[next]);
+          chrome();
+          /* Canvas pixels are not CSS and follow no token, so the demos that draw have to be told
+             to redraw. Nothing else needs this: everything else is a var() and has already
+             changed by the time this fires. */
+          dispatchEvent(new CustomEvent("tjd:themechange"));
+        });
+      }
+      /* Follow the system LIVE while nothing is stored. Someone reading at dusk with iOS set to
+         switch automatically had the page stay light until they reloaded it. */
+      try {
+        matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function () {
+          var stored = null;
+          try { stored = localStorage.getItem(KEY); } catch (e) {}
+          if (stored === "light" || stored === "dark") return;
+          document.documentElement.removeAttribute("data-theme");
+          chrome();
+          var b = document.getElementById("themeToggle");
+          if (b) b.setAttribute("aria-label", LABEL[shown()]);
+          dispatchEvent(new CustomEvent("tjd:themechange"));
+        });
+      } catch (e) {}
+
+      bind();
+      addEventListener("turbo:load", bind);
+      /* Following the system and the system flips: the toolbar tint has to follow it too. */
+      try {
+        var mqT = matchMedia("(prefers-color-scheme: dark)");
+        var onSys = function () { if (!document.documentElement.getAttribute("data-theme")) chrome(); };
+        if (mqT.addEventListener) mqT.addEventListener("change", onSys);
+        else if (mqT.addListener) mqT.addListener(onSys);
+      } catch (e) {}
+    })();
+  </script>
+</body>
+</html>

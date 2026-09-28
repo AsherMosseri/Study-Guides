@@ -7,15 +7,17 @@ study.thejunkdrawerapp.com. Work directly on `main`.
 /                                   subject picker
 /human-geo/                         AP Human Geography hub
 /human-geo/quiz/                    reading-quiz study guides   e.g. /human-geo/quiz/reading-2.1-2.2/
-  <reading>/                        options page: Reading guide, Flashcards, Practice quiz (soon)
+  <reading>/                        options page: Reading guide, Flashcards, Match, Practice quiz (soon)
   <reading>/reading/                the guide itself
   <reading>/flashcard/              one card per quizzable fact (checklist/, flashcards/ redirect here)
+  <reading>/match/                  timed matching game: terms, examples, facts
 /human-geo/test/                    chapter-test study guides   e.g. /human-geo/test/chapter-2/
 /bio/                               Biology (planned; same quiz/ and test/ layout)
 /quiz/..., /test/...                redirect pages for the old addresses; keep them
 assets/style.css                    one stylesheet for every page
 assets/notes.js                     click-to-explain panel, chart tooltips
 assets/flashcards.js                flashcard deck: flip, swipe, Got it / Review marks
+assets/match.js                     matching game; a miss marks the linked flashcard Review
 assets/calc.js                      natural increase calculator
 assets/js/turbo.min.js              Turbo Drive (copied from the main site)
 tools/version-assets.py             stamps ?v=<hash> on every local .css/.js link
@@ -68,7 +70,8 @@ question could apply to a map, graph or scenario) or `"detail"` (the reading's s
 and exact numbers); the deck can be filtered to either. `data-notes` lists the guide's note ids (first is the
 main one) that "Explain it" pulls from `reading/`; every card needs at least one. Marks, the
 spaced-repetition schedule (`srs:` key) and the deck in progress (sessionStorage) are all keyed by
-card id. Out-of-date numbers keep the book's figure and add
+card id. Each Match pair (`match/`) names its flashcard in `data-card` and takes its part and notes from
+it; pairs sharing `data-group` never appear in one round, so give look-alikes the same group. Out-of-date numbers keep the book's figure and add
 an "Update" box; book errors get a short note saying which value to use on the quiz.
 
 **Apply it.** Every chart has an "Apply it" box and every key-concept note (`class="term key"`) has

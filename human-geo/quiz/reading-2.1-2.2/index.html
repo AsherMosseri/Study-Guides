@@ -39,7 +39,7 @@
     html[data-theme="dark"] { color-scheme: dark; }
     html, body { background: #f7f7f5; background: light-dark(#f7f7f5, #0d1117); }
   </style>
-  <link rel="stylesheet" href="/assets/style.css?v=48506fa5ce" data-turbo-track="reload">
+  <link rel="stylesheet" href="/assets/style.css?v=308ef1b84d" data-turbo-track="reload">
   <!-- Instant client-side navigation (no full reload): Turbo Drive swaps pages in place. Every
        script that sets up a page must also re-run on turbo:load. Paths are root-absolute so the
        tag is identical on every page; otherwise Turbo would treat it as new and run it again. -->
@@ -132,9 +132,10 @@
       requestAnimationFrame(restore);
     })();
   </script>
-  <script src="/assets/notes.js?v=48bd6c06e8" defer data-turbo-track="reload"></script>
+  <script src="/assets/notes.js?v=5d92723a56" defer data-turbo-track="reload"></script>
   <script src="/assets/calc.js?v=43068d8bba" defer data-turbo-track="reload"></script>
-  <script src="/assets/flashcards.js?v=1aeb45150a" defer data-turbo-track="reload"></script>
+  <script src="/assets/flashcards.js?v=df840c3205" defer data-turbo-track="reload"></script>
+  <script src="/assets/match.js?v=731f5dcd5f" defer data-turbo-track="reload"></script>
 </head>
 <body>
   <header class="site-header">
@@ -158,6 +159,11 @@
       <h2>Flashcards</h2>
       <p>109 cards covering every quizzable fact. Flip each one to check yourself, sort it into Got it or Review, and focus on AP concepts or reading details.</p>
       <p class="card-progress" data-progress="marks:/human-geo/quiz/reading-2.1-2.2/" data-total="109" data-srs="srs:/human-geo/quiz/reading-2.1-2.2/" hidden></p>
+    </a>
+    <a class="card" href="/human-geo/quiz/reading-2.1-2.2/match/">
+      <h2>Match</h2>
+      <p>A timed matching game: terms with definitions, concepts with examples from the reading, and facts with their numbers.</p>
+      <p class="card-progress" data-best-of="matchbest:/human-geo/quiz/reading-2.1-2.2/" hidden></p>
     </a>
     <div class="card card-soon" aria-disabled="true">
       <h2>Practice quiz</h2>

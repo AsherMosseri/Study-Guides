@@ -366,56 +366,13 @@
     rise(page);
   }
 
-  // ---------- "Explain it": the reading guide's own notes ----------
-  // The notes live in the guide page as <template id="note-...">. Fetch that page once, copy the
-  // card's notes into one template on this page, and open it in the same panel the guide uses.
-  const guides = {};
-  function guideDoc(url) {
-    if (!guides[url]) {
-      guides[url] = fetch(url)
-        .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
-        .then(function (t) { return new DOMParser().parseFromString(t, "text/html"); })
-        .catch(function (err) { delete guides[url]; throw err; });
-    }
-    return guides[url];
-  }
-
+  // "Explain it": the reading guide's own notes on this card (loaded by notes.js).
   function explain(page, trigger) {
     const s = getState(page);
-    if (!s || s.index >= s.order.length || !window.siteNote) return;
+    if (!s || s.index >= s.order.length || !window.siteExplain) return;
     const id = s.order[s.index];
     const ids = (document.getElementById(id).dataset.notes || "").split(/\s+/).filter(Boolean);
-    if (!ids.length) return;
-    if (document.getElementById("note-fc-" + id)) { window.siteNote("fc-" + id, trigger); return; }
-    trigger.setAttribute("aria-busy", "true");
-    guideDoc(page.dataset.notesFrom).then(function (doc) {
-      const tpl = document.createElement("template");
-      tpl.id = "note-fc-" + id;
-      ids.forEach(function (n, i) {
-        const src = doc.getElementById("note-" + n);
-        if (!src) return;
-        if (!tpl.dataset.title) tpl.dataset.title = src.dataset.title;
-        if (i > 0) {
-          const h = document.createElement("p");
-          h.className = "note-also";
-          h.textContent = "Also: " + src.dataset.title;
-          tpl.content.appendChild(h);
-        }
-        tpl.content.appendChild(document.importNode(src.content, true));
-      });
-      page.appendChild(tpl);   // inside <main>, so it leaves with the page on the next visit
-      window.siteNote("fc-" + id, trigger);
-    }).catch(function () {
-      let tpl = document.getElementById("note-fc-offline");
-      if (!tpl) {
-        tpl = document.createElement("template");
-        tpl.id = "note-fc-offline";
-        tpl.dataset.title = "Couldn't load the explanation";
-        tpl.innerHTML = "<p>Check your connection and try again, or use <strong>In the reading</strong> on the card.</p>";
-        page.appendChild(tpl);
-      }
-      window.siteNote("fc-offline", trigger);
-    }).then(function () { trigger.removeAttribute("aria-busy"); });
+    window.siteExplain("fc-" + id, ids, page.dataset.notesFrom, trigger, page);
   }
 
   function panelOpen() {
