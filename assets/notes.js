@@ -184,6 +184,38 @@
     });
   };
 
+  // "Print" on a night-before sheet prints its PDF, which looks the same everywhere, instead of
+  // the web page. Chrome, Edge and Firefox can print a PDF loaded into a hidden frame; Safari
+  // (Mac and iOS) and Android can't, so there the PDF opens in a new tab to print from.
+  function printPdf(url) {
+    const ua = navigator.userAgent;
+    const apple = /iP(hone|ad|od)/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1) ||
+      (/Safari/.test(ua) && !/Chrome|Chromium|CriOS|Edg|FxiOS|Firefox/.test(ua));
+    if (apple || /Android/i.test(ua)) { window.open(url, "_blank", "noopener"); return; }
+    const old = document.getElementById("pdf-print-frame");
+    if (old) old.remove();
+    const f = document.createElement("iframe");
+    f.id = "pdf-print-frame";
+    f.title = "PDF to print";
+    f.setAttribute("aria-hidden", "true");
+    f.style.cssText = "position:fixed;right:0;bottom:0;width:1px;height:1px;border:0;opacity:0;pointer-events:none";
+    f.addEventListener("load", function () {
+      // Give the browser's PDF viewer a moment to finish drawing before printing.
+      setTimeout(function () {
+        try { f.contentWindow.focus(); f.contentWindow.print(); }
+        catch (err) { window.open(url, "_blank", "noopener"); }
+      }, 400);
+    });
+    f.src = url;
+    document.body.appendChild(f);
+  }
+  document.addEventListener("click", function (e) {
+    const b = e.target.closest && e.target.closest("[data-print-pdf]");
+    if (!b) return;
+    e.preventDefault();
+    printPdf(b.dataset.printPdf);
+  });
+
   // Before Turbo snapshots a page for its back/forward preview, put it back to rest.
   document.addEventListener("turbo:before-cache", function () {
     closeNote(false);

@@ -39,7 +39,7 @@
     html[data-theme="dark"] { color-scheme: dark; }
     html, body { background: #f7f7f5; background: light-dark(#f7f7f5, #0d1117); }
   </style>
-  <link rel="stylesheet" href="/assets/style.css?v=b5d5e39462" data-turbo-track="reload">
+  <link rel="stylesheet" href="/assets/style.css?v=296d9c95e0" data-turbo-track="reload">
   <!-- Instant client-side navigation (no full reload): Turbo Drive swaps pages in place. Every
        script that sets up a page must also re-run on turbo:load. Paths are root-absolute so the
        tag is identical on every page; otherwise Turbo would treat it as new and run it again. -->
@@ -132,7 +132,7 @@
       requestAnimationFrame(restore);
     })();
   </script>
-  <script src="/assets/notes.js?v=5d92723a56" defer data-turbo-track="reload"></script>
+  <script src="/assets/notes.js?v=03c77fa752" defer data-turbo-track="reload"></script>
   <script src="/assets/calc.js?v=43068d8bba" defer data-turbo-track="reload"></script>
   <script src="/assets/flashcards.js?v=5a4cc62bb8" defer data-turbo-track="reload"></script>
   <script src="/assets/match.js?v=bc3e8eeeb9" defer data-turbo-track="reload"></script>
@@ -157,15 +157,15 @@
       </div>
       <div class="sheet-actions">
         <a class="fc-btn got" href="/human-geo/quiz/reading-2.1-2.2/review/night-before-sheet.pdf" download>Download PDF</a>
-        <button type="button" class="fc-btn" onclick="window.print()">Print</button>
+        <button type="button" class="fc-btn" data-print-pdf="/human-geo/quiz/reading-2.1-2.2/review/night-before-sheet.pdf">Print</button>
       </div>
     </div>
-    <p class="sheet-note">The whole reading on one page, in the book's numbers. For the cleanest printout, download the PDF: two pages, one sheet front and back.</p>
+    <p class="sheet-note">The whole reading on one page, in the book's numbers. Print and Download both use the same PDF: two pages in color, one sheet front and back.</p>
 
     <div class="sheet-pages">
     <div class="spage">
       <div class="scol">
-      <section class="sbox">
+      <section class="sbox key">
         <h2>Formulas</h2>
         <dl class="formulas">
           <dt>Natural increase rate</dt><dd>(CBR − CDR) ÷ 10 = <strong>% per year</strong><span>CBR 35, CDR 10 → 25 per 1,000 → <strong>2.5%</strong></span></dd>

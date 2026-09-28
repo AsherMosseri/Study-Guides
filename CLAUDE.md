@@ -110,7 +110,9 @@ an "Apply it" section that uses an example from the reading to show the concept 
 - **After changing a night-before sheet or its styles, regenerate its PDF:**
   `NODE_PATH=$(npm root -g) node tools/make-sheet-pdf.mjs` (it fails unless the sheet is exactly two
   pages). The sheet's print layout is two fixed blocks of three columns, never flowing CSS columns,
-  which Chrome and Safari split differently.
+  which Chrome and Safari split differently. The print styles keep the light theme's colors, and the
+  sheet's Print button (`data-print-pdf`) prints that PDF rather than the web page, so paper matches
+  the download.
 - **After editing anything in `assets/`, run `python3 tools/version-assets.py`.** Cloudflare and
   browsers cache CSS/JS for hours; the hash in `?v=` is what makes them fetch the new file.
 - **Asset paths are root-absolute (`/assets/...`)** so each `<head>` tag is identical on every page.

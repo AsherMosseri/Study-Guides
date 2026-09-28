@@ -1556,12 +1556,28 @@ a.card p.card-progress { margin-top: 6px; font-size: 0.9rem; font-weight: 600; c
   .sheet-actions { margin: 0 0 12px; }
 }
 @media print {
+  /* Always the light theme's colors on paper, even when the screen is dark. Tints and colored
+     headings print too (print-color-adjust), so the PDF comes out in color. */
   :root, :root[data-theme="dark"], :root:not([data-theme="light"]) {
-    --text: #000 !important; --muted: #333 !important; --border: #888 !important; --card: #fff !important;
-    --bg: #fff !important; --accent: #000 !important; --review: #000 !important; --series-1: #555 !important;
+    --text: #1f2328 !important; --muted: #4b545e !important; --border: #c9d1d9 !important; --card: #fff !important;
+    --bg: #fff !important; --accent: #1f6feb !important; --review: #bc4c00 !important; --good: #1a7f37 !important;
+    --series-1: #2a78d6 !important; --series-2: #eb6834 !important;
+    --term-bg: #eef4fe !important; --review-bg: #fdf1ea !important; --good-bg: #e9f5ec !important;
   }
   @page { size: auto; margin: 0.35in; }
-  html, body { background: #fff !important; color: #000 !important; }
+  html { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  html, body { background: #fff !important; color: var(--text) !important; }
+  .sheet-top h1 { color: var(--accent); }
+  .sbox { border-top: 3pt solid var(--accent); }
+  .sbox h2 { color: var(--accent); }
+  .sbox.key { background: var(--term-bg); }
+  .sbox li::marker { color: var(--accent); }
+  .ptable thead th, .dtm-table thead th { color: var(--accent); }
+  .dtm-table thead tr, .ptable thead tr { background: var(--term-bg); }
+  .dtm-table td:first-child strong { color: var(--accent); }
+  .traps { border-color: var(--review); border-top-color: var(--review); background: var(--review-bg); }
+  .traps h2 { color: var(--review); }
+  .traps strong { color: var(--review); }
   .site-header, .sheet-actions, .sheet-note, .fc-return, .panel { display: none !important; }
   .sheet-page main { max-width: none; padding: 0; margin: 0; }
   .sheet-top h1 { font-size: 15pt; margin: 0; }
