@@ -7,10 +7,11 @@ study.thejunkdrawerapp.com. Work directly on `main`.
 /                                   subject picker
 /human-geo/                         AP Human Geography hub
 /human-geo/quiz/                    reading-quiz study guides   e.g. /human-geo/quiz/reading-2.1-2.2/
-  <reading>/                        options page: Reading guide, Flashcards, Match, Practice quiz (soon)
+  <reading>/                        options page: Reading guide, Flashcards, Match, Practice quiz
   <reading>/reading/                the guide itself
   <reading>/flashcard/              one card per quizzable fact (checklist/, flashcards/ redirect here)
   <reading>/match/                  timed matching game: terms, examples, facts
+  <reading>/practice/               AP-style multiple choice with an explanation for every answer
 /human-geo/test/                    chapter-test study guides   e.g. /human-geo/test/chapter-2/
 /bio/                               Biology (planned; same quiz/ and test/ layout)
 /quiz/..., /test/...                redirect pages for the old addresses; keep them
@@ -18,6 +19,7 @@ assets/style.css                    one stylesheet for every page
 assets/notes.js                     click-to-explain panel, chart tooltips
 assets/flashcards.js                flashcard deck: flip, swipe, Got it / Review marks
 assets/match.js                     matching game; a miss marks the linked flashcard Review
+assets/quiz.js                      practice quiz; a miss marks the linked flashcard Review
 assets/calc.js                      natural increase calculator
 assets/js/turbo.min.js              Turbo Drive (copied from the main site)
 tools/version-assets.py             stamps ?v=<hash> on every local .css/.js link
@@ -73,6 +75,13 @@ spaced-repetition schedule (`srs:` key) and the deck in progress (sessionStorage
 card id. Each Match pair (`match/`) names its flashcard in `data-card` and takes its part and notes from
 it; pairs sharing `data-group` never appear in one round, so give look-alikes the same group. Out-of-date numbers keep the book's figure and add
 an "Update" box; book errors get a short note saying which value to use on the quiz.
+
+**Practice quiz questions are written for this site**, in the AP style (a pyramid, table or
+situation, then apply an idea), never copied from AP Classroom or released exams (College Board
+owns those). Four choices, the right one written first (the page shuffles), and every choice
+carries a `data-why`: why it's right, or why it's wrong. Each question names its flashcard in
+`data-card`. A chart inside a question skips the "Apply it" box, since the explanation shown after
+answering does that job; pyramids there come from the guide's own charts with the country renamed.
 
 **Apply it.** Every chart has an "Apply it" box and every key-concept note (`class="term key"`) has
 an "Apply it" section that uses an example from the reading to show the concept at work.

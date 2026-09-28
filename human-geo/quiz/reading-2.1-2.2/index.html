@@ -39,7 +39,7 @@
     html[data-theme="dark"] { color-scheme: dark; }
     html, body { background: #f7f7f5; background: light-dark(#f7f7f5, #0d1117); }
   </style>
-  <link rel="stylesheet" href="/assets/style.css?v=308ef1b84d" data-turbo-track="reload">
+  <link rel="stylesheet" href="/assets/style.css?v=91929aa218" data-turbo-track="reload">
   <!-- Instant client-side navigation (no full reload): Turbo Drive swaps pages in place. Every
        script that sets up a page must also re-run on turbo:load. Paths are root-absolute so the
        tag is identical on every page; otherwise Turbo would treat it as new and run it again. -->
@@ -134,8 +134,9 @@
   </script>
   <script src="/assets/notes.js?v=5d92723a56" defer data-turbo-track="reload"></script>
   <script src="/assets/calc.js?v=43068d8bba" defer data-turbo-track="reload"></script>
-  <script src="/assets/flashcards.js?v=df840c3205" defer data-turbo-track="reload"></script>
+  <script src="/assets/flashcards.js?v=c3c128d20f" defer data-turbo-track="reload"></script>
   <script src="/assets/match.js?v=731f5dcd5f" defer data-turbo-track="reload"></script>
+  <script src="/assets/quiz.js?v=cd804c6f1d" defer data-turbo-track="reload"></script>
 </head>
 <body>
   <header class="site-header">
@@ -165,10 +166,11 @@
       <p>A timed matching game: terms with definitions, concepts with examples from the reading, and facts with their numbers.</p>
       <p class="card-progress" data-best-of="matchbest:/human-geo/quiz/reading-2.1-2.2/" hidden></p>
     </a>
-    <div class="card card-soon" aria-disabled="true">
+    <a class="card" href="/human-geo/quiz/reading-2.1-2.2/practice/">
       <h2>Practice quiz</h2>
-      <p>Coming soon.</p>
-    </div>
+      <p>AP-style multiple choice: read a pyramid, a table or a situation and apply the idea. Every answer is explained.</p>
+      <p class="card-progress" data-last-of="quizlast:/human-geo/quiz/reading-2.1-2.2/" hidden></p>
+    </a>
   </main>
   <script>
     /* Theme toggle: system → light → dark → system. The pre-paint script in <head> is what

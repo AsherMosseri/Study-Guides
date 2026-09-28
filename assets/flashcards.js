@@ -534,15 +534,20 @@
     });
   }
 
-  // On the reading page, reached from a card's "In the reading": a button back to the deck.
-  // The deck itself was saved in sessionStorage, so it reopens on the same card.
+  // On the reading page, reached from "In the reading" on a flashcard or a quiz question: a button
+  // back. The deck or quiz was saved in sessionStorage, so it reopens where you left it.
+  const RETURN = {
+    flashcards: ["flashcard/", "Back to flashcards"],
+    quiz: ["practice/", "Back to the quiz"],
+  };
   function returnButton() {
-    if (new URLSearchParams(location.search).get("from") !== "flashcards") return;
-    if (document.querySelector(".fc-page") || document.querySelector(".fc-return")) return;
+    const to = RETURN[new URLSearchParams(location.search).get("from")];
+    if (!to || document.querySelector(".fc-page, .qz-page, .fc-return")) return;
     const a = document.createElement("a");
     a.className = "fc-return";
-    a.href = location.pathname.replace(/[^/]+\/$/, "flashcard/");
-    a.innerHTML = '<span aria-hidden="true">←</span> Back to flashcards';
+    a.href = location.pathname.replace(/[^/]+\/$/, to[0]);
+    a.innerHTML = '<span aria-hidden="true">←</span> ';
+    a.append(to[1]);
     document.body.appendChild(a);
   }
 
