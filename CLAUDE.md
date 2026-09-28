@@ -78,7 +78,7 @@ an "Update" box; book errors get a short note saying which value to use on the q
 
 **Practice quiz questions are written for this site**, in the AP style (a pyramid, table or
 situation, then apply an idea), never copied from AP Classroom or released exams (College Board
-owns those). Four choices, the right one written first (the page shuffles), and every choice
+owns those). Five choices (A–E, as on the AP exam), the right one written first (the page shuffles), and every choice
 carries a `data-why`: why it's right, or why it's wrong. Each question names its flashcard in
 `data-card`. A chart inside a question skips the "Apply it" box, since the explanation shown after
 answering does that job; pyramids there come from the guide's own charts with the country renamed.

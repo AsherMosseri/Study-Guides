@@ -12,7 +12,7 @@
   if (window.__qzInit) return;
   window.__qzInit = true;
 
-  const LETTERS = "ABCD";
+  const LETTERS = "ABCDE";   // five choices, like the AP exam
   const SKILL = { concept: "Concept", data: "Data", visual: "Visual", scale: "Scale" };
   const SKILL_NOTE = {
     concept: "Apply an idea to a situation",
@@ -81,7 +81,7 @@
     shuffle(pool);
     if (!only && len !== "all") pool = pool.slice(0, Number(len));
     const perm = {};
-    pool.forEach(function (id) { perm[id] = shuffle([0, 1, 2, 3]); });
+    pool.forEach(function (id) { perm[id] = shuffle(choicesOf(id).length === 5 ? [0, 1, 2, 3, 4] : [0, 1, 2, 3]); });
     const s = { mode: mode, order: pool, perm: perm, picked: {}, checked: {}, index: 0, used: 0, done: false };
     setState(page, s);
     show(page, s, "next");
@@ -382,7 +382,7 @@
     if (panel && panel.classList.contains("open")) return;
     if (e.target.closest && e.target.closest("select, input, textarea, a")) return;
     const k = e.key.toUpperCase();
-    const n = LETTERS.indexOf(k) >= 0 ? LETTERS.indexOf(k) : "1234".indexOf(e.key);
+    const n = LETTERS.indexOf(k) >= 0 ? LETTERS.indexOf(k) : "12345".indexOf(e.key);
     if (n >= 0 && k.length === 1) {
       const b = page.querySelectorAll(".qz-choice")[n];
       if (b && !b.disabled) { e.preventDefault(); choose(page, b); b.focus({ preventScroll: true }); }
@@ -407,7 +407,8 @@
   function setup() {
     document.querySelectorAll(".qz-page").forEach(function (page) {
       let s = getState(page) || load("qzstate:" + page.dataset.store, sessionStorage);
-      if (!s.order || !s.order.every(function (id) { return item(id); })) s = null;
+      // Drop a saved quiz whose questions (or number of choices) no longer match the page.
+      if (!s.order || !s.order.every(function (id) { return item(id) && s.perm[id] && s.perm[id].length === choicesOf(id).length; })) s = null;
       if (s) setState(page, s);
       show(page, s);
     });
