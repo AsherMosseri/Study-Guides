@@ -39,7 +39,7 @@
     html[data-theme="dark"] { color-scheme: dark; }
     html, body { background: #f7f7f5; background: light-dark(#f7f7f5, #0d1117); }
   </style>
-  <link rel="stylesheet" href="/assets/style.css?v=9aefa077f9" data-turbo-track="reload">
+  <link rel="stylesheet" href="/assets/style.css?v=9676486539" data-turbo-track="reload">
   <!-- Instant client-side navigation (no full reload): Turbo Drive swaps pages in place. Every
        script that sets up a page must also re-run on turbo:load. Paths are root-absolute so the
        tag is identical on every page; otherwise Turbo would treat it as new and run it again. -->
@@ -155,12 +155,16 @@
         <h1>Night-before sheet</h1>
         <p class="subtitle">Reading 2.1–2.2 · Chapter 2: Population and Health · pp. 1–31</p>
       </div>
-      <button type="button" class="fc-btn sheet-print" onclick="window.print()">Print it</button>
+      <div class="sheet-actions">
+        <a class="fc-btn got" href="/human-geo/quiz/reading-2.1-2.2/review/night-before-sheet.pdf" download>Download PDF</a>
+        <button type="button" class="fc-btn" onclick="window.print()">Print</button>
+      </div>
     </div>
-    <p class="sheet-note">The whole reading on one page, in the book's numbers. Prints on one sheet, front and back.</p>
+    <p class="sheet-note">The whole reading on one page, in the book's numbers. For the cleanest printout, download the PDF: two pages, one sheet front and back.</p>
 
-    <div class="sheet-grid">
-
+    <div class="sheet-pages">
+    <div class="spage">
+      <div class="scol">
       <section class="sbox">
         <h2>Formulas</h2>
         <dl class="formulas">
@@ -171,7 +175,6 @@
           <dt>Physiologic vs. arithmetic</dt><dd>the bigger the gap, the less of the land is farmable</dd>
         </dl>
       </section>
-
       <section class="sbox">
         <h2>Density</h2>
         <ul>
@@ -186,7 +189,17 @@
           <li>Middle America and the Caribbean high; South America moderate; India lowest in South Asia and has more farmland per person than China.</li>
         </ul>
       </section>
-
+      <section class="sbox">
+        <h2>Population data</h2>
+        <ul>
+          <li>U.S. census every <strong>10 years</strong>: money and seats in Congress depend on it.</li>
+          <li>Undercounted: migrants, racial minorities, doubled-up or homeless families, low-income families.</li>
+          <li>Debates: <strong>sampling</strong> vs. counting everyone; the <strong>citizenship question</strong>.</li>
+          <li>UN, World Bank, Population Reference Bureau: numbers don't always match; often <strong>estimates</strong>.</li>
+        </ul>
+      </section>
+      </div>
+      <div class="scol">
       <section class="sbox">
         <h2>Distribution and clusters</h2>
         <ul>
@@ -206,7 +219,6 @@
           <li>Dhaka <strong>122,700</strong> · Mumbai <strong>68,400</strong> · NYC <strong>28,717</strong> per sq mi. Rural Bangladesh 3,000–5,000 vs. rural Iowa <strong>55</strong>.</li>
         </ul>
       </section>
-
       <section class="sbox">
         <h2>Opening and big ideas</h2>
         <ul>
@@ -218,17 +230,8 @@
           <li><strong>Luxor:</strong> environment shapes where people live, not just culture.</li>
         </ul>
       </section>
-
-      <section class="sbox">
-        <h2>Population data</h2>
-        <ul>
-          <li>U.S. census every <strong>10 years</strong>: money and seats in Congress depend on it.</li>
-          <li>Undercounted: migrants, racial minorities, doubled-up or homeless families, low-income families.</li>
-          <li>Debates: <strong>sampling</strong> vs. counting everyone; the <strong>citizenship question</strong>.</li>
-          <li>UN, World Bank, Population Reference Bureau: numbers don't always match; often <strong>estimates</strong>.</li>
-        </ul>
-      </section>
-
+      </div>
+      <div class="scol">
       <section class="sbox">
         <h2>Malthus and his critics</h2>
         <ul>
@@ -238,7 +241,6 @@
           <li><strong>Neo-Malthusians:</strong> focus on population; limits of food, energy and water; farming's environmental costs.</li>
         </ul>
       </section>
-
       <section class="sbox">
         <h2>Growth around the world</h2>
         <ul>
@@ -253,7 +255,6 @@
           <li>More urban → lower natural increase.</li>
         </ul>
       </section>
-
       <section class="sbox">
         <h2>World population</h2>
         <table class="stable">
@@ -272,7 +273,10 @@
           <li>Levels off at <strong>10–11 billion</strong>, 2050–2100. Now ~1.2% a year, 80+ million a year.</li>
         </ul>
       </section>
-
+      </div>
+    </div>
+    <div class="spage">
+      <div class="scol">
       <section class="sbox">
         <h2>Fertility and aging</h2>
         <ul>
@@ -286,7 +290,8 @@
           <li>Still growing because of India, Indonesia, Bangladesh, Pakistan, Nigeria.</li>
         </ul>
       </section>
-
+      </div>
+      <div class="scol">
       <section class="sbox">
         <h2>India</h2>
         <ul>
@@ -298,7 +303,8 @@
           <li>Lesson: a world map hides what's inside a country.</li>
         </ul>
       </section>
-
+      </div>
+      <div class="scol">
       <section class="sbox">
         <h2>Pyramids</h2>
         <div class="shapes" aria-hidden="true">
@@ -313,7 +319,6 @@
           <li><strong>Composition</strong> = makeup by age, sex, marital status, education.</li>
         </ul>
       </section>
-
       <section class="sbox">
         <h2>Religion and growth</h2>
         <ul>
@@ -323,8 +328,9 @@
           <li>Saudi Arabia ~<strong>2%</strong>; Indonesia's program from <strong>1970</strong> (coercion + inducement) → 1.6% (2000), 1.1% (2016).</li>
         </ul>
       </section>
-
-      <section class="sbox wide">
+      </div>
+      <div class="sfull">
+      <section class="sbox">
         <h2>Demographic transition model</h2>
         <table class="dtm-table">
           <thead><tr><th>Stage</th><th>Births</th><th>Deaths</th><th>Growth</th><th>Examples and causes</th></tr></thead>
@@ -338,8 +344,7 @@
         </table>
         <p class="sline">Based on western Europe after the Industrial Revolution. Late-1980s World Bank SPL predictions (U.S. 276M by 2035, Brazil 353M by 2070, Mexico 254M by 2075, China 1.4B by 2090, India 1.6B by 2150) were unrealistic: China passed 1.2B in 1994, India 1B in 1998. Newer: China <strong>1.45B in 2030</strong>, India <strong>1.7B in 2060</strong>.</p>
       </section>
-
-      <section class="sbox wide traps">
+      <section class="sbox traps">
         <h2>Common traps</h2>
         <ul>
           <li>Rates are <strong>per 1,000</strong>: divide by 10 for a percent (25 per 1,000 = 2.5%, not 25%).</li>
@@ -355,7 +360,8 @@
           <li><strong>Religion isn't destiny:</strong> the Catholic heartland grows slowly.</li>
         </ul>
       </section>
-
+      </div>
+    </div>
     </div>
   </main>
   <script>

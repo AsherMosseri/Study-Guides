@@ -1497,17 +1497,22 @@ a.card p.card-progress { margin-top: 6px; font-size: 0.9rem; font-weight: 600; c
   .plan-sec { grid-template-columns: minmax(0, 1fr) 4.5rem 2.4rem 3.2rem; gap: 8px; font-size: 0.84rem; }
 }
 
-/* ---------- Night-before sheet ---------- */
+/* ---------- Night-before sheet ----------
+   Two fixed "pages", each three columns (the DTM and traps span the second). On screen they
+   stack on phones; in print each block is exactly one printed page, so every browser prints the
+   same layout (flowing CSS columns split differently in Chrome and Safari). Print is always black
+   on white, whatever the theme. */
 .sheet-page main { max-width: 1040px; }
 .sheet-page .site-header { max-width: 1040px; }
 .sheet-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
 .sheet-top .subtitle { margin-bottom: 8px; }
-.sheet-print { flex: none; margin-top: 6px; }
+.sheet-actions { flex: none; display: flex; gap: 8px; margin-top: 6px; }
+.sheet-actions a.fc-btn { text-decoration: none; display: inline-block; }
 .sheet-note { margin: 0 0 18px; color: var(--muted); font-size: 0.92rem; }
-.sheet-grid { columns: 3 300px; column-gap: 14px; }
+.spage { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; align-items: start; margin: 0 0 14px; }
+.scol { display: flex; flex-direction: column; gap: 14px; }
+.sfull { grid-column: 1 / -1; display: flex; flex-direction: column; gap: 14px; }
 .sbox {
-  break-inside: avoid;
-  margin: 0 0 14px;
   padding: 12px 14px;
   border: 1px solid var(--border);
   border-radius: 12px;
@@ -1515,7 +1520,6 @@ a.card p.card-progress { margin-top: 6px; font-size: 0.9rem; font-weight: 600; c
   font-size: 0.86rem;
   line-height: 1.45;
 }
-.sbox.wide { column-span: all; }
 .sbox h2 { margin: 0 0 6px; font-size: 0.95rem; color: var(--accent); }
 .sbox ul, .sbox ol { margin: 0; padding-left: 16px; }
 .sbox li { margin: 2px 0; }
@@ -1539,23 +1543,36 @@ a.card p.card-progress { margin-top: 6px; font-size: 0.9rem; font-weight: 600; c
 .shapes figure { margin: 0; width: 76px; display: flex; flex-direction: column; align-items: center; gap: 2px; }
 .shapes span { display: block; height: 6px; border-radius: 2px; background: var(--series-1); }
 .shapes figcaption { font-size: 0.72rem; color: var(--muted); margin-top: 2px; }
+@media (max-width: 860px) {
+  .spage { grid-template-columns: minmax(0, 1fr); }
+}
 @media (max-width: 640px) {
   .dtm-table td:nth-child(-n+4) { white-space: normal; }
   .sheet-top { flex-direction: column; gap: 0; }
-  .sheet-print { margin: 0 0 12px; }
+  .sheet-actions { margin: 0 0 12px; }
 }
 @media print {
-  @page { margin: 0.4in; }
-  html, body { background: #fff !important; color: #000; }
-  .site-header, .sheet-print, .sheet-note, .fc-return { display: none !important; }
-  .sheet-page main { max-width: none; padding: 0; }
-  .sheet-top h1 { font-size: 16pt; margin: 0; }
-  .sheet-top .subtitle { font-size: 9pt; margin: 0 0 6pt; color: #444; }
-  .sheet-grid { columns: 3; column-gap: 8pt; }
-  .sbox { font-size: 7.4pt; line-height: 1.3; padding: 5pt 6pt; margin-bottom: 6pt; border-color: #999; border-radius: 4pt; background: #fff; box-shadow: none; }
-  .sbox h2 { font-size: 8.6pt; color: #000; margin-bottom: 2pt; }
-  .dtm-table { font-size: 7.2pt; }
-  .formulas dd span, .shapes figcaption, .dtm-table th { color: #444; }
-  .shapes span { background: #555; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
-  .traps, .traps h2 { border-color: #000; color: #000; }
+  :root, :root[data-theme="dark"], :root:not([data-theme="light"]) {
+    --text: #000 !important; --muted: #333 !important; --border: #888 !important; --card: #fff !important;
+    --bg: #fff !important; --accent: #000 !important; --review: #000 !important; --series-1: #555 !important;
+  }
+  @page { size: auto; margin: 0.35in; }
+  html, body { background: #fff !important; color: #000 !important; }
+  .site-header, .sheet-actions, .sheet-note, .fc-return, .panel { display: none !important; }
+  .sheet-page main { max-width: none; padding: 0; margin: 0; }
+  .sheet-top h1 { font-size: 15pt; margin: 0; }
+  .sheet-top .subtitle { font-size: 8.5pt; margin: 0 0 5pt; }
+  .spage { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6pt; margin: 0; break-after: page; page-break-after: always; }
+  .spage:last-child { break-after: auto; page-break-after: auto; }
+  .scol, .sfull { gap: 6pt; }
+  .sbox { font-size: 8.1pt; line-height: 1.28; padding: 4pt 6pt; border-radius: 3pt; box-shadow: none; break-inside: avoid; page-break-inside: avoid; }
+  .sbox h2 { font-size: 9.4pt; margin-bottom: 2pt; }
+  .sbox li { margin: 1pt 0; }
+  .formulas dd span { font-size: 7.4pt; }
+  .dtm-table { font-size: 7.8pt; }
+  .dtm-table th { font-size: 7.2pt; }
+  .traps ul { columns: 2; }
+  .shapes span { height: 4pt; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  .shapes figcaption { font-size: 6.5pt; }
 }
+
