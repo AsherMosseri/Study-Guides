@@ -2,7 +2,7 @@
 // and fades away; a wrong one shakes, adds PENALTY to the time, and marks both pairs' flashcards
 // "Review" (and due now), so the flashcards and this game share one record of what's weak.
 //
-// Pairs come from the page's hidden .mt-data list. Pairs with the same data-group never share a
+// Pairs come from the page's hidden .mt-data list. Pairs sharing any data-group never share a
 // round, so no tile ever has two right answers.
 //
 // Turbo: listeners are added once on the document; the round in progress is a JS property on
@@ -58,10 +58,12 @@
     const marks = load(page.dataset.store);
     const all = data(page);
     const chosen = [], groups = {};
+    // data-group can list several groups; a pair joins only if none of them is taken yet.
     function take(li) {
-      if (chosen.length >= ROUND || groups[li.dataset.group] || chosen.indexOf(li) >= 0) return;
+      const gs = li.dataset.group.split(/\s+/);
+      if (chosen.length >= ROUND || chosen.indexOf(li) >= 0 || gs.some(function (g) { return groups[g]; })) return;
       chosen.push(li);
-      groups[li.dataset.group] = true;
+      gs.forEach(function (g) { groups[g] = true; });
     }
     (must || []).forEach(take);
     all.filter(function (li) {

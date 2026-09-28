@@ -13,6 +13,7 @@ study.thejunkdrawerapp.com. Work directly on `main`.
   <reading>/flashcard/              one card per quizzable fact (checklist/, flashcards/ redirect here)
   <reading>/match/                  timed matching game: terms, examples, facts
   <reading>/practice/               AP-style multiple choice with an explanation for every answer
+  <reading>/review/                 night-before sheet: the reading on one printable page
 /human-geo/test/                    chapter-test study guides   e.g. /human-geo/test/chapter-2/
 /bio/                               Biology (planned; same quiz/ and test/ layout)
 /quiz/..., /test/...                redirect pages for the old addresses; keep them
@@ -64,6 +65,10 @@ wherever newer data or a book error could cause confusion.
 Blij, Elsbeth Robson). Retell every fact in original wording, and describe book figures in figure
 cards with their page number instead of reproducing them. Free-licensed images (Wikimedia Commons,
 NASA) are fine with a credit.
+
+**Check facts against the book before a quiz.** Compare every card, pair, question and note with the
+PDF text (page-marked), and where the book's figure and text disagree (Fig. 2.15's lower-income
+pyramid shows ~28% under 15; the text says over 40%), say which to use on the quiz.
 
 **Every fact from the reading stays in.** The teacher can quiz on anything, so every reading gets
 a flashcards page with one card per quizzable fact, grouped by the guide's sections, each

@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reading 2.1–2.2 night-before sheet | AP Human Geography</title>
+  <meta name="description" content="Everything in Chapter 2, sections 2.1–2.2 on one printable page: formulas, numbers, the DTM, pyramids and common traps." />
+  <link rel="canonical" href="https://study.thejunkdrawerapp.com/human-geo/quiz/reading-2.1-2.2/review/" />
+  <!-- Link previews (iMessage, Discord, X...). og:image must be an absolute URL, and scrapers cache it hard:
+       a redesign needs a NEW filename, not a re-upload. Regenerate with tools/make-social-images.mjs. -->
+  <meta property="og:site_name" content="Study Guides" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Reading 2.1–2.2 night-before sheet: Population and Health" />
+  <meta property="og:description" content="Everything in Chapter 2, sections 2.1–2.2 on one printable page: formulas, numbers, the DTM, pyramids and common traps." />
+  <meta property="og:url" content="https://study.thejunkdrawerapp.com/human-geo/quiz/reading-2.1-2.2/review/" />
+  <meta property="og:image" content="https://study.thejunkdrawerapp.com/og-human-geo-3.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="AP Human Geography study guides" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://study.thejunkdrawerapp.com/og-human-geo-3.png" />
+  <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <!-- Colors the browser's own chrome (Safari's toolbar, the iOS address bar) to match the page.
+       Both tags are rewritten to the color actually in use by the script below and by the toggle,
+       because older Safari ignores the media attribute and always takes the first tag. -->
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7f7f5" />
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0d1117" />
+  <!-- The saved theme is read HERE, by a CLASSIC script, before the stylesheet: resolve it any
+       later and the first paint is the wrong color before the right one arrives. data-theme
+       (written by the toggle, absent when following the system) overrides the system preference.
+       The background is declared here too, so a fast refresh never shows a ghost of the old page. -->
+  <script>(function(){try{var d=document.documentElement,t=localStorage.getItem("tjd:theme");if(t==="dark"||t==="light")d.setAttribute("data-theme",t);var k=t==="dark"||(t!=="light"&&matchMedia("(prefers-color-scheme: dark)").matches),c=k?"#0d1117":"#f7f7f5",m=document.querySelectorAll('meta[name="theme-color"]');for(var i=0;i<m.length;i++)m[i].setAttribute("content",c);}catch(e){}})();</script>
+  <style>
+    :root { color-scheme: light dark; }
+    html[data-theme="light"] { color-scheme: light; }
+    html[data-theme="dark"] { color-scheme: dark; }
+    html, body { background: #f7f7f5; background: light-dark(#f7f7f5, #0d1117); }
+  </style>
+  <link rel="stylesheet" href="/assets/style.css?v=9aefa077f9" data-turbo-track="reload">
+  <!-- Instant client-side navigation (no full reload): Turbo Drive swaps pages in place. Every
+       script that sets up a page must also re-run on turbo:load. Paths are root-absolute so the
+       tag is identical on every page; otherwise Turbo would treat it as new and run it again. -->
+  <script src="/assets/js/turbo.min.js?v=4b476e13a2" defer data-turbo-track="reload"></script>
+  <script>
+    /* Scroll restoration on reload.
+       Safari records a history entry's scroll position on a LAG, so a fast flick followed
+       immediately by a refresh restores where you were BEFORE the flick; Chrome records it
+       eagerly and gets it right. Reading window.scrollY at pagehide is exact regardless of that
+       lag, so on a reload we take restoration off the browser and do it ourselves. Turbo visits
+       keep native "auto" - Turbo handles those itself.
+       NOTE: an earlier version saved from a throttled scroll listener, which is what made the
+       saved value stale in the first place. The pagehide read is the whole point; don't move it
+       back into a scroll handler. */
+    (function () {
+      /* Computed at USE, never cached. Turbo does not re-run this script on a client-side visit:
+         it merges the head, and this tag is byte-identical on every page, so it is treated as
+         already present. A cached key therefore stayed pinned to whichever page was FIRST loaded,
+         and every later scroll position was filed under that page's name. Land on /, click Pricing
+         in the footer, scroll, refresh - the position was saved as "tjd:y:/" while the reload
+         looked up "tjd:y:/pricing", found something stale or nothing, and left you near the top.
+         Typing the URL never showed it, because that is a full load and the key was right. */
+      function KEY() { return "tjd:y:" + location.pathname; }
+      var nav = performance.getEntriesByType && performance.getEntriesByType("navigation")[0];
+      var isReload = nav ? nav.type === "reload" : (performance.navigation || {}).type === 1;
+      var settled = !isReload;
+
+      function setMode(m) { try { history.scrollRestoration = m; } catch (e) {} }
+      function remember() { try { sessionStorage.setItem(KEY(), String(window.scrollY || 0)); } catch (e) {} }
+
+      /* pagehide covers reload / navigation / close; visibilitychange catches iOS Safari, which
+         can discard a tab without ever firing pagehide. */
+      addEventListener("pagehide", remember);
+      addEventListener("visibilitychange", function () {
+        if (document.visibilityState === "hidden") remember();
+      });
+      /* Turbo forces "manual" when it boots (defer); re-assert "auto" once we're not mid-restore. */
+      addEventListener("turbo:load", function () { if (settled) setMode("auto"); });
+
+      if (settled) { setMode("auto"); return; }
+
+      setMode("manual");            /* stop Safari restoring its own stale value */
+      var target = 0;
+      try { target = parseInt(sessionStorage.getItem(KEY()), 10) || 0; } catch (e) {}
+      if (target <= 0) { settled = true; setMode("auto"); return; }
+
+      function done() { settled = true; setMode("auto"); }
+      /* The moment the visitor scrolls themselves, stop fighting them. */
+      addEventListener("wheel", done, { passive: true, once: true });
+      addEventListener("touchstart", done, { passive: true, once: true });
+      /* Only keys that actually scroll count. Canceling on ANY key meant that holding Cmd+R
+         to refresh repeatedly landed the next R keydown on the freshly loading document, which
+         read as "the visitor scrolled themselves", abandoned the restore and left them at the
+         top. That is exactly the "refresh really fast and it jumps to the top" report. It shows
+         up on the demo pages first because their content is drawn by script, so the restore is
+         still running when the next keypress arrives; everywhere else it had already finished. */
+      addEventListener("keydown", function (ev) {
+        if (ev.metaKey || ev.ctrlKey || ev.altKey) return;
+        if (/^(Arrow|Page)|^( |Home|End|Spacebar)$/.test(ev.key)) done();
+      });
+
+      var frames = 0, steady = 0, lastH = -1, loaded = false;
+      addEventListener("load", function () { loaded = true; });
+      function restore() {
+        if (settled) return;
+        var h = document.documentElement.scrollHeight;
+        /* Clamp to what the page can actually scroll right now, so a still-growing document
+           doesn't read as "we landed". */
+        var want = Math.min(target, Math.max(0, h - innerHeight));
+        if (Math.abs(window.scrollY - want) >= 2) window.scrollTo(0, want);
+        /* Settle only once we are at the REAL target - not merely parked at the bottom of a
+           document that is still growing. That distinction is the whole fix: on the first
+           refresh the page is still short, so the clamped position looked like a successful
+           landing, we stopped, and then the content grew underneath us and left the view at the
+           top. Later refreshes hit warm caches, reached full height sooner, and happened to look
+           correct. Height must also be stable and the load finished. */
+        var atTarget = want === target && Math.abs(window.scrollY - want) < 2;
+        if (loaded && h === lastH && atTarget) steady++; else steady = 0;
+        lastH = h;
+        /* Give up 180 frames after the page has LOADED, not 180 frames after this started. The
+           old cap fired at roughly 3s whatever the document was doing, so a slow load that had
+           not yet reached full height was abandoned mid-grow and left near the top: the clamp had
+           nothing to clamp to yet. On a normal load nothing changes at all, because load fires
+           long before the cap and the behavior is identical. The absolute ceiling is the
+           backstop for a load event that never arrives. */
+        frames++;
+        if (steady >= 10 || (loaded && frames > 180) || frames > 600) { done(); return; }
+        requestAnimationFrame(restore);
+      }
+      requestAnimationFrame(restore);
+    })();
+  </script>
+  <script src="/assets/notes.js?v=5d92723a56" defer data-turbo-track="reload"></script>
+  <script src="/assets/calc.js?v=43068d8bba" defer data-turbo-track="reload"></script>
+  <script src="/assets/flashcards.js?v=5a4cc62bb8" defer data-turbo-track="reload"></script>
+  <script src="/assets/match.js?v=bc3e8eeeb9" defer data-turbo-track="reload"></script>
+  <script src="/assets/quiz.js?v=7703ed814f" defer data-turbo-track="reload"></script>
+  <script src="/assets/plan.js?v=a9a93dbf23" defer data-turbo-track="reload"></script>
+</head>
+<body class="sheet-page">
+  <header class="site-header">
+    <nav class="breadcrumbs">
+      <a href="/">Home</a><span>/</span><a href="/human-geo/">Human Geo</a><span>/</span><a href="/human-geo/quiz/">Quizzes</a><span>/</span><a href="/human-geo/quiz/reading-2.1-2.2/">Reading 2.1–2.2</a><span>/</span><span class="here">Night-before sheet</span>
+    </nav>
+    <button type="button" class="theme-toggle" id="themeToggle" hidden>
+      <svg class="i-light" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="10" cy="10" r="3.9" /><path d="M10 1.5v2M10 16.5v2M18.5 10h-2M3.5 10h-2M15.96 4.04l-1.42 1.42M5.46 14.54l-1.42 1.42M15.96 15.96l-1.42-1.42M5.46 5.46 4.04 4.04" /></svg>
+      <svg class="i-dark" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><path d="M16.9 12.6A7.4 7.4 0 0 1 7.4 3.1a7.4 7.4 0 1 0 9.5 9.5Z" /></svg>
+    </button>
+  </header>
+  <main class="sheet">
+    <div class="sheet-top">
+      <div>
+        <h1>Night-before sheet</h1>
+        <p class="subtitle">Reading 2.1–2.2 · Chapter 2: Population and Health · pp. 1–31</p>
+      </div>
+      <button type="button" class="fc-btn sheet-print" onclick="window.print()">Print it</button>
+    </div>
+    <p class="sheet-note">The whole reading on one page, in the book's numbers. Prints on one sheet, front and back.</p>
+
+    <div class="sheet-grid">
+
+      <section class="sbox">
+        <h2>Formulas</h2>
+        <dl class="formulas">
+          <dt>Natural increase rate</dt><dd>(CBR − CDR) ÷ 10 = <strong>% per year</strong><span>CBR 35, CDR 10 → 25 per 1,000 → <strong>2.5%</strong></span></dd>
+          <dt>Doubling time</dt><dd>70 ÷ growth % <span>the math behind the book's $100 at 10% → ~7 years. 2.5% → about <strong>28 years</strong>; 2% → 35; 1.17% (India) → about 60</span></dd>
+          <dt>Old-age dependency ratio</dt><dd>people 65+ ÷ people 15–64 × 100 <span>12 million ÷ 40 million → <strong>30</strong></span></dd>
+          <dt>Replacement level</dt><dd>TFR of <strong>2.1</strong> keeps a population stable without immigration</dd>
+          <dt>Physiologic vs. arithmetic</dt><dd>the bigger the gap, the less of the land is farmable</dd>
+        </dl>
+      </section>
+
+      <section class="sbox">
+        <h2>Density</h2>
+        <ul>
+          <li><strong>Population density:</strong> people vs. land, as if spread evenly.</li>
+          <li><strong>Arithmetic</strong> = people ÷ <em>all</em> land. U.S.: 326 million, <strong>86 per sq mi</strong> (33 per sq km).</li>
+          <li>Bangladesh <strong>2,962</strong> · Netherlands <strong>1,068</strong> · Japan <strong>869</strong> per sq mi.</li>
+          <li>Misleads: hides empty Alaska and the West, and Egypt's desert.</li>
+          <li><strong>Physiologic</strong> = people ÷ <em>arable</em> land.</li>
+          <li><strong>Egypt:</strong> 97.6 million; 252 → <strong>6,995</strong> per sq mi; <strong>98%</strong> of people on <strong>3%</strong> of the land (Nile valley and delta).</li>
+          <li><strong>Switzerland:</strong> physiologic = 10 × arithmetic (1 acre in 10 arable).</li>
+          <li><strong>Ukraine:</strong> 44.8 million; 192 → 281 (× 1.46: 1 of every 1.46 acres arable).</li>
+          <li>Middle America and the Caribbean high; South America moderate; India lowest in South Asia and has more farmland per person than China.</li>
+        </ul>
+      </section>
+
+      <section class="sbox">
+        <h2>Distribution and clusters</h2>
+        <ul>
+          <li><strong>Distribution:</strong> the pattern people make across space. <strong>Clustered</strong> = close together; <strong>dispersed</strong> = few, spread out.</li>
+          <li>People lived near food; farm technology and shipping loosened that link.</li>
+          <li><strong>Dot map</strong> (Fig. 2.4: 1 dot = 100,000 people). <strong>Dasymetric map</strong> (Fig. 2.5) uses land cover and terrain.</li>
+          <li>China + India = <strong>⅓</strong> of humanity (empty Himalayas, China's desert).</li>
+        </ul>
+        <ol class="clusters">
+          <li><strong>East Asia:</strong> almost ¼ of humanity, 1.4 billion in China; Huang He and Yangtze ribbons; wheat and rice.</li>
+          <li><strong>South Asia:</strong> 1.5 billion; India, Pakistan, Bangladesh, Sri Lanka; Ganges, Indus, Brahmaputra; hemmed in by Himalayas, Afghan/Pakistani mountains, Indian Ocean. India 1.17 vs. China 0.56; India most populous by 2030 (1 in 6).</li>
+          <li><strong>Europe:</strong> 725+ million; dense even in mountains; Industrial Revolution first; urban: Germany 77%, UK 83%, France 80%.</li>
+          <li><strong>North America:</strong> megalopolis Boston–Washington, D.C. and Quebec City–Windsor; 70+ million; half of Canada; 20% of Americans; ¼ the size of Europe's cluster.</li>
+        </ol>
+        <ul>
+          <li>Big three ≈ <strong>4 billion</strong> of 7.7 billion. South America + Africa barely beat India.</li>
+          <li>Dhaka <strong>122,700</strong> · Mumbai <strong>68,400</strong> · NYC <strong>28,717</strong> per sq mi. Rural Bangladesh 3,000–5,000 vs. rural Iowa <strong>55</strong>.</li>
+        </ul>
+      </section>
+
+      <section class="sbox">
+        <h2>Opening and big ideas</h2>
+        <ul>
+          <li><strong>Shanghai:</strong> 128-story tower (2,000+ ft); ~22 million; China 1.4 billion, 100+ cities over 1 million.</li>
+          <li>Coal → <strong>PM-2.5</strong> (reaches lungs and blood). North China lives <strong>5.5 years</strong> less. Fixes: limit coal, ban imported plastics for burning, limit cars.</li>
+          <li><strong>Demography</strong> = study of population trends.</li>
+          <li><strong>Scale:</strong> downtown → suburbs vanishes on a world map; national averages hide states.</li>
+          <li><strong>Yangon:</strong> density + poverty + weak infrastructure = vulnerability; 2008 cyclone, Irrawaddy delta, ~100,000 dead.</li>
+          <li><strong>Luxor:</strong> environment shapes where people live, not just culture.</li>
+        </ul>
+      </section>
+
+      <section class="sbox">
+        <h2>Population data</h2>
+        <ul>
+          <li>U.S. census every <strong>10 years</strong>: money and seats in Congress depend on it.</li>
+          <li>Undercounted: migrants, racial minorities, doubled-up or homeless families, low-income families.</li>
+          <li>Debates: <strong>sampling</strong> vs. counting everyone; the <strong>citizenship question</strong>.</li>
+          <li>UN, World Bank, Population Reference Bureau: numbers don't always match; often <strong>estimates</strong>.</li>
+        </ul>
+      </section>
+
+      <section class="sbox">
+        <h2>Malthus and his critics</h2>
+        <ul>
+          <li><strong>Ehrlich</strong>, <em>The Population Bomb</em> (late 1960s): population outpacing food.</li>
+          <li><strong>Malthus</strong>, 1798: food grows <strong>linearly</strong>, population <strong>exponentially</strong>; revised 1803–1826; assumed a country eats what it grows.</li>
+          <li><strong>Wrong because:</strong> countries aren't closed systems (globalization; mercantilism, colonialism, capitalism); crops spread (potato → Ireland, 1700s); Norway 2% arable, imports food; yields rose (seeds, pesticides, fertilizers, irrigation, GMOs).</li>
+          <li><strong>Neo-Malthusians:</strong> focus on population; limits of food, energy and water; farming's environmental costs.</li>
+        </ul>
+      </section>
+
+      <section class="sbox">
+        <h2>Growth around the world</h2>
+        <ul>
+          <li><strong>CBR/CDR</strong> = births/deaths per 1,000 per year. NIR leaves out migration. <strong>Negative:</strong> Europe and Russia.</li>
+          <li>Soviet growth fell after <strong>1991</strong>. India nearly 3% thirty years before the book; now Africa <strong>2.43%</strong> vs. India <strong>1.17%</strong>; HIV/AIDS.</li>
+          <li>Palestinian territories 2.83 · Afghanistan 2.65 · Sudan 2.55 · Yemen 2.52. Iran, Oman, Morocco dropping.</li>
+          <li>Limited women's opportunities + men running family life → high growth.</li>
+          <li>India below world avg. but above China; Japan shrinking; Thailand negative; Indonesia and Vietnam slowing.</li>
+          <li>South America a bit over 1%; Brazil <strong>2.9% → 0.8%</strong>; Argentina, Chile, Uruguay low.</li>
+          <li>Lowest: <strong>global economic core</strong> (U.S., Canada, Europe, Japan, Australia, Uruguay).</li>
+          <li>Russia after 1991: health, alcoholism, drugs, male suicide, economy. Ukraine negative.</li>
+          <li>More urban → lower natural increase.</li>
+        </ul>
+      </section>
+
+      <section class="sbox">
+        <h2>World population</h2>
+        <table class="stable">
+          <tr><td>2,000 years ago</td><td>250 million</td></tr>
+          <tr><td>1650</td><td>500 million</td></tr>
+          <tr><td>1820</td><td>1 billion</td></tr>
+          <tr><td>1900</td><td>1.6 billion</td></tr>
+          <tr><td>1930</td><td>2 billion</td></tr>
+          <tr><td>1975</td><td>4 billion</td></tr>
+          <tr><td>2000</td><td>6.1 billion</td></tr>
+          <tr><td>2019</td><td>7.7 billion</td></tr>
+        </table>
+        <ul>
+          <li>Doubling time only <strong>39 years</strong> (mid-1980s) → <strong>54</strong> now. $100 at 10% doubles in ~7 years.</li>
+          <li>Life expectancy <strong>30</strong> (1900) → <strong>72</strong> (2016).</li>
+          <li>Levels off at <strong>10–11 billion</strong>, 2050–2100. Now ~1.2% a year, 80+ million a year.</li>
+        </ul>
+      </section>
+
+      <section class="sbox">
+        <h2>Fertility and aging</h2>
+        <ul>
+          <li><strong>TFR:</strong> average children per woman 15–49. <strong>95+ countries</strong> (41% of people) below 2.1.</li>
+          <li>2016: world <strong>2.4</strong> (the book also says 2.43), Niger <strong>7.2</strong>, South Korea <strong>1.2</strong>. UN: below 2.2 by 2050.</li>
+          <li>Drops: Kenya 3.85; China 6.1 → 1.75 in 35 yrs, 1.5 (2010), 1.62 (2016); Iran 6.8 (1980) → 1.7 (2016).</li>
+          <li><strong>Old-age dependency:</strong> Europe 29.9 → 47 by 2050; sub-Saharan Africa 5.7. Child dependency: Africa 74 vs. Europe 23.</li>
+          <li>Aging = pensions and care, fewer young taxpayers. Fixes: <strong>raise TFR</strong> or <strong>immigration</strong>.</li>
+          <li><strong>Japan:</strong> 128.06M (2008) → 126.8M (2017) → ~100M (2050, −20%); discourages immigration; 98%+ Japanese.</li>
+          <li>Raising births: Sweden, Russia (leave, daycare); Japan (men's housework). Limited success.</li>
+          <li>Still growing because of India, Indonesia, Bangladesh, Pakistan, Nigeria.</li>
+        </ul>
+      </section>
+
+      <section class="sbox">
+        <h2>India</h2>
+        <ul>
+          <li>29 states + 7 union territories. North grows fast; south and west slow (female literacy, land ownership, health care, birth control).</li>
+          <li><strong>1952:</strong> first population program in the world.</li>
+          <li><strong>1976:</strong> forced sterilization of men with 3+ children; quotas; Maharashtra <strong>3.7 million</strong>; riots; <strong>6 million</strong> men in all.</li>
+          <li>Now: states set policy (Maharashtra pays newlyweds to wait 2 years); birth control for women, injectables, posters, village clinics.</li>
+          <li><strong>Contraceptive prevalence</strong> (women 15–49): India <strong>55.1%</strong>; Andhra Pradesh 69.8, Maharashtra 63.5, Bihar 26.0, Meghalaya 21.1.</li>
+          <li>Lesson: a world map hides what's inside a country.</li>
+        </ul>
+      </section>
+
+      <section class="sbox">
+        <h2>Pyramids</h2>
+        <div class="shapes" aria-hidden="true">
+          <figure><span style="width:100%"></span><span style="width:82%"></span><span style="width:64%"></span><span style="width:46%"></span><span style="width:30%"></span><span style="width:16%"></span><figcaption>Expanding</figcaption></figure>
+          <figure><span style="width:62%"></span><span style="width:70%"></span><span style="width:78%"></span><span style="width:76%"></span><span style="width:62%"></span><span style="width:38%"></span><figcaption>Chimney</figcaption></figure>
+          <figure><span style="width:48%"></span><span style="width:58%"></span><span style="width:70%"></span><span style="width:78%"></span><span style="width:66%"></span><span style="width:44%"></span><figcaption>Contracting</figcaption></figure>
+        </div>
+        <ul>
+          <li>Males left, females right; 5-year groups, youngest at bottom; <strong>check the top bracket</strong>.</li>
+          <li><strong>Lower-income:</strong> ages 0–14 over <strong>40%</strong>, top three groups under <strong>10%</strong>. Pakistan, Yemen, Guatemala, Cameroon, Laos.</li>
+          <li><strong>Higher-income:</strong> slightly lopsided <strong>chimney</strong>; middle bulge moves up. Italy, France, Sweden.</li>
+          <li><strong>Composition</strong> = makeup by age, sex, marital status, education.</li>
+        </ul>
+      </section>
+
+      <section class="sbox">
+        <h2>Religion and growth</h2>
+        <ul>
+          <li>Catholic Church and some conservative Islam oppose contraception. <strong>Northern Nigeria</strong> grows faster than the south.</li>
+          <li>But the Catholic heartland grows slowly; the <strong>Philippines</strong> grows fast.</li>
+          <li><strong>Bordeaux</strong> (de Blij, from Dakar): "Where are all the children?" Europe is aging.</li>
+          <li>Saudi Arabia ~<strong>2%</strong>; Indonesia's program from <strong>1970</strong> (coercion + inducement) → 1.6% (2000), 1.1% (2016).</li>
+        </ul>
+      </section>
+
+      <section class="sbox wide">
+        <h2>Demographic transition model</h2>
+        <table class="dtm-table">
+          <thead><tr><th>Stage</th><th>Births</th><th>Deaths</th><th>Growth</th><th>Examples and causes</th></tr></thead>
+          <tbody>
+            <tr><td><strong>1</strong></td><td>High</td><td>High, swinging</td><td>Low</td><td>Most of history. <strong>Black Death</strong>, 1300s: Crimea → Sicily → north on rats' fleas (contagious diffusion); killed ¼–½; Britain ~4M → ~2M. Famine and war.</td></tr>
+            <tr><td><strong>2</strong></td><td>High</td><td>Falling fast</td><td>Very high</td><td>Europe after <strong>~1750</strong>: food, sanitation, soap, medicine. Death rate ~<strong>35</strong> (Europe, before 1750) → ~<strong>16</strong> (Britain, 1850). Today: Afghanistan, Palestine (vaccines).</td></tr>
+            <tr><td><strong>3</strong></td><td>Falling fast</td><td>Falling</td><td>Low, still growing</td><td>Britain <strong>~1870</strong> through the world wars: women's opportunities, later marriage, fewer child deaths. Brazil (contraceptives); Mali (schooled girls have ~half as many children).</td></tr>
+            <tr><td><strong>4</strong></td><td>Low</td><td>Low</td><td>Stable or slowing</td><td>Britain after <strong>1950</strong>: contraception, legal abortion. U.S., U.K. today.</td></tr>
+            <tr><td><strong>5</strong></td><td>Very low</td><td>Rising</td><td>Falling, negative</td><td><strong>Japan, Russia.</strong> Zero population growth in ~50 years → a <strong>stationary population level</strong> (SPL).</td></tr>
+          </tbody>
+        </table>
+        <p class="sline">Based on western Europe after the Industrial Revolution. Late-1980s World Bank SPL predictions (U.S. 276M by 2035, Brazil 353M by 2070, Mexico 254M by 2075, China 1.4B by 2090, India 1.6B by 2150) were unrealistic: China passed 1.2B in 1994, India 1B in 1998. Newer: China <strong>1.45B in 2030</strong>, India <strong>1.7B in 2060</strong>.</p>
+      </section>
+
+      <section class="sbox wide traps">
+        <h2>Common traps</h2>
+        <ul>
+          <li>Rates are <strong>per 1,000</strong>: divide by 10 for a percent (25 per 1,000 = 2.5%, not 25%).</li>
+          <li><strong>Stage 2 vs. 3:</strong> if births have started falling, it's stage 3.</li>
+          <li><strong>Natural increase leaves out migration</strong>: a negative NIR country can still grow through immigration.</li>
+          <li><strong>Arithmetic vs. physiologic:</strong> pressure on farmland is physiologic.</li>
+          <li><strong>¼ vs. ⅓:</strong> East Asia is ~¼ of humanity; China + India together are ⅓.</li>
+          <li><strong>55 vs. 86:</strong> rural Iowa is 55 per sq mi; the U.S. average is 86.</li>
+          <li><strong>3% vs. 2%:</strong> Egypt's people live on 3% of the land; Norway's land is 2% arable.</li>
+          <li><strong>1952 vs. 1976:</strong> India's first program vs. the sterilization drive.</li>
+          <li><strong>2.4 vs. 2.43:</strong> the book gives both for the 2016 world TFR.</li>
+          <li><strong>Over 40%:</strong> the text says ages 0–14 are over 40% in most lower-income countries; use that, not the chart.</li>
+          <li><strong>Religion isn't destiny:</strong> the Catholic heartland grows slowly.</li>
+        </ul>
+      </section>
+
+    </div>
+  </main>
+  <script>
+    /* Theme toggle: system → light → dark → system. The pre-paint script in <head> is what
+       actually applies a stored choice; this only cycles it, so the two have to agree on the
+       storage key and on the attribute name. Choosing "system" REMOVES both rather than storing
+       a third value, which is what keeps the system preference the default and lets it go on
+       working after the visitor stops overriding it. */
+    (function () {
+      var KEY = "tjd:theme";
+      var LABEL = { light: "Switch to the dark theme", dark: "Switch to the light theme" };
+      /* The theme you are LOOKING AT, which is not the same as the one that is stored: with
+         nothing stored the page follows the system, and the button still has to flip away from
+         whatever that produced. Reading the effective theme is the whole reason one press is
+         enough - cycling the STORED value meant a visitor on a light system pressed once to go
+         from light to light, saw nothing happen, and had to press again. */
+      function shown() {
+        var t = document.documentElement.getAttribute("data-theme");
+        if (t === "light" || t === "dark") return t;
+        try { return matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"; }
+        catch (e) { return "light"; }
+      }
+      /* Safari tints its toolbar from theme-color, and it supported theme-color BEFORE it
+         supported the media attribute on it. Such a Safari ignores media and takes the FIRST
+         tag, which was the light one - so a dark page got a white band across the top of the
+         window, which is what "a white frame around the favicon" turned out to be. Setting
+         every tag to the color actually in use means it no longer matters which one a browser
+         picks, or whether it understands media at all. */
+      function chrome() {
+        var el = document.querySelectorAll('meta[name="theme-color"]');
+        var c = shown() === "dark" ? "#0d1117" : "#f7f7f5";
+        for (var i = 0; i < el.length; i++) el[i].setAttribute("content", c);
+      }
+      function bind() {
+        var btn = document.getElementById("themeToggle");
+        if (!btn) return;
+        chrome();
+        /* A JS property, not a data- attribute: Turbo restores Back/Forward pages from a cloned
+           snapshot that keeps attributes but drops listeners, so an attribute made the restored
+           button look bound when it was dead. */
+        if (btn._tjdBound) { btn.setAttribute("aria-label", LABEL[shown()]); return; }
+        btn._tjdBound = true;
+        btn.hidden = false;
+        btn.setAttribute("aria-label", LABEL[shown()]);
+        btn.addEventListener("click", function () {
+          var next = shown() === "dark" ? "light" : "dark";
+          document.documentElement.setAttribute("data-theme", next);
+          /* Agreeing with the system stores NOTHING, so the page goes back to following it.
+             Without this the override is permanent and invisible: one press months ago pins the
+             site to light forever, and a visitor whose phone is in dark mode gets flashed white
+             with no control that undoes it - the button only ever writes another override. This
+             is the way back, and it needs no third state on a two-state button: press until the
+             page matches your system and the override is gone. */
+          try {
+            var sys = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+            if (next === sys) localStorage.removeItem(KEY); else localStorage.setItem(KEY, next);
+          } catch (e) {}
+          btn.setAttribute("aria-label", LABEL[next]);
+          chrome();
+          /* Canvas pixels are not CSS and follow no token, so the demos that draw have to be told
+             to redraw. Nothing else needs this: everything else is a var() and has already
+             changed by the time this fires. */
+          dispatchEvent(new CustomEvent("tjd:themechange"));
+        });
+      }
+      /* Follow the system LIVE while nothing is stored. Someone reading at dusk with iOS set to
+         switch automatically had the page stay light until they reloaded it. */
+      try {
+        matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function () {
+          var stored = null;
+          try { stored = localStorage.getItem(KEY); } catch (e) {}
+          if (stored === "light" || stored === "dark") return;
+          document.documentElement.removeAttribute("data-theme");
+          chrome();
+          var b = document.getElementById("themeToggle");
+          if (b) b.setAttribute("aria-label", LABEL[shown()]);
+          dispatchEvent(new CustomEvent("tjd:themechange"));
+        });
+      } catch (e) {}
+
+      bind();
+      addEventListener("turbo:load", bind);
+      /* Following the system and the system flips: the toolbar tint has to follow it too. */
+      try {
+        var mqT = matchMedia("(prefers-color-scheme: dark)");
+        var onSys = function () { if (!document.documentElement.getAttribute("data-theme")) chrome(); };
+        if (mqT.addEventListener) mqT.addEventListener("change", onSys);
+        else if (mqT.addListener) mqT.addListener(onSys);
+      } catch (e) {}
+    })();
+  </script>
+</body>
+</html>
