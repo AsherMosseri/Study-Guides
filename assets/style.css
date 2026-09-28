@@ -1543,6 +1543,10 @@ a.card p.card-progress { margin-top: 6px; font-size: 0.9rem; font-weight: 600; c
 .shapes figure { margin: 0; width: 76px; display: flex; flex-direction: column; align-items: center; gap: 2px; }
 .shapes span { display: block; height: 6px; border-radius: 2px; background: var(--series-1); }
 .shapes figcaption { font-size: 0.72rem; color: var(--muted); margin-top: 2px; }
+.ptable { width: 100%; border-collapse: collapse; margin: 0 0 6px; font-size: 0.8rem; line-height: 1.3; }
+.ptable th, .ptable td { padding: 2px 4px; border-bottom: 1px solid var(--border); text-align: left; vertical-align: top; }
+.ptable thead th { font-weight: 700; }
+.ptable tbody th { color: var(--muted); font-weight: 600; }
 @media (max-width: 860px) {
   .spage { grid-template-columns: minmax(0, 1fr); }
 }
@@ -1569,6 +1573,8 @@ a.card p.card-progress { margin-top: 6px; font-size: 0.9rem; font-weight: 600; c
   .sbox h2 { font-size: 9.4pt; margin-bottom: 2pt; }
   .sbox li { margin: 1pt 0; }
   .formulas dd span { font-size: 7.4pt; }
+  .ptable { font-size: 7.2pt; }
+  .ptable th, .ptable td { padding: 1pt 2pt; }
   .dtm-table { font-size: 7.8pt; }
   .dtm-table th { font-size: 7.2pt; }
   .traps ul { columns: 2; }
@@ -1576,3 +1582,25 @@ a.card p.card-progress { margin-top: 6px; font-size: 0.9rem; font-weight: 600; c
   .shapes figcaption { font-size: 6.5pt; }
 }
 
+
+/* Pyramid comparison table (reading guide). Scrolls sideways inside its box on phones, so the
+   page itself never does. */
+.guide .cmp-title { margin: 28px 0 8px; font-size: 1rem; }
+.cmp-wrap { overflow-x: auto; margin: 0 0 10px; border: 1px solid var(--border); border-radius: 10px; background: var(--card); }
+.cmp-table { width: 100%; min-width: 560px; border-collapse: collapse; font-size: 0.9rem; line-height: 1.4; }
+.cmp-table th, .cmp-table td { padding: 8px 10px; border-bottom: 1px solid var(--border); text-align: left; vertical-align: top; }
+.cmp-table tbody tr:last-child th, .cmp-table tbody tr:last-child td { border-bottom: 0; }
+.cmp-table thead th { background: var(--term-bg); }
+.cmp-table thead th span { display: block; font-size: 0.78rem; font-weight: 400; color: var(--muted); margin-top: 2px; }
+.cmp-table tbody th { font-size: 0.82rem; color: var(--muted); font-weight: 600; white-space: nowrap; }
+@media (max-width: 600px) {
+  .cmp-wrap { overflow: visible; }
+  .cmp-table { min-width: 0; }
+  .cmp-table thead { display: none; }
+  .cmp-table, .cmp-table tbody, .cmp-table tr, .cmp-table th, .cmp-table td { display: block; }
+  .cmp-table tbody tr { padding: 10px 12px; border-bottom: 1px solid var(--border); }
+  .cmp-table tbody tr:last-child { border-bottom: 0; }
+  .cmp-table tbody th { padding: 0 0 4px; border: 0; white-space: normal; text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.72rem; }
+  .cmp-table td { padding: 2px 0; border: 0; }
+  .cmp-table td::before { content: attr(data-label) ": "; font-weight: 700; color: var(--accent); }
+}
