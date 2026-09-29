@@ -42,6 +42,9 @@
 
   document.addEventListener("click", function (e) {
     if (e.target.closest(".panel-close")) { closeNote(true); return; }
+    // A "Jump there" link inside a note goes to another part of the page: close the panel so the
+    // reader lands on it instead of on the panel.
+    if (e.target.closest("#panel-body a[href^='#']")) { closeNote(false); return; }
     const trigger = e.target.closest("[data-note]");
     if (trigger) {
       e.preventDefault();

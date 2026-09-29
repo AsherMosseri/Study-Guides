@@ -15,11 +15,13 @@ study.thejunkdrawerapp.com. Work directly on `main`.
   <reading>/practice/               AP-style multiple choice with an explanation for every answer
   <reading>/review/                 study sheet (+ study-sheet.pdf and study-sheet-bw.pdf, generated)
 /human-geo/test/                    chapter-test study guides   e.g. /human-geo/test/chapter-2/
-  <chapter>/                        options page, like a reading's; its guide covers only the sections
-                                    no reading guide covers (Ch. 2: 2.3, 2.4) plus a "putting it all
-                                    together" section, and links to the reading guides for the rest
-  <chapter>/flashcard/, match/,     cover the WHOLE chapter: the reading's cards, pairs and questions
-  practice/, review/                are reused with data-notes-from pointing at the reading's guide
+  <chapter>/                        options page, like a reading's
+  <chapter>/reading/                ONE guide for the whole chapter: the reading guides' sections, then
+                                    the rest of the chapter, then "putting it all together". Once a
+                                    reading's quiz is over its guide moves in here (its notes gain
+                                    "Later in Chapter 2" links) and <reading>/reading/ becomes a redirect
+  <chapter>/flashcard/, match/,     cover the WHOLE chapter; the reading's cards, pairs and questions
+  practice/, review/                are reused, and every one explains from the chapter guide
 /bio/                               Biology (planned; same quiz/ and test/ layout)
 /quiz/..., /test/...                redirect pages for the old addresses; keep them
 assets/style.css                    one stylesheet for every page
