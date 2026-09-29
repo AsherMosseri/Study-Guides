@@ -206,8 +206,9 @@
   }
 
   function readingHref(href) {
+    const q = "?from=quiz&back=" + encodeURIComponent(location.pathname);
     const i = href.indexOf("#");
-    return i < 0 ? href + "?from=quiz" : href.slice(0, i) + "?from=quiz" + href.slice(i);
+    return i < 0 ? href + q : href.slice(0, i) + q + href.slice(i);
   }
 
   // The clock counts time spent on questions; it pauses while you're away from the page.
@@ -410,7 +411,7 @@
 
   function explain(page, id, trigger) {
     if (!window.siteExplain) return;
-    window.siteExplain("qz-" + id, item(id).dataset.notes.split(/\s+/).filter(Boolean), page.dataset.notesFrom, trigger, page);
+    window.siteExplain("qz-" + id, item(id).dataset.notes.split(/\s+/).filter(Boolean), item(id).dataset.notesFrom || page.dataset.notesFrom, trigger, page);
   }
 
   // ---------- Events ----------

@@ -248,7 +248,7 @@
     const ex = e.target.closest("[data-mt-explain]");
     if (ex && window.siteExplain) {
       const li = data(page)[Number(ex.dataset.mtExplain)];
-      window.siteExplain("mt-" + li.dataset.card, li.dataset.notes.split(/\s+/).filter(Boolean), page.dataset.notesFrom, ex, page);
+      window.siteExplain("mt-" + li.dataset.card, li.dataset.notes.split(/\s+/).filter(Boolean), li.dataset.notesFrom || page.dataset.notesFrom, ex, page);
       return;
     }
     const act = e.target.closest("[data-mt]");
@@ -273,8 +273,11 @@
       el.hidden = key === null;
       if (key === null) return;
       const part = key.split("|")[0], kind = key.split("|")[1];
-      el.textContent = "Best time " + clock(bests[key]) + " (" + (KIND_NAME[kind] || kind) + ", " +
-        (part === "all" ? "whole reading" : part === "part-2-1" ? "intro and 2.1" : "2.2") + ")";
+      // A hub can name its own parts (data-part-names='{"part-2-3": "2.3"}'); these are the reading's.
+      let names = {};
+      try { names = JSON.parse(el.dataset.partNames || "{}"); } catch (err) { /* keep defaults */ }
+      const partName = names[part] || (part === "all" ? "whole reading" : part === "part-2-1" ? "intro and 2.1" : "2.2");
+      el.textContent = "Best time " + clock(bests[key]) + " (" + (KIND_NAME[kind] || kind) + ", " + partName + ")";
     });
   }
 

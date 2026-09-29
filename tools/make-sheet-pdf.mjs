@@ -5,7 +5,8 @@
 //   NODE_PATH=$(npm root -g) node tools/make-sheet-pdf.mjs
 //
 // It serves the repo root itself, renders with the print styles in style.css, and checks that
-// the sheet comes out at exactly two Letter pages.
+// each sheet comes out at exactly its expected number of Letter pages (two per printed sheet,
+// front and back).
 import http from "node:http";
 import fs from "node:fs";
 import path from "node:path";
@@ -17,7 +18,10 @@ const require = createRequire(import.meta.url);
 const { chromium } = require("playwright");
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const SHEETS = ["human-geo/quiz/reading-2.1-2.2/review/"];
+const SHEETS = [
+  ["human-geo/quiz/reading-2.1-2.2/review/", 2],
+  ["human-geo/test/chapter-2/review/", 4],
+];
 const TYPES = { ".html": "text/html", ".css": "text/css", ".js": "text/javascript", ".png": "image/png", ".ico": "image/x-icon", ".svg": "image/svg+xml", ".pdf": "application/pdf" };
 
 const server = http.createServer((req, res) => {
@@ -34,7 +38,7 @@ const base = "http://localhost:" + server.address().port + "/";
 // --no-proxy-server keeps a system proxy from intercepting the local server.
 const browser = await chromium.launch({ args: ["--no-proxy-server"] });
 try {
-  for (const sheet of SHEETS) {
+  for (const [sheet, expected] of SHEETS) {
     const page = await browser.newPage({ colorScheme: "light" });
     await page.goto(base + sheet, { waitUntil: "load" });
     await page.emulateMedia({ media: "print" });
@@ -44,7 +48,7 @@ try {
       const out = path.join(ROOT, sheet, file);
       await page.pdf({ path: out, format: "Letter", printBackground: true, margin: { top: "0.35in", bottom: "0.35in", left: "0.35in", right: "0.35in" } });
       const pages = (fs.readFileSync(out, "latin1").match(/\/Type\s*\/Page[^s]/g) || []).length;
-      if (pages !== 2) throw new Error(`${sheet}${file}: expected 2 pages, got ${pages}`);
+      if (pages !== expected) throw new Error(`${sheet}${file}: expected ${expected} pages, got ${pages}`);
       console.log("wrote", path.relative(ROOT, out), "(" + pages + " pages)");
     }
     await page.close();

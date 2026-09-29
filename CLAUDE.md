@@ -15,6 +15,11 @@ study.thejunkdrawerapp.com. Work directly on `main`.
   <reading>/practice/               AP-style multiple choice with an explanation for every answer
   <reading>/review/                 study sheet (+ study-sheet.pdf and study-sheet-bw.pdf, generated)
 /human-geo/test/                    chapter-test study guides   e.g. /human-geo/test/chapter-2/
+  <chapter>/                        options page, like a reading's; its guide covers only the sections
+                                    no reading guide covers (Ch. 2: 2.3, 2.4) plus a "putting it all
+                                    together" section, and links to the reading guides for the rest
+  <chapter>/flashcard/, match/,     cover the WHOLE chapter: the reading's cards, pairs and questions
+  practice/, review/                are reused with data-notes-from pointing at the reading's guide
 /bio/                               Biology (planned; same quiz/ and test/ layout)
 /quiz/..., /test/...                redirect pages for the old addresses; keep them
 assets/style.css                    one stylesheet for every page
@@ -26,7 +31,8 @@ assets/plan.js                      "What to study next" panel: reads every tool
 assets/calc.js                      natural increase calculator
 assets/js/turbo.min.js              Turbo Drive (copied from the main site)
 tools/version-assets.py             stamps ?v=<hash> on every local .css/.js link
-tools/make-sheet-pdf.mjs            renders each study sheet to 2-page Letter PDFs (color, black and white)
+tools/make-sheet-pdf.mjs            renders each study sheet to Letter PDFs (color, black and white);
+                                    SHEETS lists each sheet with its page count
 ```
 
 **Adding a subject:** create `/<subject>/index.html` (copy `/human-geo/index.html`), give it
@@ -51,7 +57,9 @@ chapter up to the end of the page's assigned reading. Never point ahead (later s
 AP units) and never lean on outside theories the book does not cover (Boserup, world-systems theory,
 the Columbian Exchange, demographic dividend...). If an AP term is useful but not in the reading,
 name it only while explaining it through an example the reader has already seen. When a new page is
-added, widen "already read" to include it for pages that come after it, never before.
+added, widen "already read" to include it for pages that come after it, never before. A chapter-test guide counts the whole chapter as
+read, so its notes and tables should connect across every section of the chapter; that is its
+main job.
 
 **Charts use the book's data.** Numbers come from the reading's text and figures. When a figure's
 values are not printed, measure them from the figure (the pyramids were measured from bar lengths)
@@ -82,7 +90,9 @@ main one) that "Explain it" pulls from `reading/`; every card needs at least one
 spaced-repetition schedule (`srs:` key) and the deck in progress (sessionStorage) are all keyed by
 card id. Each Match pair (`match/`) names its flashcard in `data-card` and takes its part and notes from
 it; pairs sharing `data-group` never appear in one round, so give look-alikes the same group. Out-of-date numbers keep the book's figure and add
-an "Update" box; book errors get a short note saying which value to use on the quiz.
+an "Update" box; book errors get a short note saying which value to use on the quiz. A card, Match pair or question that belongs to another guide carries `data-notes-from` (that
+guide's URL) so "Explain it" loads the right notes; "In the reading" links carry `back=` so the
+guide's return button goes back to the deck or quiz that sent you.
 
 **Practice quiz questions are written for this site**, in the AP style (a pyramid, table or
 situation, then apply an idea), never copied from AP Classroom or released exams (College Board

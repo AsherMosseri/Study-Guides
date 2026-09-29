@@ -363,6 +363,9 @@ footer { margin-top: 32px; color: var(--muted); font-size: 0.9rem; }
   white-space: nowrap;
   border: 0;
 }
+/* A table ignores width: 1px and grows to fit its cells, which widened phone pages; as a block
+   it obeys the clip like everything else. */
+table.sr-only { display: block; }
 
 /* Neutral / reference bars and cut-off bars */
 .bar.bar-neutral { background: var(--neutral-bar); }
@@ -1539,6 +1542,8 @@ a.card p.card-progress { margin-top: 6px; font-size: 0.9rem; font-weight: 600; c
 .traps { border-color: var(--review); }
 .traps h2 { color: var(--review); }
 .traps ul { columns: 2 260px; column-gap: 24px; }
+.sbox ul.cols2 { columns: 2 260px; column-gap: 24px; }
+.sbox ul.cols2 li { break-inside: avoid; }
 .shapes { display: flex; gap: 12px; justify-content: space-around; margin: 2px 0 8px; }
 .shapes figure { margin: 0; width: 76px; display: flex; flex-direction: column; align-items: center; gap: 2px; }
 .shapes span { display: block; height: 6px; border-radius: 2px; background: var(--series-1); }
@@ -1552,6 +1557,9 @@ a.card p.card-progress { margin-top: 6px; font-size: 0.9rem; font-weight: 600; c
 }
 @media (max-width: 640px) {
   .dtm-table td:nth-child(-n+4) { white-space: normal; }
+  .dtm-table { font-size: 0.78rem; }
+  .dtm-table th, .dtm-table td { padding-right: 5px; }
+  .dtm-table th { font-size: 0.72rem; }
   .sheet-top { flex-direction: column; gap: 0; }
   .sheet-actions { margin: 0 0 12px; justify-content: flex-start; }
 }
@@ -1602,7 +1610,7 @@ a.card p.card-progress { margin-top: 6px; font-size: 0.9rem; font-weight: 600; c
   .ptable th, .ptable td { padding: 1pt 2pt; }
   .dtm-table { font-size: 7.8pt; }
   .dtm-table th { font-size: 7.2pt; }
-  .traps ul { columns: 2; }
+  .traps ul, .sbox ul.cols2 { columns: 2; }
   .shapes span { height: 4pt; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
   .shapes figcaption { font-size: 6.5pt; }
 }

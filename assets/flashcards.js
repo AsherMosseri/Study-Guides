@@ -165,10 +165,12 @@
     return d <= 1 ? "tomorrow" : "in " + d + " days";
   }
 
-  // Link to the card's spot in the reading, marked so the reading shows "Back to flashcards".
+  // Link to the card's spot in the reading, marked so the reading shows "Back to flashcards" and
+  // knows which deck to go back to (the guide can belong to a different reading than the deck).
   function readingHref(href) {
+    const q = "?from=flashcards&back=" + encodeURIComponent(location.pathname);
     const i = href.indexOf("#");
-    return i < 0 ? href + "?from=flashcards" : href.slice(0, i) + "?from=flashcards" + href.slice(i);
+    return i < 0 ? href + q : href.slice(0, i) + q + href.slice(i);
   }
 
   // Draw the page from the state: the current card, progress, counts and the end screen.
@@ -371,8 +373,10 @@
     const s = getState(page);
     if (!s || s.index >= s.order.length || !window.siteExplain) return;
     const id = s.order[s.index];
-    const ids = (document.getElementById(id).dataset.notes || "").split(/\s+/).filter(Boolean);
-    window.siteExplain("fc-" + id, ids, page.dataset.notesFrom, trigger, page);
+    const el = document.getElementById(id);
+    const ids = (el.dataset.notes || "").split(/\s+/).filter(Boolean);
+    // A card can name its own guide (a chapter deck mixes cards from more than one reading).
+    window.siteExplain("fc-" + id, ids, el.dataset.notesFrom || page.dataset.notesFrom, trigger, page);
   }
 
   function panelOpen() {
@@ -541,11 +545,14 @@
     quiz: ["practice/", "Back to the quiz"],
   };
   function returnButton() {
-    const to = RETURN[new URLSearchParams(location.search).get("from")];
+    const params = new URLSearchParams(location.search);
+    const to = RETURN[params.get("from")];
     if (!to || document.querySelector(".fc-page, .qz-page, .fc-return")) return;
+    // "back" is the deck or quiz page that sent us here; only a path on this site is trusted.
+    const back = params.get("back") || "";
     const a = document.createElement("a");
     a.className = "fc-return";
-    a.href = location.pathname.replace(/[^/]+\/$/, to[0]);
+    a.href = /^\/(?!\/)[\w\-./]*$/.test(back) ? back : location.pathname.replace(/[^/]+\/$/, to[0]);
     a.innerHTML = '<span aria-hidden="true">←</span> ';
     a.append(to[1]);
     document.body.appendChild(a);
