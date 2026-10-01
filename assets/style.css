@@ -1720,8 +1720,6 @@ canvas.bd-draw { touch-action: none; cursor: crosshair; }
   border: 1.5px dashed var(--border); border-radius: 6px; padding: 4px 6px; resize: none;
 }
 .bd-blank textarea { min-height: 2.6em; line-height: 1.25; }
-/* the stage 5 birth rate answer runs to several lines */
-.bd-tall textarea { min-height: 6.4em; }
 .bd-blank input:focus, .bd-blank textarea:focus { outline: 2px solid var(--accent); outline-offset: 1px; border-style: solid; }
 .bd-fixed { display: none; }
 /* Which text is given: "Like the test" blanks the table cells and the four labels on the chart;
