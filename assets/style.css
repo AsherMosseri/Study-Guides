@@ -1704,6 +1704,8 @@ canvas.bd-draw { touch-action: none; cursor: crosshair; }
 .bd-k-popfill { fill: var(--bd-popfill); }
 .bd-k-q { fill: var(--muted); font-size: 16px; }
 .bd-onchart { position: absolute; width: 23%; transform: translateY(-50%); z-index: 2; }
+/* "Natural Increase" sits in the gap between the birth and death lines, so it gets a narrower box. */
+.bd-onchart.bd-narrow { width: 19%; }
 .bd-grid { display: grid; grid-template-columns: 11% repeat(5, minmax(0, 1fr)); margin: 10px 1% 0 0; }
 .bd-grid > div { border-top: 1px solid var(--border); padding: 6px 6px; min-width: 0; }
 .bd-grid > .bd-rowlabel { border-right: 1px solid var(--border); padding-left: 0; padding-right: 4px; font-weight: 700; font-size: 0.8rem; }
@@ -1722,16 +1724,21 @@ canvas.bd-draw { touch-action: none; cursor: crosshair; }
 .bd-small textarea, .bd-small .bd-fixed, .bd-small .bd-ans { font-size: 0.78rem; }
 .bd-blank input:focus, .bd-blank textarea:focus { outline: 2px solid var(--accent); outline-offset: 1px; border-style: solid; }
 .bd-fixed { display: none; }
-.bd-page:is([data-mode="cells"], [data-mode="test"]) .bd-blank:not([data-kind="cell"]) > :is(input, textarea) { display: none; }
-.bd-page:is([data-mode="cells"], [data-mode="test"]) .bd-blank:not([data-kind="cell"]) > .bd-fixed { display: block; }
-/* "Like the test": the lines are given, so the model's curves show and the chart isn't for drawing. */
-.bd-page[data-mode="test"] .bd-key { display: block; }
-.bd-page[data-mode="test"] .bd-chart > canvas.bd-draw, .bd-page[data-mode="test"] .bd-pen-tool { display: none; }
+/* Which text is given: "Like the test" blanks the table cells and the four labels on the chart;
+   "easy" blanks only the cells; "all" blanks everything. */
+.bd-page[data-mode="test"] .bd-blank:not([data-kind="cell"]):not([data-kind="line"]) > :is(input, textarea),
+.bd-page[data-mode="easy"] .bd-blank:not([data-kind="cell"]) > :is(input, textarea) { display: none; }
+.bd-page[data-mode="test"] .bd-blank:not([data-kind="cell"]):not([data-kind="line"]) > .bd-fixed,
+.bd-page[data-mode="easy"] .bd-blank:not([data-kind="cell"]) > .bd-fixed { display: block; }
+/* "easy": the lines are given, so the model's curves show and the chart isn't for drawing. */
+.bd-page[data-mode="easy"] .bd-key { display: block; }
+.bd-page[data-mode="easy"] .bd-chart > canvas.bd-draw, .bd-page[data-mode="easy"] .bd-pen-tool { display: none; }
 .bd-blank.ok > :is(input, textarea) { border: 1.5px solid var(--good, #1a7f37); background: rgba(26, 127, 55, 0.08); }
 .bd-blank.bad > :is(input, textarea) { border: 1.5px solid var(--review, #bc4c00); background: rgba(188, 76, 0, 0.08); }
 .bd-show .bd-blank > :is(input, textarea):not([style*="none"]) ~ .bd-ans { display: block; }
 .bd-ans { font-size: 0.78rem; color: var(--good, #1a7f37); font-weight: 600; margin-top: 2px; }
-.bd-page:is([data-mode="cells"], [data-mode="test"]) .bd-blank:not([data-kind="cell"]) > .bd-ans { display: none !important; }
+.bd-page[data-mode="test"] .bd-blank:not([data-kind="cell"]):not([data-kind="line"]) > .bd-ans,
+.bd-page[data-mode="easy"] .bd-blank:not([data-kind="cell"]) > .bd-ans { display: none !important; }
 .bd-pyr { position: relative; aspect-ratio: 1 / 1; max-width: 140px; margin: 0 auto; border: 1px dashed var(--border); border-radius: 6px; }
 .bd-pyr > canvas.bd-draw, .bd-pyr-key { position: absolute; inset: 0; width: 100%; height: 100%; }
 .bd-pyr-key { pointer-events: none; opacity: 0.55; }
