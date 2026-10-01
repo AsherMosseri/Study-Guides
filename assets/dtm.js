@@ -28,6 +28,7 @@
     pop: [[[4, 41.5], [4.5, 42.9], [5, 44.4]], [[4, 41.5], [4.5, 40.1], [5, 38.6]]],
   };
   const NAMES = { birth: "Birth rate", death: "Death rate", pop: "Total population" };
+  const PEN_NAMES = { birth: "Green", death: "Purple", pop: "Blue" };
 
   // Chart geometry in SVG/viewBox units (1000 × 440).
   const X0 = 110, X1 = 990, Y0 = 420, PER = 9.3;
@@ -176,9 +177,9 @@
     canvas.addEventListener("pointercancel", end);
   }
 
-  // Score one line: how much of the chart it covers, and how far it sits from the model.
-  function scoreLine(page, key) {
-    const strokes = (page._dtm.state.strokes.chart || []).filter((s) => s.pen === key);
+  // Score the strokes drawn with one pen against one of the model's lines: how much of the chart it covers, and how far it sits from the model.
+  function scoreLine(page, pen, key) {
+    const strokes = (page._dtm.state.strokes.chart || []).filter((s) => s.pen === pen);
     const bins = 100, sums = new Array(bins).fill(0), counts = new Array(bins).fill(0);
     // Fill in between recorded points, so a quick swipe (few pointer events) still covers the
     // stretch of chart it crossed.
@@ -259,13 +260,27 @@
       (right === total ? ". Every blank word for word." : ". Red boxes are off; tap Show answers to compare.");
   }
 
+  // The pens aren't labeled (naming them would give the lines away), so any color can be any line.
+  // Each color is matched to the model line it fits, trying every one-to-one pairing and keeping
+  // the best total.
+  const LINES = ["birth", "death", "pop"];
+  const PERMS = [[0, 1, 2], [0, 2, 1], [1, 0, 2], [1, 2, 0], [2, 0, 1], [2, 1, 0]];
   function checkDrawing(page) {
-    const parts = [];
-    ["birth", "death", "pop"].forEach((k) => {
-      const r = scoreLine(page, k);
-      parts.push(r ? NAMES[k] + ": " + r.score + "% match (covers " + r.coverage + "% of the chart, off by about " + r.err.toFixed(1) + " on average)"
-        : NAMES[k] + ": not drawn yet");
+    const fit = LINES.map((pen) => LINES.map((key) => scoreLine(page, pen, key)));
+    let best = null, bestSum = -1;
+    PERMS.forEach((perm) => {
+      const sum = LINES.reduce((t, pen, i) => t + (fit[i][perm[i]] ? fit[i][perm[i]].score + 1 : 0), 0);
+      if (sum > bestSum) { bestSum = sum; best = perm; }
     });
+    const parts = [], matched = {};
+    LINES.forEach((pen, i) => {
+      const r = fit[i][best[i]];
+      if (!r) return;
+      matched[LINES[best[i]]] = true;
+      parts.push(PEN_NAMES[pen] + " line looks like the " + NAMES[LINES[best[i]]].toLowerCase() + ": " + r.score + "% match (covers " + r.coverage +
+        "% of the chart, off by about " + r.err.toFixed(1) + " on average)");
+    });
+    LINES.forEach((key) => { if (!matched[key]) parts.push(NAMES[key] + ": not drawn yet"); });
     page.querySelector(".bd-draw-score").textContent = parts.join(" · ");
   }
 
