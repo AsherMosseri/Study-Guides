@@ -475,6 +475,34 @@
     });
   }
 
+  // Undo the last drawing step: a stroke, a label added or moved, or an eraser swipe.
+  function undo(page) {
+    const st = page._dtm.state;
+    const step = st.history.pop();
+    if (typeof step === "string") { if (st.strokes[step]) st.strokes[step].pop(); }
+    else if (step && step.op === "label-add") st.labels = st.labels.filter((l) => l.id !== step.id);
+    else if (step && step.op === "label-move") { const l = st.labels.find((q) => q.id === step.id); if (l) { l.x = step.from[0]; l.y = step.from[1]; } }
+    else if (step && step.removed) {
+      const list = (st.strokes[step.surface] = st.strokes[step.surface] || []);
+      for (let i = step.removed.length - 1; i >= 0; i--) list.splice(step.removed[i][0], 0, step.removed[i][1]);
+      const labs = step.labels || [];
+      for (let i = labs.length - 1; i >= 0; i--) st.labels.splice(labs[i][0], 0, labs[i][1]);
+    }
+    renderAll(page); renderLabels(page); persist(page); clearDrawScore(page);
+  }
+
+  // Cmd+Z (Ctrl+Z on Windows) is the toolbar's Undo, except while typing in a box, where it
+  // keeps undoing the typing as usual.
+  document.addEventListener("keydown", function (e) {
+    if ((e.key || "").toLowerCase() !== "z" || !(e.metaKey || e.ctrlKey) || e.shiftKey || e.altKey) return;
+    const page = document.querySelector(".bd-page");
+    if (!page || !page._dtm || document.querySelector("dialog[open]")) return;
+    const el = document.activeElement;
+    if (el && (el.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(el.tagName))) return;
+    e.preventDefault();
+    undo(page);
+  });
+
   document.addEventListener("click", function (e) {
     const page = e.target.closest && e.target.closest(".bd-page");
     if (!page || !page._dtm) return;
@@ -495,19 +523,7 @@
       act.setAttribute("aria-pressed", String(on));
       act.textContent = on ? "Hide answers" : "Show answers";
     }
-    else if (what === "undo") {
-      const step = st.history.pop();
-      if (typeof step === "string") { if (st.strokes[step]) st.strokes[step].pop(); }
-      else if (step && step.op === "label-add") st.labels = st.labels.filter((l) => l.id !== step.id);
-      else if (step && step.op === "label-move") { const l = st.labels.find((q) => q.id === step.id); if (l) { l.x = step.from[0]; l.y = step.from[1]; } }
-      else if (step && step.removed) {
-        const list = (st.strokes[step.surface] = st.strokes[step.surface] || []);
-        for (let i = step.removed.length - 1; i >= 0; i--) list.splice(step.removed[i][0], 0, step.removed[i][1]);
-        const labs = step.labels || [];
-        for (let i = labs.length - 1; i >= 0; i--) st.labels.splice(labs[i][0], 0, labs[i][1]);
-      }
-      renderAll(page); renderLabels(page); persist(page); clearDrawScore(page);
-    }
+    else if (what === "undo") undo(page);
     else if (what === "clear-draw" || what === "clear-text" || what === "clear-all") {
       const ask = {
         "clear-draw": { title: "Erase your drawing?", text: "Every line and pyramid you've drawn will be erased.", ok: "Erase" },
