@@ -1713,7 +1713,6 @@ canvas.bd-draw { touch-action: none; cursor: crosshair; }
 .bd-grid > .bd-cell + .bd-cell, .bd-grid > .bd-rowlabel + .bd-cell { border-left: 0; }
 .bd-grid > .bd-cell { border-left: 1px solid var(--border); }
 .bd-stagehead { font-weight: 700; text-align: center; }
-.c-birth { color: var(--bd-birth); } .c-death { color: var(--bd-death); } .c-pop { color: var(--bd-pop); } .c-ni { color: var(--accent); }
 .bd-blank { display: block; min-width: 0; }
 .bd-blank + .bd-blank { margin-top: 4px; }
 .bd-blank input, .bd-blank textarea {
