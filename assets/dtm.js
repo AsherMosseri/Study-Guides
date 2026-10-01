@@ -304,16 +304,21 @@
       if (surface && st.strokes[surface]) st.strokes[surface].pop();
       renderAll(page); persist(page); clearDrawScore(page);
     }
-    else if (what === "clear-draw" || what === "clear-text") {
-      const drawing = what === "clear-draw";
-      window.siteConfirm({
-        title: drawing ? "Erase your drawing?" : "Clear every blank?",
-        text: drawing ? "Every line and pyramid you've drawn will be erased." : "Everything you've typed will be erased.",
-        ok: drawing ? "Erase" : "Clear", cancel: "Keep it", danger: true,
-      }).then(function (yes) {
+    else if (what === "clear-draw" || what === "clear-text" || what === "clear-all") {
+      const ask = {
+        "clear-draw": { title: "Erase your drawing?", text: "Every line and pyramid you've drawn will be erased.", ok: "Erase" },
+        "clear-text": { title: "Clear every blank?", text: "Everything you've typed will be erased.", ok: "Clear" },
+        "clear-all": { title: "Start over?", text: "Everything you've drawn and typed will be erased, and the answers will be hidden.", ok: "Clear all" },
+      }[what];
+      window.siteConfirm({ title: ask.title, text: ask.text, ok: ask.ok, cancel: "Keep it", danger: true }).then(function (yes) {
         if (!yes) return;
-        if (drawing) { st.strokes = {}; st.history = []; renderAll(page); clearDrawScore(page); }
-        else { page.querySelectorAll(".bd-blank input, .bd-blank textarea").forEach((el) => { el.value = ""; }); st.text = {}; clearMarks(page); }
+        if (what !== "clear-text") { st.strokes = {}; st.history = []; renderAll(page); clearDrawScore(page); }
+        if (what !== "clear-draw") { page.querySelectorAll(".bd-blank input, .bd-blank textarea").forEach((el) => { el.value = ""; }); st.text = {}; clearMarks(page); }
+        if (what === "clear-all") {
+          page.classList.remove("bd-show");
+          const key = page.querySelector('[data-bd="key"]');
+          if (key) { key.setAttribute("aria-pressed", "false"); key.textContent = "Show answers"; }
+        }
         persist(page);
       });
     }
