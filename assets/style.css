@@ -1732,7 +1732,7 @@ canvas.bd-draw { touch-action: none; cursor: crosshair; }
 .bd-page[data-mode="easy"] .bd-blank:not([data-kind="cell"]) > .bd-fixed { display: block; }
 /* "easy": the lines are given, so the model's curves show and the chart isn't for drawing. */
 .bd-page[data-mode="easy"] .bd-key { display: block; }
-.bd-page[data-mode="easy"] .bd-chart > canvas.bd-draw, .bd-page[data-mode="easy"] .bd-pen-tool { display: none; }
+.bd-page[data-mode="easy"] .bd-chart > canvas.bd-draw, .bd-page[data-mode="easy"] .bd-dock-pens { display: none; }
 .bd-blank.ok > :is(input, textarea) { border: 1.5px solid var(--good, #1a7f37); background: rgba(26, 127, 55, 0.08); }
 .bd-blank.bad > :is(input, textarea) { border: 1.5px solid var(--review, #bc4c00); background: rgba(188, 76, 0, 0.08); }
 .bd-show .bd-blank > :is(input, textarea):not([style*="none"]) ~ .bd-ans { display: block; }
@@ -1745,6 +1745,39 @@ canvas.bd-draw { touch-action: none; cursor: crosshair; }
 .bd-pyr-key .men { fill: var(--bd-men); } .bd-pyr-key .women { fill: var(--bd-women); }
 .bd-mw { position: absolute; left: 0; right: 0; bottom: -18px; display: flex; justify-content: center; gap: 10px; font-size: 0.72rem; color: var(--muted); }
 .bd-grid > .bd-cell:has(.bd-pyr) { padding-bottom: 24px; }
+/* Drawing toolbar: line colors, eraser and undo. It sticks to the bottom of the screen while the
+   sheet is in view, so the tools are always a thumb away. */
+.bd-dock {
+  position: sticky; bottom: 0; z-index: 6;
+  display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 6px;
+  margin: 12px auto 0; padding: 8px 10px calc(8px + env(safe-area-inset-bottom, 0px));
+  background: var(--card); border: 1px solid var(--border); border-radius: 14px 14px 0 0;
+  box-shadow: 0 -4px 18px rgba(0, 0, 0, 0.08);
+}
+.bd-dock-pens { display: flex; gap: 6px; }
+.bd-dock-btn {
+  display: inline-flex; align-items: center; gap: 6px; min-height: 40px; padding: 6px 12px;
+  border: 1px solid var(--border); border-radius: 999px; background: var(--card); color: var(--text);
+  font: inherit; font-size: 0.9rem; font-weight: 600; cursor: pointer; -webkit-tap-highlight-color: transparent;
+}
+.bd-dock-btn svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.bd-dock-btn .sw { display: inline-block; width: 14px; height: 14px; border-radius: 50%; }
+.bd-dock-btn[aria-pressed="true"] { border-color: var(--accent); background: var(--term-bg); color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.bd-dock-btn:active { transform: scale(0.95); }
+.bd-dock-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+@media (hover: hover) { .bd-dock-btn:not([aria-pressed="true"]):hover { background: var(--card-hover); } }
+@media (max-width: 480px) {
+  .bd-dock { gap: 4px; padding-left: 6px; padding-right: 6px; }
+  .bd-dock-pens { gap: 4px; }
+  .bd-dock-btn { padding: 6px 9px; gap: 5px; font-size: 0.82rem; }
+  /* one row on a phone: the eraser and undo show just their icons */
+  .bd-dock { flex-wrap: nowrap; }
+  .bd-dock-label { display: none; }
+  .bd-dock-btn:has(svg) { padding: 6px 10px; }
+}
+.bd-page[data-tool="erase"] canvas.bd-draw { cursor: cell; }
+/* Tabbing to a blank scrolls it clear of the toolbar instead of under it. */
+html:has(main.bd-page) { scroll-padding-bottom: 90px; }
 .bd-actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 6px; }
 .bd-text-score, .bd-draw-score { margin: 4px 0; font-size: 0.9rem; font-weight: 600; }
 .bd-draw-score { color: var(--muted); font-weight: 500; }

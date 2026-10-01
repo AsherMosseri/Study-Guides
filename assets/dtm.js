@@ -110,8 +110,32 @@
   }
   function renderAll(page) { page.querySelectorAll("canvas.bd-draw").forEach((c) => render(page, c)); }
 
+  // The eraser removes whole strokes it touches. A drag removes as many as it crosses, and the
+  // whole drag is one undo step: history holds { surface, removed: [[index, stroke], ...] }.
+  // A plain string in history is the surface a stroke was added to.
+  function eraseAt(page, canvas, e, removed) {
+    const r = canvas.getBoundingClientRect();
+    const sx = r.width / Number(canvas.dataset.vw), sy = r.height / Number(canvas.dataset.vh);
+    const px = e.clientX - r.left, py = e.clientY - r.top;
+    const reach = e.pointerType === "mouse" ? 9 : 16;
+    const strokes = page._dtm.state.strokes[canvas.dataset.surface] || [];
+    function near(a, b) {
+      const ax = a[0] * sx, ay = a[1] * sy, bx = b[0] * sx, by = b[1] * sy;
+      const dx = bx - ax, dy = by - ay, len = dx * dx + dy * dy;
+      const t = len ? Math.max(0, Math.min(1, ((px - ax) * dx + (py - ay) * dy) / len)) : 0;
+      return Math.hypot(px - (ax + t * dx), py - (ay + t * dy)) <= reach;
+    }
+    let hit = false;
+    for (let i = strokes.length - 1; i >= 0; i--) {
+      const pts = strokes[i].pts;
+      const touched = pts.length === 1 ? near(pts[0], pts[0]) : pts.some((q, k) => k > 0 && near(pts[k - 1], q));
+      if (touched) { removed.push([i, strokes[i]]); strokes.splice(i, 1); hit = true; }
+    }
+    if (hit) render(page, canvas);
+  }
+
   function bindCanvas(page, canvas) {
-    let cur = null;
+    let cur = null, erasing = null;
     function point(e) {
       const r = canvas.getBoundingClientRect();
       return [(e.clientX - r.left) * Number(canvas.dataset.vw) / r.width, (e.clientY - r.top) * Number(canvas.dataset.vh) / r.height];
@@ -121,6 +145,7 @@
       e.preventDefault();
       canvas.setPointerCapture(e.pointerId);
       const surface = canvas.dataset.surface;
+      if (page._dtm.tool === "erase") { erasing = []; eraseAt(page, canvas, e, erasing); return; }
       const pen = surface === "chart" ? page._dtm.state.pen : "ink";
       cur = { pen: pen, pts: [point(e)] };
       const st = page._dtm.state;
@@ -129,6 +154,7 @@
       render(page, canvas);
     });
     canvas.addEventListener("pointermove", function (e) {
+      if (erasing) { eraseAt(page, canvas, e, erasing); return; }
       if (!cur) return;
       const p = point(e), last = cur.pts[cur.pts.length - 1];
       if (Math.abs(p[0] - last[0]) + Math.abs(p[1] - last[1]) < 1.2) return;
@@ -136,6 +162,11 @@
       render(page, canvas);
     });
     function end() {
+      if (erasing) {
+        if (erasing.length) { page._dtm.state.history.push({ surface: canvas.dataset.surface, removed: erasing }); persist(page); clearDrawScore(page); }
+        erasing = null;
+        return;
+      }
       if (!cur) return;
       cur = null;
       persist(page);
@@ -192,7 +223,10 @@
     const mode = page._dtm.state.mode;
     page.dataset.mode = mode;
     page.querySelectorAll("[data-bd-mode]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.bdMode === mode)));
-    page.querySelectorAll("[data-bd-pen]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.bdPen === page._dtm.state.pen)));
+    const erase = page._dtm.tool === "erase";
+    page.dataset.tool = erase ? "erase" : "pen";
+    page.querySelectorAll("[data-bd-pen]").forEach((b) => b.setAttribute("aria-pressed", String(!erase && b.dataset.bdPen === page._dtm.state.pen)));
+    page.querySelectorAll("[data-bd-tool='erase']").forEach((b) => b.setAttribute("aria-pressed", String(erase)));
     page.querySelector("[data-bd='exact']").checked = !!page._dtm.state.exact;
   }
 
@@ -241,7 +275,7 @@
       const saved = load(page.dataset.store) || {};
       // Version 3: "Like the test" (draw the lines, label them, fill the table) is the default.
       page._dtm = { state: { v: 3, mode: saved.v === 3 && saved.mode ? saved.mode : "test", pen: saved.pen || "birth", exact: !!saved.exact,
-        text: saved.text || {}, strokes: saved.strokes || {}, history: saved.history || [] } };
+        text: saved.text || {}, strokes: saved.strokes || {}, history: saved.history || [] }, tool: "pen" };
 
       // the model's curves, drawn once into the hidden key layer
       const key = page.querySelector(".bd-key");
@@ -288,7 +322,8 @@
     const mode = e.target.closest("[data-bd-mode]");
     if (mode) { st.mode = mode.dataset.bdMode; applyMode(page); clearMarks(page); persist(page); return; }
     const pen = e.target.closest("[data-bd-pen]");
-    if (pen) { st.pen = pen.dataset.bdPen; applyMode(page); persist(page); return; }
+    if (pen) { st.pen = pen.dataset.bdPen; page._dtm.tool = "pen"; applyMode(page); persist(page); return; }
+    if (e.target.closest("[data-bd-tool='erase']")) { page._dtm.tool = page._dtm.tool === "erase" ? "pen" : "erase"; applyMode(page); return; }
     const act = e.target.closest("[data-bd]");
     if (!act) return;
     const what = act.dataset.bd;
@@ -300,8 +335,12 @@
       act.textContent = on ? "Hide answers" : "Show answers";
     }
     else if (what === "undo") {
-      const surface = st.history.pop();
-      if (surface && st.strokes[surface]) st.strokes[surface].pop();
+      const step = st.history.pop();
+      if (typeof step === "string") { if (st.strokes[step]) st.strokes[step].pop(); }
+      else if (step && step.removed) {
+        const list = (st.strokes[step.surface] = st.strokes[step.surface] || []);
+        for (let i = step.removed.length - 1; i >= 0; i--) list.splice(step.removed[i][0], 0, step.removed[i][1]);
+      }
       renderAll(page); persist(page); clearDrawScore(page);
     }
     else if (what === "clear-draw" || what === "clear-text" || what === "clear-all") {
