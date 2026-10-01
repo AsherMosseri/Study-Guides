@@ -22,6 +22,7 @@ study.thejunkdrawerapp.com. Work directly on `main`.
                                     "Later in Chapter 2" links) and <reading>/reading/ becomes a redirect
   <chapter>/flashcard/, match/,     cover the WHOLE chapter; the reading's cards, pairs and questions
   practice/, review/                are reused, and every one explains from the chapter guide
+/human-geo/test/dtm/blank/          blank demographic transition diagram to draw and label from memory
 /bio/                               Biology (planned; same quiz/ and test/ layout)
 /quiz/..., /test/...                redirect pages for the old addresses; keep them
 assets/style.css                    one stylesheet for every page
@@ -31,6 +32,7 @@ assets/match.js                     matching game; a miss marks the linked flash
 assets/quiz.js                      practice quiz; a miss marks the linked flashcard Review
 assets/plan.js                      "What to study next" panel: reads every tool's saved progress
 assets/calc.js                      natural increase calculator
+assets/dtm.js                       Blank DTM: drawing canvases, word-for-word label checking, line scoring
 assets/js/turbo.min.js              Turbo Drive (copied from the main site)
 tools/version-assets.py             stamps ?v=<hash> on every local .css/.js link
 tools/make-sheet-pdf.mjs            renders each study sheet to Letter PDFs (color, black and white);
