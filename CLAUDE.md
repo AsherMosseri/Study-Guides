@@ -32,7 +32,7 @@ assets/match.js                     matching game; a miss marks the linked flash
 assets/quiz.js                      practice quiz; a miss marks the linked flashcard Review
 assets/plan.js                      "What to study next" panel: reads every tool's saved progress
 assets/calc.js                      natural increase calculator
-assets/dtm.js                       Blank DTM: drawing canvases, word-for-word label checking, line scoring
+assets/dtm.js                       Blank DTM: drawing canvases, placed chart labels, word-for-word checking, line scoring
 assets/js/turbo.min.js              Turbo Drive (copied from the main site)
 tools/version-assets.py             stamps ?v=<hash> on every local .css/.js link
 tools/make-sheet-pdf.mjs            renders each study sheet to Letter PDFs (color, black and white);

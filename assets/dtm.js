@@ -127,6 +127,17 @@
       return Math.hypot(px - (ax + t * dx), py - (ay + t * dy)) <= reach;
     }
     let hit = false;
+    if (canvas.dataset.surface === "chart" && removed.labels) {
+      const labels = page._dtm.state.labels;
+      for (let i = labels.length - 1; i >= 0; i--) {
+        const el = page.querySelector('.bd-ul[data-id="' + labels[i].id + '"]');
+        if (!el) continue;
+        const b = el.getBoundingClientRect();
+        if (e.clientX >= b.left - reach / 2 && e.clientX <= b.right + reach / 2 && e.clientY >= b.top - reach / 2 && e.clientY <= b.bottom + reach / 2) {
+          removed.labels.push([i, labels[i]]); labels.splice(i, 1); el.remove();
+        }
+      }
+    }
     for (let i = strokes.length - 1; i >= 0; i--) {
       const pts = strokes[i].pts;
       const touched = pts.length === 1 ? near(pts[0], pts[0]) : pts.some((q, k) => k > 0 && near(pts[k - 1], q));
@@ -146,7 +157,11 @@
       e.preventDefault();
       canvas.setPointerCapture(e.pointerId);
       const surface = canvas.dataset.surface;
-      if (page._dtm.tool === "erase") { erasing = []; eraseAt(page, canvas, e, erasing); return; }
+      if (page._dtm.tool === "erase") { erasing = []; erasing.labels = []; eraseAt(page, canvas, e, erasing); return; }
+      if (page._dtm.tool === "text") {
+        if (surface === "chart") { const p = point(e); addLabel(page, p[0], p[1]); persist(page); }
+        return;
+      }
       const pen = surface === "chart" ? page._dtm.state.pen : "ink";
       cur = { pen: pen, pts: [point(e)] };
       const st = page._dtm.state;
@@ -164,7 +179,10 @@
     });
     function end() {
       if (erasing) {
-        if (erasing.length) { page._dtm.state.history.push({ surface: canvas.dataset.surface, removed: erasing }); persist(page); clearDrawScore(page); }
+        if (erasing.length || erasing.labels.length) {
+          page._dtm.state.history.push({ surface: canvas.dataset.surface, removed: erasing.slice(), labels: erasing.labels });
+          persist(page); clearDrawScore(page);
+        }
         erasing = null;
         return;
       }
@@ -211,6 +229,129 @@
     return { score: Math.round(100 * coverage * Math.max(0, 1 - meanErr / 10)), coverage: Math.round(coverage * 100), err: meanErr };
   }
 
+  // ---------- chart labels ----------
+  // Labels are placed by the reader anywhere on the chart: { id, x, y, t } with x, y in viewBox
+  // units (the left middle of the label). Check reads the words and where the label sits.
+  const LABELS = [["birth", "Birth rate"], ["death", "Death rate"], ["pop", "Total Population"], ["ni", "Natural Increase"]];
+  function lineAt(key, x) {
+    if (x <= END[key] || !FB[key].length) return [F[key](Math.min(x, 5))];
+    return FB[key].map((f) => f(x));
+  }
+  // Where a label sits, in chart units: the stage positions it spans and its height.
+  function labelSpot(page, el) {
+    const c = page.querySelector(".bd-chart").getBoundingClientRect(), r = el.getBoundingClientRect();
+    const toX = (cx) => ux((cx - c.left) * 1000 / c.width);
+    const a = Math.max(0, toX(r.left)), b = Math.min(5, toX(r.right));
+    const xs = [];
+    for (let k = 0; k <= 10; k++) xs.push(a + (b - a) * k / 10);
+    return { xs: xs, v: uy((r.top + r.height / 2 - c.top) * 440 / c.height) };
+  }
+  function placedRight(key, spot) {
+    if (key === "ni") {
+      // anywhere in the gap between birth and death rates, where there is a real gap
+      return spot.xs.some((x) => x >= 0.9 && x <= 4 && F.birth(x) - F.death(x) >= 3 && spot.v <= F.birth(x) + 1 && spot.v >= F.death(x) - 1);
+    }
+    // Next to its own line: within 8 per 1,000 of it, and not clearly closer to another line
+    // (2 units of slack, so a label where two lines cross still counts).
+    const near = (k) => {
+      let best = Infinity, at = spot.xs[0];
+      spot.xs.forEach((x) => lineAt(k, x).forEach((y) => { const g = Math.abs(y - spot.v); if (g < best) { best = g; at = x; } }));
+      return { d: best, x: at };
+    };
+    const n = { birth: near("birth"), death: near("death"), pop: near("pop") };
+    if (n[key].d > 8 || n[key].d > Math.min(n.birth.d, n.death.d, n.pop.d) + 2) return false;
+    // Birth and death rates run together in stage 1, so their side matters there:
+    // the birth rate label can't sit below the death rate line, nor the death rate label above the birth rate line.
+    const x = n[key].x;
+    if (key === "birth") return spot.v >= F.death(x);
+    if (key === "death") return spot.v <= Math.max.apply(null, lineAt("birth", x));
+    return true;
+  }
+  function checkLabels(page) {
+    const exact = !!page._dtm.state.exact;
+    const els = [...page.querySelectorAll(".bd-ul")];
+    const status = {};
+    els.forEach((el) => {
+      el.classList.remove("ok", "bad");
+      const t = norm(el.querySelector("input").value, exact);
+      const hit = LABELS.find((L) => norm(L[1], exact) === t);
+      if (!hit) { el.classList.add("bad"); return; }
+      // a second copy of a label that is already right counts as extra
+      const good = status[hit[0]] !== "ok" && placedRight(hit[0], labelSpot(page, el));
+      el.classList.add(good ? "ok" : "bad");
+      if (good) status[hit[0]] = "ok"; else if (!status[hit[0]]) status[hit[0]] = "place";
+    });
+    const parts = LABELS.map((L) => L[1] + (status[L[0]] === "ok" ? " ✓" : status[L[0]] === "place" ? ": right words, wrong spot" : ": not found"));
+    page.querySelector(".bd-label-score").textContent = "Chart labels: " + parts.join(" · ");
+    return LABELS.filter((L) => status[L[0]] === "ok").length;
+  }
+
+  function renderLabels(page) {
+    const layer = page.querySelector(".bd-userlabels");
+    if (!layer) return;
+    layer.textContent = "";
+    page._dtm.state.labels.forEach((lab) => {
+      const el = document.createElement("div");
+      el.className = "bd-ul";
+      el.dataset.id = lab.id;
+      el.style.left = (lab.x / 10) + "%";
+      el.style.top = (lab.y / 4.4) + "%";
+      el.innerHTML = '<span class="bd-ul-grip" aria-hidden="true"></span><input type="text" spellcheck="false" autocomplete="off" autocapitalize="off" aria-label="Chart label">';
+      const input = el.querySelector("input");
+      input.value = lab.t || "";
+      input.size = Math.max(4, input.value.length + 1);
+      input.addEventListener("input", function () {
+        lab.t = input.value; input.size = Math.max(4, input.value.length + 1);
+        el.classList.remove("ok", "bad"); persist(page);
+      });
+      input.addEventListener("blur", function () {
+        if (input.value.trim()) return;
+        // an empty label is dropped, along with the step that added it
+        const st = page._dtm.state;
+        st.labels = st.labels.filter((l) => l !== lab);
+        st.history = st.history.filter((h) => !(h && h.op && h.id === lab.id));
+        el.remove(); persist(page);
+      });
+      bindGrip(page, el, lab);
+      layer.appendChild(el);
+    });
+  }
+  // Drag a label by its grip; the move is one undo step.
+  function bindGrip(page, el, lab) {
+    const grip = el.querySelector(".bd-ul-grip");
+    let from = null;
+    grip.addEventListener("pointerdown", function (e) {
+      if (e.button !== undefined && e.button > 0) return;
+      e.preventDefault();
+      grip.setPointerCapture(e.pointerId);
+      from = [lab.x, lab.y];
+    });
+    grip.addEventListener("pointermove", function (e) {
+      if (!from) return;
+      const c = page.querySelector(".bd-chart").getBoundingClientRect();
+      lab.x = Math.max(0, Math.min(960, (e.clientX - c.left) * 1000 / c.width - 8));
+      lab.y = Math.max(8, Math.min(432, (e.clientY - c.top) * 440 / c.height));
+      el.style.left = (lab.x / 10) + "%"; el.style.top = (lab.y / 4.4) + "%";
+      el.classList.remove("ok", "bad");
+    });
+    function end() {
+      if (!from) return;
+      if (from[0] !== lab.x || from[1] !== lab.y) { page._dtm.state.history.push({ op: "label-move", id: lab.id, from: from }); persist(page); }
+      from = null;
+    }
+    grip.addEventListener("pointerup", end);
+    grip.addEventListener("pointercancel", end);
+  }
+  function addLabel(page, x, y) {
+    const st = page._dtm.state;
+    const lab = { id: "L" + Date.now().toString(36) + Math.random().toString(36).slice(2, 5), x: Math.max(0, Math.min(960, x)), y: Math.max(8, Math.min(432, y)), t: "" };
+    st.labels.push(lab);
+    st.history.push({ op: "label-add", id: lab.id });
+    renderLabels(page);
+    const input = page.querySelector('.bd-ul[data-id="' + lab.id + '"] input');
+    if (input) input.focus();
+  }
+
   // ---------- state ----------
   function persist(page) { save(page.dataset.store, page._dtm.state); }
 
@@ -224,23 +365,23 @@
     const mode = page._dtm.state.mode;
     page.dataset.mode = mode;
     page.querySelectorAll("[data-bd-mode]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.bdMode === mode)));
-    const erase = page._dtm.tool === "erase";
-    page.dataset.tool = erase ? "erase" : "pen";
-    page.querySelectorAll("[data-bd-pen]").forEach((b) => b.setAttribute("aria-pressed", String(!erase && b.dataset.bdPen === page._dtm.state.pen)));
-    page.querySelectorAll("[data-bd-tool='erase']").forEach((b) => b.setAttribute("aria-pressed", String(erase)));
+    const tool = page._dtm.tool;
+    page.dataset.tool = tool;
+    page.querySelectorAll("[data-bd-pen]").forEach((b) => b.setAttribute("aria-pressed", String(tool === "pen" && b.dataset.bdPen === page._dtm.state.pen)));
+    page.querySelectorAll("[data-bd-tool]").forEach((b) => b.setAttribute("aria-pressed", String(tool === b.dataset.bdTool)));
     page.querySelector("[data-bd='exact']").checked = !!page._dtm.state.exact;
   }
 
   function isActive(page, blank) {
     const mode = page._dtm.state.mode, kind = blank.dataset.kind;
     if (mode === "all") return true;
-    if (mode === "test") return kind === "cell" || kind === "line"; // as on the test
+    if (mode === "test") return kind === "cell"; // as on the test (the chart labels are placed, not typed in boxes)
     return kind === "cell"; // "easy": the lines and their labels are given
   }
 
   function clearMarks(page) {
-    page.querySelectorAll(".bd-blank").forEach((b) => b.classList.remove("ok", "bad"));
-    const out = page.querySelector(".bd-text-score"); if (out) out.textContent = "";
+    page.querySelectorAll(".bd-blank, .bd-ul").forEach((b) => b.classList.remove("ok", "bad"));
+    page.querySelectorAll(".bd-text-score, .bd-label-score").forEach((out) => { out.textContent = ""; });
   }
   function clearDrawScore(page) { const out = page.querySelector(".bd-draw-score"); if (out) out.textContent = ""; }
 
@@ -256,6 +397,8 @@
       b.classList.add(good ? "ok" : "bad");
       if (good) right++;
     });
+    if (page._dtm.state.mode !== "easy") { right += checkLabels(page); total += LABELS.length; }
+    else page.querySelector(".bd-label-score").textContent = "";
     page.querySelector(".bd-text-score").textContent = "Text: " + right + " of " + total + " right" +
       (right === total ? ". Every blank word for word." : ". Red boxes are off; tap Show answers to compare.");
   }
@@ -290,7 +433,8 @@
       const saved = load(page.dataset.store) || {};
       // Version 3: "Like the test" (draw the lines, label them, fill the table) is the default.
       page._dtm = { state: { v: 3, mode: saved.v === 3 && saved.mode ? saved.mode : "test", pen: saved.pen || "birth", exact: !!saved.exact,
-        text: saved.text || {}, strokes: saved.strokes || {}, history: saved.history || [] }, tool: "pen" };
+        text: saved.text || {}, strokes: saved.strokes || {}, history: saved.history || [],
+        labels: saved.labels || [] }, tool: "pen" };
 
       // the model's curves, drawn once into the hidden key layer
       const key = page.querySelector(".bd-key");
@@ -321,6 +465,7 @@
       });
 
       page.querySelectorAll("canvas.bd-draw").forEach((c) => bindCanvas(page, c));
+      renderLabels(page);
       applyMode(page);
       renderAll(page);
       if (window.ResizeObserver) {
@@ -338,7 +483,8 @@
     if (mode) { st.mode = mode.dataset.bdMode; applyMode(page); clearMarks(page); persist(page); return; }
     const pen = e.target.closest("[data-bd-pen]");
     if (pen) { st.pen = pen.dataset.bdPen; page._dtm.tool = "pen"; applyMode(page); persist(page); return; }
-    if (e.target.closest("[data-bd-tool='erase']")) { page._dtm.tool = page._dtm.tool === "erase" ? "pen" : "erase"; applyMode(page); return; }
+    const tool = e.target.closest("[data-bd-tool]");
+    if (tool) { page._dtm.tool = page._dtm.tool === tool.dataset.bdTool ? "pen" : tool.dataset.bdTool; applyMode(page); return; }
     const act = e.target.closest("[data-bd]");
     if (!act) return;
     const what = act.dataset.bd;
@@ -352,11 +498,15 @@
     else if (what === "undo") {
       const step = st.history.pop();
       if (typeof step === "string") { if (st.strokes[step]) st.strokes[step].pop(); }
+      else if (step && step.op === "label-add") st.labels = st.labels.filter((l) => l.id !== step.id);
+      else if (step && step.op === "label-move") { const l = st.labels.find((q) => q.id === step.id); if (l) { l.x = step.from[0]; l.y = step.from[1]; } }
       else if (step && step.removed) {
         const list = (st.strokes[step.surface] = st.strokes[step.surface] || []);
         for (let i = step.removed.length - 1; i >= 0; i--) list.splice(step.removed[i][0], 0, step.removed[i][1]);
+        const labs = step.labels || [];
+        for (let i = labs.length - 1; i >= 0; i--) st.labels.splice(labs[i][0], 0, labs[i][1]);
       }
-      renderAll(page); persist(page); clearDrawScore(page);
+      renderAll(page); renderLabels(page); persist(page); clearDrawScore(page);
     }
     else if (what === "clear-draw" || what === "clear-text" || what === "clear-all") {
       const ask = {
@@ -366,8 +516,19 @@
       }[what];
       window.siteConfirm({ title: ask.title, text: ask.text, ok: ask.ok, cancel: "Keep it", danger: true }).then(function (yes) {
         if (!yes) return;
-        if (what !== "clear-text") { st.strokes = {}; st.history = []; renderAll(page); clearDrawScore(page); }
-        if (what !== "clear-draw") { page.querySelectorAll(".bd-blank input, .bd-blank textarea").forEach((el) => { el.value = ""; }); st.text = {}; clearMarks(page); }
+        // Undo steps are either drawing (strokes) or labels; an eraser step can hold both.
+        // Clearing one kind drops its steps and keeps the other kind's.
+        if (what !== "clear-text") {
+          st.strokes = {}; renderAll(page); clearDrawScore(page);
+          st.history = st.history.map((h) => (h && h.removed ? Object.assign({}, h, { removed: [] }) : h))
+            .filter((h) => h && typeof h !== "string" && (h.op || (h.labels && h.labels.length)));
+        }
+        if (what !== "clear-draw") {
+          page.querySelectorAll(".bd-blank input, .bd-blank textarea").forEach((el) => { el.value = ""; }); st.text = {};
+          st.labels = []; renderLabels(page); clearMarks(page);
+          st.history = st.history.map((h) => (h && h.removed ? Object.assign({}, h, { labels: [] }) : h))
+            .filter((h) => typeof h === "string" || (h && h.removed && h.removed.length));
+        }
         if (what === "clear-all") {
           page.classList.remove("bd-show");
           const key = page.querySelector('[data-bd="key"]');
