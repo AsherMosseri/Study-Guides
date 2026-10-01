@@ -1722,16 +1722,16 @@ canvas.bd-draw { touch-action: none; cursor: crosshair; }
 .bd-small textarea, .bd-small .bd-fixed, .bd-small .bd-ans { font-size: 0.78rem; }
 .bd-blank input:focus, .bd-blank textarea:focus { outline: 2px solid var(--accent); outline-offset: 1px; border-style: solid; }
 .bd-fixed { display: none; }
-.bd-page[data-mode="cells"] .bd-blank:not([data-kind="cell"]) > :is(input, textarea),
-.bd-page[data-mode="labels"] .bd-blank[data-kind="title"] > :is(input, textarea) { display: none; }
-.bd-page[data-mode="cells"] .bd-blank:not([data-kind="cell"]) > .bd-fixed,
-.bd-page[data-mode="labels"] .bd-blank[data-kind="title"] > .bd-fixed { display: block; }
+.bd-page:is([data-mode="cells"], [data-mode="test"]) .bd-blank:not([data-kind="cell"]) > :is(input, textarea) { display: none; }
+.bd-page:is([data-mode="cells"], [data-mode="test"]) .bd-blank:not([data-kind="cell"]) > .bd-fixed { display: block; }
+/* "Like the test": the lines are given, so the model's curves show and the chart isn't for drawing. */
+.bd-page[data-mode="test"] .bd-key { display: block; }
+.bd-page[data-mode="test"] .bd-chart > canvas.bd-draw, .bd-page[data-mode="test"] .bd-pen-tool { display: none; }
 .bd-blank.ok > :is(input, textarea) { border: 1.5px solid var(--good, #1a7f37); background: rgba(26, 127, 55, 0.08); }
 .bd-blank.bad > :is(input, textarea) { border: 1.5px solid var(--review, #bc4c00); background: rgba(188, 76, 0, 0.08); }
 .bd-show .bd-blank > :is(input, textarea):not([style*="none"]) ~ .bd-ans { display: block; }
 .bd-ans { font-size: 0.78rem; color: var(--good, #1a7f37); font-weight: 600; margin-top: 2px; }
-.bd-page[data-mode="cells"] .bd-blank:not([data-kind="cell"]) > .bd-ans,
-.bd-page[data-mode="labels"] .bd-blank[data-kind="title"] > .bd-ans { display: none !important; }
+.bd-page:is([data-mode="cells"], [data-mode="test"]) .bd-blank:not([data-kind="cell"]) > .bd-ans { display: none !important; }
 .bd-pyr { position: relative; aspect-ratio: 1 / 1; max-width: 140px; margin: 0 auto; border: 1px dashed var(--border); border-radius: 6px; }
 .bd-pyr > canvas.bd-draw, .bd-pyr-key { position: absolute; inset: 0; width: 100%; height: 100%; }
 .bd-pyr-key { pointer-events: none; opacity: 0.55; }

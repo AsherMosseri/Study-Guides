@@ -199,8 +199,7 @@
   function isActive(page, blank) {
     const mode = page._dtm.state.mode, kind = blank.dataset.kind;
     if (mode === "all") return true;
-    if (mode === "labels") return kind !== "title";
-    return kind === "cell";
+    return kind === "cell"; // "test" and "cells": only the table cells are blank
   }
 
   function clearMarks(page) {
@@ -239,7 +238,8 @@
     document.querySelectorAll(".bd-page").forEach(function (page) {
       if (page._dtm) { renderAll(page); return; }
       const saved = load(page.dataset.store) || {};
-      page._dtm = { state: { mode: saved.mode || "all", pen: saved.pen || "birth", exact: !!saved.exact,
+      // Version 2 added "Like the test" (lines and labels given) and made it the default.
+      page._dtm = { state: { v: 2, mode: saved.v === 2 && saved.mode ? saved.mode : "test", pen: saved.pen || "birth", exact: !!saved.exact,
         text: saved.text || {}, strokes: saved.strokes || {}, history: saved.history || [] } };
 
       // the model's curves, drawn once into the hidden key layer
@@ -291,7 +291,7 @@
     const act = e.target.closest("[data-bd]");
     if (!act) return;
     const what = act.dataset.bd;
-    if (what === "check") { checkText(page); checkDrawing(page); }
+    if (what === "check") { checkText(page); if (st.mode === "test") clearDrawScore(page); else checkDrawing(page); }
     else if (what === "key") {
       const on = !page.classList.contains("bd-show");
       page.classList.toggle("bd-show", on);
