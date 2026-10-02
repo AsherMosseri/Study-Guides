@@ -180,7 +180,7 @@
       if (erasing) {
         if (erasing.length || erasing.labels.length) {
           page._dtm.state.history.push({ surface: canvas.dataset.surface, removed: erasing.slice(), labels: erasing.labels });
-          persist(page); clearDrawScore(page);
+          persist(page); drawingChanged(page);
         }
         erasing = null;
         return;
@@ -188,7 +188,7 @@
       if (!cur) return;
       cur = null;
       persist(page);
-      clearDrawScore(page);
+      drawingChanged(page);
     }
     canvas.addEventListener("pointerup", end);
     canvas.addEventListener("pointercancel", end);
@@ -387,6 +387,11 @@
     page.querySelectorAll(".bd-blank, .bd-ul").forEach((b) => b.classList.remove("ok", "bad"));
     page.querySelectorAll(".bd-text-score, .bd-label-score").forEach((out) => { out.textContent = ""; });
   }
+  // Once you've pressed Check, the drawing marks stay up to date as you edit: erase a line and
+  // its mark goes, redraw it and it's graded again. Before that, an edit just clears old results.
+  function drawingChanged(page) {
+    if (page._dtm.checked) checkDrawing(page); else clearDrawScore(page);
+  }
   function clearDrawScore(page) {
     const out = page.querySelector(".bd-draw-score"); if (out) out.textContent = "";
     page.querySelectorAll(".bd-pyr").forEach((b) => b.classList.remove("ok", "bad"));
@@ -418,10 +423,13 @@
   function matchStrokes(strokes) {
     const n = strokes.length, out = { birth: [], death: [], pop: [] };
     if (!n) return out;
+    // Ties (say, a spare copy of a line that would score 0 anywhere else) go to the line each
+    // stroke fits best on its own, so an extra stroke never fills a slot it doesn't look like.
+    const alone = strokes.map((st) => LINES.map((key) => { const r = scoreLine([st], key); return r ? r.err : 99; }));
     const total = (assign) => LINES.reduce((t, key, k) => {
       const r = scoreLine(strokes.filter((_, i) => assign[i] === k), key);
-      return t + (r ? r.score + 1 : 0);
-    }, 0);
+      return t + (r ? r.score : 0);
+    }, 0) - 0.001 * assign.reduce((t, k, i) => t + alone[i][k], 0);
     let best = null;
     if (n <= 7) {
       let bestT = -1;
@@ -617,7 +625,7 @@
       const labs = step.labels || [];
       for (let i = labs.length - 1; i >= 0; i--) st.labels.splice(labs[i][0], 0, labs[i][1]);
     }
-    renderAll(page); renderLabels(page); persist(page); clearDrawScore(page);
+    renderAll(page); renderLabels(page); persist(page); drawingChanged(page);
   }
 
   // Cmd+Z (Ctrl+Z on Windows) is the toolbar's Undo, except while typing in a box, where it
@@ -645,7 +653,7 @@
     const act = e.target.closest("[data-bd]");
     if (!act) return;
     const what = act.dataset.bd;
-    if (what === "check") { checkText(page); checkDrawing(page); }
+    if (what === "check") { checkText(page); checkDrawing(page); page._dtm.checked = true; }
     else if (what === "key") {
       const on = !page.classList.contains("bd-show");
       page.classList.toggle("bd-show", on);
@@ -664,7 +672,7 @@
         // Undo steps are either drawing (strokes) or labels; an eraser step can hold both.
         // Clearing one kind drops its steps and keeps the other kind's.
         if (what !== "clear-text") {
-          st.strokes = {}; renderAll(page); clearDrawScore(page);
+          st.strokes = {}; renderAll(page); page._dtm.checked = false; clearDrawScore(page);
           st.history = st.history.map((h) => (h && h.removed ? Object.assign({}, h, { removed: [] }) : h))
             .filter((h) => h && typeof h !== "string" && (h.op || (h.labels && h.labels.length)));
         }
