@@ -3,7 +3,7 @@
 //   - text blanks (.bd-blank with data-answer), checked word for word;
 //   - drawing on the chart (one canvas, pen = birth rate, death rate or total population), scored
 //     against the model's curves;
-//   - drawing the five population pyramids (one canvas per stage), compared by eye with the key.
+//   - drawing the five population pyramids (one canvas per stage), graded by shape.
 // Everything is kept in localStorage under the page's data-store. Turbo swaps <main> without a
 // reload, so setup runs on turbo:load, looks elements up fresh, and marks a page done with a JS
 // property (a Back/Forward clone keeps attributes but drops listeners and properties).
@@ -214,6 +214,7 @@
       for (let k = 1; k <= steps; k++) add(qx + (x - qx) * k / steps, qy + (y - qy) * k / steps);
     }));
     let covered = 0, err = 0;
+    const stSum = [0, 0, 0, 0, 0], stN = [0, 0, 0, 0, 0]; // signed miss per stage: + is too high
     for (let b = 0; b < bins; b++) {
       if (!counts[b]) continue;
       const x = (b + 0.5) * 5 / bins, y = sums[b] / counts[b];
@@ -221,12 +222,17 @@
       if (x <= END[key]) target = [F[key](x)];
       else target = FB[key].map((f) => f(x));
       if (!target.length) target = [F[key](x)];
-      err += Math.min.apply(null, target.map((t) => Math.abs(t - y)));
+      // in stage 5 either branch counts, so measure against the nearer one
+      const t = target.reduce((a, c) => (Math.abs(c - y) < Math.abs(a - y) ? c : a));
+      err += Math.abs(t - y);
+      const sg = Math.min(4, Math.floor(x));
+      stSum[sg] += y - t; stN[sg]++;
       covered++;
     }
     if (!covered) return null;
     const meanErr = err / covered, coverage = covered / bins;
-    return { score: Math.round(100 * coverage * Math.max(0, 1 - meanErr / 10)), coverage: Math.round(coverage * 100), err: meanErr };
+    return { score: Math.round(100 * coverage * Math.max(0, 1 - meanErr / 10)), coverage: Math.round(coverage * 100), err: meanErr,
+      stages: stSum.map((v, i) => (stN[i] ? v / stN[i] : null)) };
   }
 
   // ---------- chart labels ----------
@@ -383,7 +389,10 @@
     page.querySelectorAll(".bd-blank, .bd-ul").forEach((b) => b.classList.remove("ok", "bad"));
     page.querySelectorAll(".bd-text-score, .bd-label-score").forEach((out) => { out.textContent = ""; });
   }
-  function clearDrawScore(page) { const out = page.querySelector(".bd-draw-score"); if (out) out.textContent = ""; }
+  function clearDrawScore(page) {
+    const out = page.querySelector(".bd-draw-score"); if (out) out.textContent = "";
+    page.querySelectorAll(".bd-pyr").forEach((b) => b.classList.remove("ok", "bad"));
+  }
 
   function checkText(page) {
     const exact = !!page._dtm.state.exact;
@@ -408,24 +417,97 @@
   // the best total.
   const LINES = ["birth", "death", "pop"];
   const PERMS = [[0, 1, 2], [0, 2, 1], [1, 0, 2], [1, 2, 0], [2, 0, 1], [2, 1, 0]];
-  function checkDrawing(page) {
-    const fit = LINES.map((pen) => LINES.map((key) => scoreLine(page, pen, key)));
-    let best = null, bestSum = -1;
-    PERMS.forEach((perm) => {
-      const sum = LINES.reduce((t, pen, i) => t + (fit[i][perm[i]] ? fit[i][perm[i]].score + 1 : 0), 0);
-      if (sum > bestSum) { bestSum = sum; best = perm; }
-    });
-    const parts = [], matched = {};
-    LINES.forEach((pen, i) => {
-      const r = fit[i][best[i]];
-      if (!r) return;
-      matched[LINES[best[i]]] = true;
-      parts.push(PEN_NAMES[pen] + " line looks like the " + NAMES[LINES[best[i]]].toLowerCase() + ": " + r.score + "% match (covers " + r.coverage +
-        "% of the chart, off by about " + r.err.toFixed(1) + " on average)");
-    });
-    LINES.forEach((key) => { if (!matched[key]) parts.push(NAMES[key] + ": not drawn yet"); });
-    page.querySelector(".bd-draw-score").textContent = parts.join(" · ");
+  // Pass marks. A line passes when it spans most of the chart, sits within 3.5 per 1,000 of the
+  // model on average, and is never off by more than 6 across a whole stage.
+  const LINE_COVER = 80, LINE_ERR = 3.5, LINE_STAGE = 6;
+  function lineVerdict(r) {
+    if (r.coverage < LINE_COVER) return { ok: false, why: "draw it across all five stages (it covers " + r.coverage + "% of the chart)" };
+    let worst = -1, size = 0;
+    r.stages.forEach((v, i) => { if (v !== null && Math.abs(v) > size) { size = Math.abs(v); worst = i; } });
+    if (r.err <= LINE_ERR && size <= LINE_STAGE) return { ok: true };
+    return { ok: false, why: "too " + (r.stages[worst] > 0 ? "high" : "low") + " in stage " + (worst + 1) };
   }
+
+  // Pyramids are read by shape, the way a teacher grades them by eye: how wide the base is next
+  // to the widest point, how fast the sides come in a quarter of the way up, and whether the top
+  // is pointed or rounded. Size and position in the box don't matter.
+  function pyramidShape(page, surface) {
+    const pts = [];
+    (page._dtm.state.strokes[surface] || []).forEach((s) => s.pts.forEach((p, i) => {
+      if (i === 0) { pts.push(p); return; }
+      const q = s.pts[i - 1], n = Math.max(1, Math.ceil(Math.hypot(p[0] - q[0], p[1] - q[1]) / 0.5));
+      for (let k = 1; k <= n; k++) pts.push([q[0] + (p[0] - q[0]) * k / n, q[1] + (p[1] - q[1]) * k / n]);
+    }));
+    if (!pts.length) return null;
+    const xs = pts.map((p) => p[0]), ys = pts.map((p) => p[1]);
+    const cx = (Math.min.apply(null, xs) + Math.max.apply(null, xs)) / 2;
+    const top = Math.min.apply(null, ys), bottom = Math.max.apply(null, ys), h = bottom - top;
+    const half = (a, b) => pts.reduce((m, p) => { const t = (bottom - p[1]) / h; return t >= a && t <= b ? Math.max(m, Math.abs(p[0] - cx)) : m; }, 0);
+    const widest = half(0, 1);
+    if (h < 30 || widest < 8) return { small: true };
+    return { foot: half(0, 0.04) / widest, low: half(0.2, 0.3) / widest, top: half(0.7, 0.8) / widest };
+  }
+  // The five shapes measure foot/low/top as 1.00/0.35/0.06, 1.00/0.78/0.30, 1.00/0.95/0.35,
+  // 0.97/1.00/0.84 and 0.75/0.98/0.87. The bands overlap a little between stages 2 and 3 and
+  // between 4 and 5, so a borderline hand drawing isn't marked wrong.
+  function pyramidVerdict(stage, f) {
+    if (f.small) return { ok: false, why: "too small to read; draw it to fill the box" };
+    const rounded = f.top >= 0.55;
+    if (stage <= 3 && rounded) return { ok: false, why: "it should narrow to a point at the top" };
+    if (stage >= 4 && !rounded) return { ok: false, why: "it should stay wide up high and be rounded on top, not pointed" };
+    if (stage === 1 && f.low >= 0.6) return { ok: false, why: "the sides should curve in fast: a very wide base that narrows quickly" };
+    if (stage === 2 && f.low < 0.55) return { ok: false, why: "the sides curve in too fast (that's stage 1's shape); stage 2's sides are straight" };
+    if (stage === 2 && f.low > 0.92) return { ok: false, why: "the lower sides go too straight up (that's stage 3's shape)" };
+    if (stage === 3 && f.low < 0.82) return { ok: false, why: "the lower sides should go nearly straight up before narrowing" };
+    if (stage === 4 && f.foot < 0.78) return { ok: false, why: "the base is narrower than the middle (that's stage 5's shape)" };
+    if (stage === 5 && f.foot > 0.86) return { ok: false, why: "the base should be narrower than the middle" };
+    return { ok: true };
+  }
+
+  function checkDrawing(page) {
+    const out = page.querySelector(".bd-draw-score");
+    out.textContent = "";
+    let right = 0, total = 0;
+    const line = (head, parts) => { const p = document.createElement("span"); p.className = "bd-score-line"; p.textContent = head + parts.join(" · "); out.appendChild(p); };
+
+    if (page._dtm.state.mode !== "easy") {
+      const fit = LINES.map((pen) => LINES.map((key) => scoreLine(page, pen, key)));
+      let best = null, bestSum = -1;
+      PERMS.forEach((perm) => {
+        const sum = LINES.reduce((t, pen, i) => t + (fit[i][perm[i]] ? fit[i][perm[i]].score + 1 : 0), 0);
+        if (sum > bestSum) { bestSum = sum; best = perm; }
+      });
+      const res = {};
+      LINES.forEach((pen, i) => { if (fit[i][best[i]]) res[LINES[best[i]]] = { pen: pen, r: fit[i][best[i]] }; });
+      line("Lines: ", LINES.map((key) => {
+        total++;
+        const m = res[key];
+        if (!m) return NAMES[key] + ": not drawn yet";
+        const v = lineVerdict(m.r), who = NAMES[key] + " (" + PEN_NAMES[m.pen].toLowerCase() + ")";
+        if (v.ok) { right++; return who + " ✓"; }
+        return who + ": " + v.why;
+      }));
+    }
+
+    const pyr = [];
+    page.querySelectorAll('canvas.bd-draw[data-surface^="pyr"]').forEach((c) => {
+      const stage = Number(c.dataset.surface.slice(3)), box = c.closest(".bd-pyr");
+      box.classList.remove("ok", "bad");
+      total++;
+      const f = pyramidShape(page, c.dataset.surface);
+      if (!f) { pyr.push("Stage " + stage + ": not drawn yet"); return; }
+      const v = pyramidVerdict(stage, f);
+      box.classList.add(v.ok ? "ok" : "bad");
+      if (v.ok) right++;
+      pyr.push("Stage " + stage + (v.ok ? " ✓" : ": " + v.why));
+    });
+    line("Pyramids: ", pyr);
+    const sum = document.createElement("strong");
+    sum.className = "bd-score-line";
+    sum.textContent = "Drawing: " + right + " of " + total + " right" + (right === total ? ". Every line and pyramid passes." : ".");
+    out.insertBefore(sum, out.firstChild);
+  }
+
 
   function setup() {
     document.querySelectorAll(".bd-page").forEach(function (page) {
@@ -516,7 +598,7 @@
     const act = e.target.closest("[data-bd]");
     if (!act) return;
     const what = act.dataset.bd;
-    if (what === "check") { checkText(page); if (st.mode === "easy") clearDrawScore(page); else checkDrawing(page); }
+    if (what === "check") { checkText(page); checkDrawing(page); }
     else if (what === "key") {
       const on = !page.classList.contains("bd-show");
       page.classList.toggle("bd-show", on);
