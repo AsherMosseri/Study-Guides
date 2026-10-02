@@ -28,7 +28,6 @@
     pop: [[[4, 41.5], [4.5, 42.9], [5, 44.4]], [[4, 41.5], [4.5, 40.1], [5, 38.6]]],
   };
   const NAMES = { birth: "Birth rate", death: "Death rate", pop: "Total population" };
-  const PEN_NAMES = { birth: "Green", death: "Purple", pop: "Blue" };
 
   // Chart geometry in SVG/viewBox units (1000 × 440).
   const X0 = 110, X1 = 990, Y0 = 420, PER = 9.3;
@@ -195,9 +194,8 @@
     canvas.addEventListener("pointercancel", end);
   }
 
-  // Score the strokes drawn with one pen against one of the model's lines: how much of the chart it covers, and how far it sits from the model.
-  function scoreLine(page, pen, key) {
-    const strokes = (page._dtm.state.strokes.chart || []).filter((s) => s.pen === pen);
+  // Score a set of strokes against one of the model's lines: how much of the chart it covers, and how far it sits from the model.
+  function scoreLine(strokes, key) {
     const bins = 100, sums = new Array(bins).fill(0), counts = new Array(bins).fill(0);
     // Fill in between recorded points, so a quick swipe (few pointer events) still covers the
     // stretch of chart it crossed.
@@ -392,6 +390,7 @@
   function clearDrawScore(page) {
     const out = page.querySelector(".bd-draw-score"); if (out) out.textContent = "";
     page.querySelectorAll(".bd-pyr").forEach((b) => b.classList.remove("ok", "bad"));
+    page.querySelectorAll(".bd-marks").forEach((l) => { l.textContent = ""; });
   }
 
   function checkText(page) {
@@ -412,11 +411,38 @@
       (right === total ? ". Every blank word for word." : ". Red boxes are off; tap Show answers to compare.");
   }
 
-  // The pens aren't labeled (naming them would give the lines away), so any color can be any line.
-  // Each color is matched to the model line it fits, trying every one-to-one pairing and keeping
-  // the best total.
+  // Which drawn stroke is which line? Colors aren't trusted (the pens are unnamed, and you may draw
+  // everything in one color), so every way of sharing the strokes out among the three lines is
+  // tried and the best-fitting one kept. A line may be drawn in several pieces.
   const LINES = ["birth", "death", "pop"];
-  const PERMS = [[0, 1, 2], [0, 2, 1], [1, 0, 2], [1, 2, 0], [2, 0, 1], [2, 1, 0]];
+  function matchStrokes(strokes) {
+    const n = strokes.length, out = { birth: [], death: [], pop: [] };
+    if (!n) return out;
+    const total = (assign) => LINES.reduce((t, key, k) => {
+      const r = scoreLine(strokes.filter((_, i) => assign[i] === k), key);
+      return t + (r ? r.score + 1 : 0);
+    }, 0);
+    let best = null;
+    if (n <= 7) {
+      let bestT = -1;
+      for (let code = 0; code < Math.pow(3, n); code++) {
+        const assign = []; let c = code;
+        for (let i = 0; i < n; i++) { assign.push(c % 3); c = Math.floor(c / 3); }
+        const t = total(assign);
+        if (t > bestT) { bestT = t; best = assign; }
+      }
+    } else {
+      // lots of pieces: give each stroke to the line it fits best on its own
+      best = strokes.map((st) => {
+        let k = 0, top = -1;
+        LINES.forEach((key, q) => { const r = scoreLine([st], key); const v = r ? 100 - r.err * 10 : -1; if (v > top) { top = v; k = q; } });
+        return k;
+      });
+    }
+    strokes.forEach((st, i) => out[LINES[best[i]]].push(st));
+    return out;
+  }
+
   // Pass marks. A line passes when it spans most of the chart, sits within 3.5 per 1,000 of the
   // model on average, and is never off by more than 6 across a whole stage.
   const LINE_COVER = 80, LINE_ERR = 3.5, LINE_STAGE = 6;
@@ -464,6 +490,24 @@
     return { ok: true };
   }
 
+  // ✓ / ✗ marks placed on the chart beside each drawn line, until the drawing changes.
+  function showMarks(page, marks) {
+    const chart = page.querySelector(".bd-chart");
+    let layer = chart.querySelector(".bd-marks");
+    if (!layer) { layer = document.createElement("div"); layer.className = "bd-marks"; chart.appendChild(layer); }
+    layer.textContent = "";
+    marks.forEach((m) => {
+      const el = document.createElement("span");
+      el.className = "bd-mark " + (m.ok ? "ok" : "bad");
+      el.textContent = m.ok ? "✓" : "✗";
+      el.title = m.text;
+      el.setAttribute("aria-label", m.text);
+      el.style.left = Math.min(97, m.at[0] / 10) + "%";
+      el.style.top = (m.at[1] / 4.4) + "%";
+      layer.appendChild(el);
+    });
+  }
+
   function checkDrawing(page) {
     const out = page.querySelector(".bd-draw-score");
     out.textContent = "";
@@ -471,22 +515,25 @@
     const line = (head, parts) => { const p = document.createElement("span"); p.className = "bd-score-line"; p.textContent = head + parts.join(" · "); out.appendChild(p); };
 
     if (page._dtm.state.mode !== "easy") {
-      const fit = LINES.map((pen) => LINES.map((key) => scoreLine(page, pen, key)));
-      let best = null, bestSum = -1;
-      PERMS.forEach((perm) => {
-        const sum = LINES.reduce((t, pen, i) => t + (fit[i][perm[i]] ? fit[i][perm[i]].score + 1 : 0), 0);
-        if (sum > bestSum) { bestSum = sum; best = perm; }
+      // stray taps and tiny marks (under a fifth of a stage wide) are left out
+      const strokes = (page._dtm.state.strokes.chart || []).filter((st) => {
+        const xs = st.pts.map((q) => ux(q[0]));
+        return Math.max.apply(null, xs) - Math.min.apply(null, xs) >= 0.2;
       });
-      const res = {};
-      LINES.forEach((pen, i) => { if (fit[i][best[i]]) res[LINES[best[i]]] = { pen: pen, r: fit[i][best[i]] }; });
+      const groups = matchStrokes(strokes), marks = [];
       line("Lines: ", LINES.map((key) => {
         total++;
-        const m = res[key];
-        if (!m) return NAMES[key] + ": not drawn yet";
-        const v = lineVerdict(m.r), who = NAMES[key] + " (" + PEN_NAMES[m.pen].toLowerCase() + ")";
-        if (v.ok) { right++; return who + " ✓"; }
-        return who + ": " + v.why;
+        const r = scoreLine(groups[key], key);
+        if (!r) return NAMES[key] + ": not drawn yet";
+        const v = lineVerdict(r);
+        // a mark on the chart at the right-hand end of the line
+        let end = null;
+        groups[key].forEach((st) => st.pts.forEach((q) => { if (!end || q[0] > end[0]) end = q; }));
+        marks.push({ at: end, ok: v.ok, text: NAMES[key] + (v.ok ? ": right" : ": " + v.why) });
+        if (v.ok) { right++; return NAMES[key] + " ✓"; }
+        return NAMES[key] + ": " + v.why;
       }));
+      showMarks(page, marks);
     }
 
     const pyr = [];
