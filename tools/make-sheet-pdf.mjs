@@ -21,6 +21,7 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const SHEETS = [
   ["human-geo/quiz/reading-2.1-2.2/review/", 2],
   ["human-geo/test/chapter-2/review/", 4],
+  ["human-geo/quiz/reading-3.3-3.5/review/", 2],
 ];
 const TYPES = { ".html": "text/html", ".css": "text/css", ".js": "text/javascript", ".png": "image/png", ".ico": "image/x-icon", ".svg": "image/svg+xml", ".pdf": "application/pdf" };
 

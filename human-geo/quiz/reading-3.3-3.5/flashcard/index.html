@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reading 3.3–3.5 flashcards | AP Human Geography</title>
+  <meta name="description" content="159 flashcards covering every quizzable fact in Chapter 3, sections 3.3–3.5. Flip to check yourself, then sort what you know." />
+  <link rel="canonical" href="https://study.thejunkdrawerapp.com/human-geo/quiz/reading-3.3-3.5/flashcard/" />
+  <!-- Link previews (iMessage, Discord, X...). og:image must be an absolute URL, and scrapers cache it hard:
+       a redesign needs a NEW filename, not a re-upload. Regenerate with tools/make-social-images.mjs. -->
+  <meta property="og:site_name" content="Study Guides" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Reading 3.3–3.5 flashcards: Migration" />
+  <meta property="og:description" content="159 flashcards covering every quizzable fact in Chapter 3, sections 3.3–3.5. Flip to check yourself, then sort what you know." />
+  <meta property="og:url" content="https://study.thejunkdrawerapp.com/human-geo/quiz/reading-3.3-3.5/flashcard/" />
+  <meta property="og:image" content="https://study.thejunkdrawerapp.com/og-human-geo-3.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="AP Human Geography study guides" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://study.thejunkdrawerapp.com/og-human-geo-3.png" />
+  <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <!-- Colors the browser's own chrome (Safari's toolbar, the iOS address bar) to match the page.
+       Both tags are rewritten to the color actually in use by the script below and by the toggle,
+       because older Safari ignores the media attribute and always takes the first tag. -->
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7f7f5" />
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0d1117" />
+  <!-- The saved theme is read HERE, by a CLASSIC script, before the stylesheet: resolve it any
+       later and the first paint is the wrong color before the right one arrives. data-theme
+       (written by the toggle, absent when following the system) overrides the system preference.
+       The background is declared here too, so a fast refresh never shows a ghost of the old page. -->
+  <script>(function(){try{var d=document.documentElement,t=localStorage.getItem("tjd:theme");if(t==="dark"||t==="light")d.setAttribute("data-theme",t);var k=t==="dark"||(t!=="light"&&matchMedia("(prefers-color-scheme: dark)").matches),c=k?"#0d1117":"#f7f7f5",m=document.querySelectorAll('meta[name="theme-color"]');for(var i=0;i<m.length;i++)m[i].setAttribute("content",c);}catch(e){}})();</script>
+  <style>
+    :root { color-scheme: light dark; }
+    html[data-theme="light"] { color-scheme: light; }
+    html[data-theme="dark"] { color-scheme: dark; }
+    html, body { background: #f7f7f5; background: light-dark(#f7f7f5, #0d1117); }
+  </style>
+  <link rel="stylesheet" href="/assets/style.css?v=6f7948f4d7" data-turbo-track="reload">
+  <!-- Instant client-side navigation (no full reload): Turbo Drive swaps pages in place. Every
+       script that sets up a page must also re-run on turbo:load. Paths are root-absolute so the
+       tag is identical on every page; otherwise Turbo would treat it as new and run it again. -->
+  <script src="/assets/js/turbo.min.js?v=4b476e13a2" defer data-turbo-track="reload"></script>
+  <script>
+    /* Scroll restoration on reload.
+       Safari records a history entry's scroll position on a LAG, so a fast flick followed
+       immediately by a refresh restores where you were BEFORE the flick; Chrome records it
+       eagerly and gets it right. Reading window.scrollY at pagehide is exact regardless of that
+       lag, so on a reload we take restoration off the browser and do it ourselves. Turbo visits
+       keep native "auto" - Turbo handles those itself.
+       NOTE: an earlier version saved from a throttled scroll listener, which is what made the
+       saved value stale in the first place. The pagehide read is the whole point; don't move it
+       back into a scroll handler. */
+    (function () {
+      /* Computed at USE, never cached. Turbo does not re-run this script on a client-side visit:
+         it merges the head, and this tag is byte-identical on every page, so it is treated as
+         already present. A cached key therefore stayed pinned to whichever page was FIRST loaded,
+         and every later scroll position was filed under that page's name. Land on /, click Pricing
+         in the footer, scroll, refresh - the position was saved as "tjd:y:/" while the reload
+         looked up "tjd:y:/pricing", found something stale or nothing, and left you near the top.
+         Typing the URL never showed it, because that is a full load and the key was right. */
+      function KEY() { return "tjd:y:" + location.pathname; }
+      var nav = performance.getEntriesByType && performance.getEntriesByType("navigation")[0];
+      var isReload = nav ? nav.type === "reload" : (performance.navigation || {}).type === 1;
+      var settled = !isReload;
+
+      function setMode(m) { try { history.scrollRestoration = m; } catch (e) {} }
+      function remember() { try { sessionStorage.setItem(KEY(), String(window.scrollY || 0)); } catch (e) {} }
+
+      /* pagehide covers reload / navigation / close; visibilitychange catches iOS Safari, which
+         can discard a tab without ever firing pagehide. */
+      addEventListener("pagehide", remember);
+      addEventListener("visibilitychange", function () {
+        if (document.visibilityState === "hidden") remember();
+      });
+      /* Turbo forces "manual" when it boots (defer); re-assert "auto" once we're not mid-restore. */
+      addEventListener("turbo:load", function () { if (settled) setMode("auto"); });
+
+      if (settled) { setMode("auto"); return; }
+
+      setMode("manual");            /* stop Safari restoring its own stale value */
+      var target = 0;
+      try { target = parseInt(sessionStorage.getItem(KEY()), 10) || 0; } catch (e) {}
+      if (target <= 0) { settled = true; setMode("auto"); return; }
+
+      function done() { settled = true; setMode("auto"); }
+      /* The moment the visitor scrolls themselves, stop fighting them. */
+      addEventListener("wheel", done, { passive: true, once: true });
+      addEventListener("touchstart", done, { passive: true, once: true });
+      /* Only keys that actually scroll count. Canceling on ANY key meant that holding Cmd+R
+         to refresh repeatedly landed the next R keydown on the freshly loading document, which
+         read as "the visitor scrolled themselves", abandoned the restore and left them at the
+         top. That is exactly the "refresh really fast and it jumps to the top" report. It shows
+         up on the demo pages first because their content is drawn by script, so the restore is
+         still running when the next keypress arrives; everywhere else it had already finished. */
+      addEventListener("keydown", function (ev) {
+        if (ev.metaKey || ev.ctrlKey || ev.altKey) return;
+        if (/^(Arrow|Page)|^( |Home|End|Spacebar)$/.test(ev.key)) done();
+      });
+
+      var frames = 0, steady = 0, lastH = -1, loaded = false;
+      addEventListener("load", function () { loaded = true; });
+      function restore() {
+        if (settled) return;
+        var h = document.documentElement.scrollHeight;
+        /* Clamp to what the page can actually scroll right now, so a still-growing document
+           doesn't read as "we landed". */
+        var want = Math.min(target, Math.max(0, h - innerHeight));
+        if (Math.abs(window.scrollY - want) >= 2) window.scrollTo(0, want);
+        /* Settle only once we are at the REAL target - not merely parked at the bottom of a
+           document that is still growing. That distinction is the whole fix: on the first
+           refresh the page is still short, so the clamped position looked like a successful
+           landing, we stopped, and then the content grew underneath us and left the view at the
+           top. Later refreshes hit warm caches, reached full height sooner, and happened to look
+           correct. Height must also be stable and the load finished. */
+        var atTarget = want === target && Math.abs(window.scrollY - want) < 2;
+        if (loaded && h === lastH && atTarget) steady++; else steady = 0;
+        lastH = h;
+        /* Give up 180 frames after the page has LOADED, not 180 frames after this started. The
+           old cap fired at roughly 3s whatever the document was doing, so a slow load that had
+           not yet reached full height was abandoned mid-grow and left near the top: the clamp had
+           nothing to clamp to yet. On a normal load nothing changes at all, because load fires
+           long before the cap and the behavior is identical. The absolute ceiling is the
+           backstop for a load event that never arrives. */
+        frames++;
+        if (steady >= 10 || (loaded && frames > 180) || frames > 600) { done(); return; }
+        requestAnimationFrame(restore);
+      }
+      requestAnimationFrame(restore);
+    })();
+  </script>
+  <script src="/assets/notes.js?v=f2b5508934" defer data-turbo-track="reload"></script>
+  <script src="/assets/calc.js?v=6b4071e5ae" defer data-turbo-track="reload"></script>
+  <script src="/assets/flashcards.js?v=b2ff133be3" defer data-turbo-track="reload"></script>
+  <script src="/assets/match.js?v=c50c37b7d9" defer data-turbo-track="reload"></script>
+  <script src="/assets/quiz.js?v=493c378bed" defer data-turbo-track="reload"></script>
+  <script src="/assets/plan.js?v=a9a93dbf23" defer data-turbo-track="reload"></script>
+  <script src="/assets/dtm.js?v=3f692c46f7" defer data-turbo-track="reload"></script>
+</head>
+<body class="guide">
+  <header class="site-header">
+    <nav class="breadcrumbs">
+      <a href="/">Home</a><span>/</span><a href="/human-geo/">Human Geo</a><span>/</span><a href="/human-geo/quiz/">Quizzes</a><span>/</span><a href="/human-geo/quiz/reading-3.3-3.5/">Reading 3.3–3.5</a><span>/</span><span class="here">Flashcards</span>
+    </nav>
+    <button type="button" class="theme-toggle" id="themeToggle" hidden>
+      <svg class="i-light" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="10" cy="10" r="3.9" /><path d="M10 1.5v2M10 16.5v2M18.5 10h-2M3.5 10h-2M15.96 4.04l-1.42 1.42M5.46 14.54l-1.42 1.42M15.96 15.96l-1.42-1.42M5.46 5.46 4.04 4.04" /></svg>
+      <svg class="i-dark" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><path d="M16.9 12.6A7.4 7.4 0 0 1 7.4 3.1a7.4 7.4 0 1 0 9.5 9.5Z" /></svg>
+    </button>
+  </header>
+  <main class="fc-page" data-store="marks:/human-geo/quiz/reading-3.3-3.5/" data-srs="srs:/human-geo/quiz/reading-3.3-3.5/" data-notes-from="/human-geo/quiz/reading-3.3-3.5/reading/">
+    <h1>Flashcards</h1>
+    <p class="subtitle">Reading 3.3–3.5 · Chapter 3: Migration</p>
+    <div class="fc-app">
+      <div class="fc-options">
+        <label class="fc-pick">
+          <span>Cards from</span>
+          <select class="fc-section">
+            <option value="">The whole reading (159)</option>
+            <optgroup label="3.3">
+            <option value="part-3-3">All of 3.3 (58)</option>
+            <option value="ravenstein">Laws of migration and the gravity model (12)</option>
+            <option value="push-pull">Push and pull factors (9)</option>
+            <option value="legal-status">Legal status (15)</option>
+            <option value="gender">Gender, ethnicity and race (3)</option>
+            <option value="environment">Environmental conditions (11)</option>
+            <option value="political">Political conflict (5)</option>
+            <option value="chain">Family links and chain migration (3)</option>
+            </optgroup>
+            <optgroup label="3.4">
+            <option value="part-3-4">All of 3.4 (69)</option>
+            <option value="refugees">Refugees, asylum and repatriation (12)</option>
+            <option value="distribution">Distribution of refugees (10)</option>
+            <option value="syria">Areas of dislocation: Syria and Rwanda (7)</option>
+            <option value="israel">Israel/Palestine (10)</option>
+            <option value="sw-asia">North Africa and Southwest Asia (8)</option>
+            <option value="ss-africa">Sub-Saharan Africa (10)</option>
+            <option value="south-asia">South and Southeast Asia (7)</option>
+            <option value="europe">Europe and the Americas (5)</option>
+            </optgroup>
+            <optgroup label="3.5">
+            <option value="part-3-5">All of 3.5 (32)</option>
+            <option value="politics">The politics of migration (3)</option>
+            <option value="waves">Waves of immigration in the United States (5)</option>
+            <option value="restrictions">Legal restrictions (17)</option>
+            <option value="post-911">Post–September 11 (7)</option>
+            </optgroup>
+          </select>
+        </label>
+        <div class="fc-seg" role="group" aria-label="Focus">
+          <button type="button" data-focus-pick="all" aria-pressed="true">Everything <span class="n">159</span></button>
+          <button type="button" data-focus-pick="ap" aria-pressed="false">AP concepts <span class="n">92</span></button>
+          <button type="button" data-focus-pick="detail" aria-pressed="false">Reading details <span class="n">67</span></button>
+        </div>
+        <p class="fc-focus-note" hidden></p>
+        <div class="fc-decks" role="group" aria-label="Which cards">
+          <button type="button" class="fc-chip" data-deck="due" aria-pressed="true">Due now <span class="n"></span></button>
+          <button type="button" class="fc-chip" data-deck="all" aria-pressed="false">All <span class="n">159</span></button>
+          <button type="button" class="fc-chip" data-deck="none" aria-pressed="false">Not yet <span class="n"></span></button>
+          <button type="button" class="fc-chip" data-deck="review" aria-pressed="false">To review <span class="n"></span></button>
+          <button type="button" class="fc-chip" data-fc="shuffle" aria-pressed="false">Shuffle</button>
+        </div>
+      </div>
+
+      <div class="fc-progress">
+        <div class="fc-bar" aria-hidden="true"><span></span></div>
+        <p><span class="fc-count">Card 1 of 159</span><span class="fc-tally"></span></p>
+      </div>
+
+      <div class="fc-stage">
+        <div class="fc-ghost g2" aria-hidden="true"></div>
+        <div class="fc-ghost g1" aria-hidden="true"></div>
+        <div class="fc-card" role="button" tabindex="0" aria-roledescription="flashcard">
+          <div class="fc-flip">
+            <div class="fc-face fc-front">
+              <p class="fc-top"><span class="fc-meta"><span class="fc-sec">Laws of migration and the gravity model</span><span class="fc-kind ap">AP concept</span></span><span class="fc-was"></span></p>
+              <p class="fc-q">Studies of voluntary migration say the strength of a migration flow depends on what three things?</p>
+              <p class="fc-hint">Tap to flip</p>
+            </div>
+            <div class="fc-face fc-back" aria-hidden="true">
+              <p class="fc-top"><span class="fc-sec">Answer</span></p>
+              <p class="fc-a">How <strong>alike</strong> the source and destination are, how well <strong>information</strong> flows back from the destination, and the <strong>distance</strong> between them.</p>
+              <p class="fc-foot"><button type="button" class="fc-explain" data-fc="explain">Explain it</button><a class="fc-link" href="/human-geo/quiz/reading-3.3-3.5/reading/#s3-3">In the reading</a></p>
+            </div>
+          </div>
+          <span class="fc-stamp got" aria-hidden="true">Got it</span>
+          <span class="fc-stamp review" aria-hidden="true">Review</span>
+        </div>
+        <div class="fc-done" hidden>
+          <svg class="fc-check" viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="23" /><path d="M15 27.5l7.5 7.5L38 19" /></svg>
+          <p class="fc-done-title">Deck done</p>
+          <p class="fc-done-text"></p>
+          <div class="fc-done-actions">
+            <button type="button" class="fc-btn review" data-fc="missed">Go over the ones to review</button>
+            <button type="button" class="fc-btn" data-fc="restart">Go again</button>
+            <button type="button" class="fc-btn" data-fc="studyall" hidden>Study all anyway</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="fc-actions">
+        <button type="button" class="fc-btn review" data-fc="review"><span aria-hidden="true">←</span> Review</button>
+        <button type="button" class="fc-btn flip" data-fc="flip">Flip</button>
+        <button type="button" class="fc-btn got" data-fc="got">Got it <span aria-hidden="true">→</span></button>
+      </div>
+      <p class="fc-keys">Swipe the card, or use the keyboard: <kbd>Space</kbd> flips, <kbd>←</kbd> review, <kbd>→</kbd> got it, <kbd>E</kbd> explains.</p>
+      <p class="fc-how">Cards you mark Review come back a few cards later. Cards you know come back after 1, 3, 7, 14, then 30 days, and show up under <strong>Due now</strong> when it's time.</p>
+      <div class="fc-tools">
+        <button type="button" class="fc-chip" data-fc="undo" disabled>Undo</button>
+        <button type="button" class="fc-chip" data-fc="reset">Clear all marks</button>
+      </div>
+    </div>
+
+    <div class="fc-data">
+      <section id="ravenstein" data-sec="ravenstein" data-part="part-3-3" data-title="Laws of migration and the gravity model">
+        <h2>Laws of migration and the gravity model <span class="pages">pp. 77–78</span></h2>
+        <ol>
+        <li class="fc-item" id="la-intensity" data-focus="ap" data-notes="flow-intensity" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#s3-3">
+          <p class="q">Studies of voluntary migration say the strength of a migration flow depends on what three things?</p>
+          <p class="a">How <strong>alike</strong> the source and destination are, how well <strong>information</strong> flows back from the destination, and the <strong>distance</strong> between them.</p>
+        </li>
+        <li class="fc-item" id="la-who" data-focus="detail" data-notes="ravenstein ravenstein-internal" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#ravenstein">
+          <p class="q">Who was Ernst Ravenstein, and what data did he study?</p>
+          <p class="a">A <strong>British demographer</strong> who, more than a century ago, studied records of <strong>internal migration in England</strong> and proposed "laws of migration."</p>
+        </li>
+        <li class="fc-item" id="la-counter" data-focus="ap" data-notes="law-countermigration" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#ravenstein">
+          <p class="q">What does Ravenstein's first law say every migration flow produces?</p>
+          <p class="a">A <strong>return flow, or countermigration</strong>.</p>
+        </li>
+        <li class="fc-item" id="la-short" data-focus="ap" data-notes="law-short" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#ravenstein">
+          <p class="q">According to Ravenstein, how far do most migrants move?</p>
+          <p class="a">A <strong>short distance</strong>.</p>
+        </li>
+        <li class="fc-item" id="la-bigcity" data-focus="ap" data-notes="law-big-city" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#ravenstein">
+          <p class="q">According to Ravenstein, where do migrants who move long distances tend to go?</p>
+          <p class="a">To <strong>big cities</strong>.</p>
+        </li>
+        <li class="fc-item" id="la-rural" data-focus="ap" data-notes="law-rural" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#ravenstein">
+          <p class="q">According to Ravenstein, who migrates more: urban or rural people?</p>
+          <p class="a"><strong>Rural</strong> people. City residents are less migratory.</p>
+        </li>
+        <li class="fc-item" id="la-young" data-focus="ap" data-notes="law-families" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#ravenstein">
+          <p class="q">According to Ravenstein, who is more likely to move to another country: families or young adults?</p>
+          <p class="a"><strong>Young adults</strong>. Families are less likely to make international moves.</p>
+        </li>
+        <li class="fc-item" id="la-decay" data-focus="ap" data-notes="distance-decay fig-3-16" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#ravenstein">
+          <p class="q">What is distance decay, and what does it predict for migration?</p>
+          <p class="a">The farther something gets from its origin (hearth), in distance or time, the less likely it spreads there. For migration: the <strong>farther</strong> the destination, the <strong>fewer</strong> migrants reach it.</p>
+        </li>
+        <li class="fc-item" id="la-gravity" data-focus="ap" data-notes="gravity-model" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#ravenstein">
+          <p class="q">What is the gravity model?</p>
+          <p class="a">A math prediction of how much two places interact (including migration) based on their <strong>population sizes</strong> and the <strong>distance</strong> between them. Interaction rises with size and falls with distance.</p>
+        </li>
+        <li class="fc-item" id="la-formula" data-focus="ap" data-notes="gravity-formula gravity-model" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#ravenstein">
+          <p class="q">How do you calculate the gravity model, according to the book?</p>
+          <p class="a"><strong>Multiply</strong> the populations of the two places, then <strong>divide</strong> by the distance between them.</p>
+        </li>
+        <li class="fc-item" id="la-origin" data-focus="detail" data-notes="gravity-model distance-decay" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#ravenstein">
+          <p class="q">Which of Ravenstein's ideas was an early version of the gravity model?</p>
+          <p class="a">His law on <strong>volume</strong>: that migration flows shrink with distance (distance decay).</p>
+        </li>
+        <li class="fc-item" id="la-today" data-focus="ap" data-notes="gravity-today" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#ravenstein">
+          <p class="q">Why does the gravity model mean less today, and why is it still somewhat useful?</p>
+          <p class="a"><strong>Airplanes and the Internet</strong> changed what distance means. But more migrants still move short distances than long ones.</p>
+        </li>
+        </ol>
+      </section>
+      <section id="push-pull" data-sec="push-pull" data-part="part-3-3" data-title="Push and pull factors">
+        <h2>Push and pull factors <span class="pages">p. 78</span></h2>
+        <ol>
+        <li class="fc-item" id="pp-push" data-focus="ap" data-notes="push-factors" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#push-pull">
+          <p class="q">What are push factors? Give the reading's examples.</p>
+          <p class="a">Conditions and perceptions that help a person decide to <strong>leave</strong>: work or retirement conditions, cost of living, personal safety and security, environmental disasters and hazards, even weather and climate.</p>
+        </li>
+        <li class="fc-item" id="pp-pull" data-focus="ap" data-notes="pull-factors" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#push-pull">
+          <p class="q">What are pull factors?</p>
+          <p class="a">What <strong>attracts</strong> a migrant to a particular destination; the factors that help them decide <strong>where to go</strong>.</p>
+        </li>
+        <li class="fc-item" id="pp-mix" data-focus="ap" data-notes="push-factors pull-factors" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#push-pull">
+          <p class="q">What does a decision to emigrate and immigrate come from?</p>
+          <p class="a">A <strong>combination</strong> of push and pull factors.</p>
+        </li>
+        <li class="fc-item" id="pp-vague" data-focus="ap" data-notes="pull-vague" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#push-pull">
+          <p class="q">Why are pull factors often vaguer than push factors?</p>
+          <p class="a">They may rest only on <strong>perceptions</strong> from things heard and read, not experience. Migrants can have unrealistically positive images of a destination, which makes a strong pull.</p>
+        </li>
+        <li class="fc-item" id="pp-intervening" data-focus="ap" data-notes="intervening-opportunity" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#push-pull">
+          <p class="q">What is an intervening opportunity?</p>
+          <p class="a">An opportunity <strong>near the migrant's current location</strong> that makes moving to a farther destination much less attractive, so they stop closer to home.</p>
+        </li>
+        <li class="fc-item" id="pp-why-closer" data-focus="ap" data-notes="intervening-opportunity distance-decay" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#push-pull">
+          <p class="q">Why do many migrants end up closer to home than they planned?</p>
+          <p class="a">Interaction drops with distance, so they feel <strong>less certain</strong> about faraway places, and an intervening opportunity nearby can win out.</p>
+        </li>
+        <li class="fc-item" id="pp-brazil" data-focus="ap" data-notes="brazil-steps" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#push-pull">
+          <p class="q">How would a family from rural Brazil likely move, following Ravenstein's laws?</p>
+          <p class="a">In steps: <strong>village → nearby town → city → metropolis</strong> (São Paulo or Rio de Janeiro). At any step an intervening opportunity may make them stay.</p>
+        </li>
+        <li class="fc-item" id="pp-steps-term" data-focus="ap" data-notes="brazil-steps" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#push-pull">
+          <p class="q">What AP term describes moving toward a destination in stages, like the rural Brazil family?</p>
+          <p class="a"><strong>Step migration</strong>. (The book describes it but doesn't use the term.)</p>
+        </li>
+        <li class="fc-item" id="pp-either" data-focus="ap" data-notes="push-or-pull" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#types">
+          <p class="q">Can one factor be both a push and a pull? What are the five types the reading covers?</p>
+          <p class="a">Yes, any single factor can push or pull. The types: <strong>legal status; gender, ethnicity and race; environmental conditions; political conflict; family links</strong>.</p>
+        </li>
+        </ol>
+      </section>
+      <section id="legal-status" data-sec="legal-status" data-part="part-3-3" data-title="Legal status">
+        <h2>Legal status <span class="pages">pp. 78–79</span></h2>
+        <ol>
+        <li class="fc-item" id="ls-auth" data-focus="ap" data-notes="authorized" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#legal-status">
+          <p class="q">What makes a migrant authorized (documented)?</p>
+          <p class="a">A <strong>visa</strong> from the host country, giving the formal right to live and work there for the visa's length, usually months or years.</p>
+        </li>
+        <li class="fc-item" id="ls-unauth" data-focus="ap" data-notes="unauthorized" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#legal-status">
+          <p class="q">What are the two ways someone becomes an unauthorized (undocumented) migrant?</p>
+          <p class="a">Entering legally with a visa and <strong>staying after it expires</strong>, or <strong>crossing a border without permission</strong>.</p>
+        </li>
+        <li class="fc-item" id="ls-growth" data-focus="ap" data-notes="immigration-growth" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#legal-status">
+          <p class="q">How does immigration help the U.S. population, according to the reading?</p>
+          <p class="a">It gives <strong>positive net migration</strong> that supplements a TFR of only <strong>1.8</strong>, keeping the population growing, and it provides a <strong>labor supply and tax base</strong>.</p>
+        </li>
+        <li class="fc-item" id="ls-numbers" data-focus="detail" data-notes="us-unauthorized" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#legal-status">
+          <p class="q">How many migrants live in the U.S., and how many are unauthorized?</p>
+          <p class="a">About <strong>43.7 million</strong>; <strong>10.7 million</strong> unauthorized, the lowest since the prerecession spike of <strong>12.2 million</strong>.</p>
+        </li>
+        <li class="fc-item" id="ls-origins" data-focus="detail" data-notes="us-origins" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#legal-status">
+          <p class="q">What shares of all U.S. migrants come from Mexico and from South and East Asia?</p>
+          <p class="a">Mexico <strong>26%</strong>; South Asia and East Asia <strong>27%</strong>.</p>
+        </li>
+        <li class="fc-item" id="ls-tenyears" data-focus="detail" data-notes="us-unauthorized" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#legal-status">
+          <p class="q">How long have most unauthorized adult migrants lived in the U.S.?</p>
+          <p class="a"><strong>Two-thirds</strong> have lived there more than <strong>10 years</strong>.</p>
+        </li>
+        <li class="fc-item" id="ls-fig317" data-focus="detail" data-notes="fig-3-17" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#legal-status">
+          <p class="q">What does Fig. 3.17 show about foreign-born residents, 1990–2012?</p>
+          <p class="a">The biggest increases were along the <strong>coasts</strong>; a band of northern counties from <strong>Idaho to Maine</strong> saw declines.</p>
+        </li>
+        <li class="fc-item" id="ls-tempvisas" data-focus="ap" data-notes="temp-visas" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#legal-status">
+          <p class="q">What kinds of jobs do U.S. temporary work visas fill?</p>
+          <p class="a">Many kinds: <strong>doctors, computer engineers, construction workers, hotel cleaners, restaurant waitstaff</strong>, plus seasonal farm and forestry work.</p>
+        </li>
+        <li class="fc-item" id="ls-farm" data-focus="detail" data-notes="farm-visas" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#legal-status">
+          <p class="q">How many farmworkers enter the U.S. on seasonal papers, and where do U.S. and Canadian farmworkers mostly come from?</p>
+          <p class="a">Over <strong>45,000</strong> a year; mostly from <strong>Mexico and Central America</strong>. Canada has run a similar program since <strong>1966</strong>.</p>
+        </li>
+        <li class="fc-item" id="ls-fig318" data-focus="detail" data-notes="fig-3-18" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#legal-status">
+          <p class="q">In Fig. 3.18, which country sent the most authorized immigrants to the U.S. in 2000–2017, and about how many?</p>
+          <p class="a"><strong>Mexico</strong>, about <strong>2.9 million</strong> (2,897,000). Next: Dominican Republic (688,000) and Cuba (637,000).</p>
+        </li>
+        <li class="fc-item" id="ls-border" data-focus="ap" data-notes="border-landscape" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#legal-status">
+          <p class="q">How has U.S. spending on the Mexican border changed the border region?</p>
+          <p class="a">Fences, more Border Patrol agents and technology have changed the region's <strong>cultural landscape</strong>. The fences are hard to climb but have openings where people can talk across.</p>
+        </li>
+        <li class="fc-item" id="ls-desert" data-focus="ap" data-notes="border-desert" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#legal-status">
+          <p class="q">What effect did new fences and security south of San Diego have?</p>
+          <p class="a">They pushed people crossing without documents <strong>farther east into the desert</strong>.</p>
+        </li>
+        <li class="fc-item" id="ls-coyotes" data-focus="ap" data-notes="coyotes" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#legal-status">
+          <p class="q">What are coyotes?</p>
+          <p class="a"><strong>Smugglers</strong> who take people across the border for a large fee.</p>
+        </li>
+        <li class="fc-item" id="ls-memorials" data-focus="detail" data-notes="fig-3-19" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#legal-status">
+          <p class="q">What marks the border fences, and what does Fig. 3.19 show?</p>
+          <p class="a"><strong>Empty water bottles and memorials</strong> to Mexicans who died crossing. Fig. 3.19: the double wall between <strong>Tijuana and San Diego</strong>, with crosses placed by human rights activists.</p>
+        </li>
+        <li class="fc-item" id="ls-goods" data-focus="ap" data-notes="goods-not-people" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#legal-status">
+          <p class="q">What does the reading say about globalization and the free flow of people? Why has unauthorized migration slowed?</p>
+          <p class="a">Goods flow more freely, but the free flow of people is <strong>far from realized</strong>. The slowdown may have more to do with <strong>the economy</strong> than with walls and fences.</p>
+        </li>
+        </ol>
+      </section>
+      <section id="gender" data-sec="gender" data-part="part-3-3" data-title="Gender, ethnicity and race">
+        <h2>Gender, ethnicity and race <span class="pages">pp. 79–80</span></h2>
+        <ol>
+        <li class="fc-item" id="ge-depend" data-focus="ap" data-notes="gender-ethnicity" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#gender">
+          <p class="q">What do a migrant's job and safety opportunities depend on, and what does hiring by these traits do?</p>
+          <p class="a"><strong>Gender, ethnicity and race</strong>. Hiring by them makes <strong>power relationships visible</strong> and reinforces stereotypes about each group's role.</p>
+        </li>
+        <li class="fc-item" id="ge-helpers" data-focus="ap" data-notes="domestic-helpers" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#gender">
+          <p class="q">Why do some high-status women hire domestic helpers from a different ethnic group?</p>
+          <p class="a">To <strong>set themselves apart</strong> from the people who work for them. The helper's ethnicity signals who holds power in the home and region.</p>
+        </li>
+        <li class="fc-item" id="ge-toronto" data-focus="detail" data-notes="toronto-agencies" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#gender">
+          <p class="q">What did Stiell and England find about placement agencies in Toronto?</p>
+          <p class="a">They used <strong>scripted stereotypes</strong>: Caribbean workers first "docile," cheerful and good with children, later difficult, "aggressive" and selfish; Filipinas "naturally docile," hardworking and willing to work long hours without complaint.</p>
+        </li>
+        </ol>
+      </section>
+      <section id="environment" data-sec="environment" data-part="part-3-3" data-title="Environmental conditions">
+        <h2>Environmental conditions <span class="pages">pp. 80–81</span></h2>
+        <ol>
+        <li class="fc-item" id="en-crises" data-focus="ap" data-notes="env-push" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#environment">
+          <p class="q">What environmental crises cause migration, and are those flows always permanent?</p>
+          <p class="a">Earthquakes, hurricanes, volcanic eruptions, tsunamis, floods, fires and climate change. They can be <strong>temporary</strong>: many people return after the crisis.</p>
+        </li>
+        <li class="fc-item" id="en-katrina" data-focus="ap" data-notes="katrina-human" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#environment">
+          <p class="q">How did people make Hurricane Katrina's damage worse?</p>
+          <p class="a">Flood-control projects, resource extraction, the <strong>Army Corps of Engineers</strong>, oil companies and developers destroyed Louisiana's <strong>wetlands</strong>, sped erosion, and brought the Gulf to New Orleans's doorstep.</p>
+        </li>
+        <li class="fc-item" id="en-nola" data-focus="detail" data-notes="nola-numbers" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#environment">
+          <p class="q">How much of New Orleans flooded, and how much did its population fall between 2000 and 2010?</p>
+          <p class="a">More than <strong>85%</strong> flooded; population fell <strong>11%</strong> (Katrina plus the 2008 recession).</p>
+        </li>
+        <li class="fc-item" id="en-children" data-focus="detail" data-notes="nola-numbers nola-suburbs" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#environment">
+          <p class="q">How did the share of children in New Orleans change after Katrina, and where did families go?</p>
+          <p class="a">From <strong>27% (2000) to 23% (2007)</strong>. Families with children moved to <strong>farther-out suburbs</strong>.</p>
+        </li>
+        <li class="fc-item" id="en-fig320" data-focus="detail" data-notes="fig-3-20" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#environment">
+          <p class="q">Which New Orleans neighborhoods lost the most children in Fig. 3.20, and with what effect?</p>
+          <p class="a"><strong>Mid-City, Gentilly, the Garden District and the Ninth Ward</strong>: fewer schools needed and changed neighborhoods.</p>
+        </li>
+        <li class="fc-item" id="en-adapt" data-focus="ap" data-notes="climate-migration" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#environment">
+          <p class="q">How is climate change expected to affect migration?</p>
+          <p class="a">More erratic weather will drive migration as people use it as an <strong>adaptive response</strong>.</p>
+        </li>
+        <li class="fc-item" id="en-climaterefugees" data-focus="detail" data-notes="climate-refugees" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#environment">
+          <p class="q">How many climate refugees does one report predict, from how many countries, by when?</p>
+          <p class="a"><strong>150 to 300 million</strong> from <strong>40 countries</strong> by <strong>2050</strong>.</p>
+        </li>
+        <li class="fc-item" id="en-pacific" data-focus="detail" data-notes="climate-refugees tuvalu" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#environment">
+          <p class="q">What climate effects are Pacific countries from Tuvalu to Australia already facing?</p>
+          <p class="a"><strong>Freshwater shortages</strong>, more <strong>wildfires</strong> in drought areas, and stronger <strong>storms</strong>. (Tuvalu: 12,000 people; Australia: 24.1 million.)</p>
+        </li>
+        <li class="fc-item" id="en-tuvalu" data-focus="ap" data-notes="tuvalu" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#environment">
+          <p class="q">What is Tuvalu, and why is it at risk?</p>
+          <p class="a">A small Pacific country of <strong>atolls</strong> barely <strong>2 m (6.5 ft)</strong> above sea level, threatened by climate change that starts with emissions from high-income countries far away. Migrating is one adaptation.</p>
+        </li>
+        <li class="fc-item" id="en-label" data-focus="ap" data-notes="reject-label ventriloquize" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#environment">
+          <p class="q">Why do Tuvaluans reject the label "climate refugee," according to Carol Farbotko?</p>
+          <p class="a">It paints them as <strong>passive victims</strong> and ignores industrialized countries' responsibility to cut emissions. They see migrating abroad as a <strong>last resort</strong>.</p>
+        </li>
+        <li class="fc-item" id="en-media" data-focus="detail" data-notes="ventriloquize fig-3-21" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#environment">
+          <p class="q">What did Farbotko say media and environmental groups were doing with Tuvalu?</p>
+          <p class="a">Portraying it as a place in crisis whose only option is to leave as refugees, pushing aside real Tuvaluan voices and <strong>speaking for them</strong> to convince climate skeptics.</p>
+        </li>
+        </ol>
+      </section>
+      <section id="political" data-sec="political" data-part="part-3-3" data-title="Political conflict">
+        <h2>Political conflict <span class="pages">pp. 81–82</span></h2>
+        <ol>
+        <li class="fc-item" id="po-push" data-focus="ap" data-notes="political-push borders-migration" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#political">
+          <p class="q">How do political conflict and borders cause migration?</p>
+          <p class="a">War and conflict create refugee flows, and <strong>changing or creating borders</strong> also generates migration: people who fear for their culture move where people like them are safe.</p>
+        </li>
+        <li class="fc-item" id="po-partition" data-focus="ap" data-notes="partition" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#political">
+          <p class="q">How did Britain partition South Asia in 1947?</p>
+          <p class="a">Into a <strong>Hindu-majority India</strong> and a <strong>Muslim-majority Pakistan</strong> in two parts 800 miles apart (today's Pakistan and Bangladesh). It drew the borders <strong>in secret</strong> and revealed them only after independence.</p>
+        </li>
+        <li class="fc-item" id="po-dates" data-focus="detail" data-notes="partition" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#political">
+          <p class="q">When did Britain rule South Asia, and when did Pakistan and India become independent?</p>
+          <p class="a">Ruled <strong>1857–1947</strong>. Pakistan: <strong>August 14, 1947</strong>; India: <strong>August 15, 1947</strong>. Mass migration began <strong>August 17</strong>.</p>
+        </li>
+        <li class="fc-item" id="po-numbers" data-focus="detail" data-notes="partition partition-toll fig-3-22" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#political">
+          <p class="q">How many people moved during Partition, who went where, and how many died?</p>
+          <p class="a"><strong>14 million</strong>: 7 million Muslims to Pakistan, 7 million Hindus and Sikhs to India. About <strong>1 million</strong> died.</p>
+        </li>
+        <li class="fc-item" id="po-legacy" data-focus="detail" data-notes="partition-toll fig-3-22" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#political">
+          <p class="q">What lasting effects did Partition have, and what did the border do to Punjab?</p>
+          <p class="a">A traumatic memory for generations and an India–Pakistan split that still festers. It cut <strong>Punjab</strong>, the Sikh homeland, between the two countries.</p>
+        </li>
+        </ol>
+      </section>
+      <section id="chain" data-sec="chain" data-part="part-3-3" data-title="Family links and chain migration">
+        <h2>Family links and chain migration <span class="pages">p. 82</span></h2>
+        <ol>
+        <li class="fc-item" id="ch-def" data-focus="ap" data-notes="chain-migration" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#chain">
+          <p class="q">What is chain migration?</p>
+          <p class="a">Migration along <strong>kinship (family and friendship) links</strong>: early migrants send word home and help with housing and jobs, and others follow the <strong>same path</strong>.</p>
+        </li>
+        <li class="fc-item" id="ch-how" data-focus="ap" data-notes="chain-migration" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#chain">
+          <p class="q">How do early migrants encourage others to follow?</p>
+          <p class="a">By calling, texting and passing word home that creates a <strong>positive picture</strong> of the place, promising help with <strong>housing and jobs</strong>, and reassuring them a community has formed.</p>
+        </li>
+        <li class="fc-item" id="ch-waves" data-focus="ap" data-notes="immigration-waves" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#chain">
+          <p class="q">What do chains of migration build into?</p>
+          <p class="a"><strong>Immigration waves</strong> connecting the home country to the destination.</p>
+        </li>
+        </ol>
+      </section>
+      <section id="refugees" data-sec="refugees" data-part="part-3-4" data-title="Refugees, asylum and repatriation">
+        <h2>Refugees, asylum and repatriation <span class="pages">p. 83</span></h2>
+        <ol>
+        <li class="fc-item" id="rf-def" data-focus="ap" data-notes="refugee refugee-neighbor" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#refugees">
+          <p class="q">Who are refugees, and where do most go?</p>
+          <p class="a">Migrants fleeing <strong>political persecution and violence</strong> at home. Most walk to a <strong>neighboring country</strong>.</p>
+        </li>
+        <li class="fc-item" id="rf-convention" data-focus="detail" data-notes="convention-1951 unhcr" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#refugees">
+          <p class="q">What is the 1951 Refugee Convention, and what was its main goal?</p>
+          <p class="a">International law defining who is a refugee and their legal rights. Its main goal: helping <strong>European refugees after World War II</strong>.</p>
+        </li>
+        <li class="fc-item" id="rf-definition" data-focus="ap" data-notes="refugee-definition" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#refugees">
+          <p class="q">What is the 1951 Convention's definition of a refugee?</p>
+          <p class="a">A person with a <strong>well-founded fear of persecution</strong> because of <strong>race, religion, nationality, membership in a particular social group, or political opinion</strong>.</p>
+        </li>
+        <li class="fc-item" id="rf-unhcr" data-focus="ap" data-notes="unhcr" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#refugees">
+          <p class="q">What is the UNHCR, and which other groups help refugees?</p>
+          <p class="a">The <strong>Office of the UN High Commissioner for Refugees</strong>: it organizes and funds relief and negotiates for refugees. The <strong>International Red Cross</strong> and <strong>World Food Program</strong> also help.</p>
+        </li>
+        <li class="fc-item" id="rf-status" data-focus="ap" data-notes="refugee-status" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#refugees">
+          <p class="q">Why do refugees have legal status under international law?</p>
+          <p class="a">To protect them, because their <strong>own governments</strong> are threatening their basic human rights.</p>
+        </li>
+        <li class="fc-item" id="rf-asylum" data-focus="ap" data-notes="asylum" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#refugees">
+          <p class="q">What is asylum, and what guarantees refugees the right to it?</p>
+          <p class="a">The right to be <strong>protected</strong> and to stay temporarily in a country other than their own. Guaranteed by the <strong>UN Declaration of Human Rights</strong>.</p>
+        </li>
+        <li class="fc-item" id="rf-camps" data-focus="ap" data-notes="asylum camp-generations" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#refugees">
+          <p class="q">Where do refugees usually get food and shelter, and why do some stay for generations?</p>
+          <p class="a">In <strong>refugee camps</strong> in the countries giving asylum. Where instability lasts, families live in camps for <strong>generations</strong>.</p>
+        </li>
+        <li class="fc-item" id="rf-repat" data-focus="ap" data-notes="repatriation" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#refugees">
+          <p class="q">What is repatriation, and when does it happen?</p>
+          <p class="a">Refugees <strong>returning home</strong>, helped by the UNHCR, once violence and persecution decrease. The UN works to make sure refugees aren't forced back while persecution continues.</p>
+        </li>
+        <li class="fc-item" id="rf-resettle" data-focus="ap" data-notes="resettlement karen" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#refugees">
+          <p class="q">What is resettlement? Give the reading's example.</p>
+          <p class="a">A country other than the one giving asylum welcomes refugees <strong>permanently</strong>. The U.S. took <strong>160,000 Karen refugees</strong> from Burma (Myanmar) living in camps in Thailand, <strong>2007–2017</strong>.</p>
+        </li>
+        <li class="fc-item" id="rf-karen-help" data-focus="detail" data-notes="karen" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#refugees">
+          <p class="q">What happens to each refugee the U.S. resettles?</p>
+          <p class="a">They get the legal right to live and work in the U.S., are <strong>vetted</strong>, and get help from a <strong>nongovernmental organization</strong> with housing and adjusting.</p>
+        </li>
+        <li class="fc-item" id="rf-seekers" data-focus="ap" data-notes="asylum-seekers" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#refugees">
+          <p class="q">What is an asylum seeker?</p>
+          <p class="a">Someone who has fled persecution and asks another country for protection but has <strong>not yet been legally recognized as a refugee</strong>.</p>
+        </li>
+        <li class="fc-item" id="rf-process" data-focus="ap" data-notes="asylum-seekers" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#refugees">
+          <p class="q">What is the asylum process?</p>
+          <p class="a">Claim asylum at a <strong>port or land border</strong> → held in a facility, detention center or temporary housing → explain the persecution to a <strong>judge or official</strong> with evidence → government grants asylum (refugee status) or can send them home.</p>
+        </li>
+        </ol>
+      </section>
+      <section id="distribution" data-sec="distribution" data-part="part-3-4" data-title="Distribution of refugees">
+        <h2>Distribution of refugees <span class="pages">pp. 83–85</span></h2>
+        <ol>
+        <li class="fc-item" id="di-83" data-focus="ap" data-notes="same-region" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#distribution">
+          <p class="q">What share of refugees flee to a country in their own region, according to the UNHCR?</p>
+          <p class="a"><strong>83%</strong>. The countries producing and receiving the most refugees are near each other.</p>
+        </li>
+        <li class="fc-item" id="di-top" data-focus="detail" data-notes="same-region" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#distribution">
+          <p class="q">Which countries produced the most refugees in 2018?</p>
+          <p class="a"><strong>Syria (6.3 million), Afghanistan (2.6 million), South Sudan (2.4 million)</strong>.</p>
+        </li>
+        <li class="fc-item" id="di-hosts" data-focus="detail" data-notes="same-region" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#distribution">
+          <p class="q">Which countries received the most refugees in 2018?</p>
+          <p class="a"><strong>Turkey (3.5 million), Pakistan (1.4 million), Uganda (1.4 million)</strong>, next door to the top source countries.</p>
+        </li>
+        <li class="fc-item" id="di-lowincome" data-focus="ap" data-notes="low-income-flows fig-3-23" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#distribution">
+          <p class="q">How do most refugees travel, and between what kinds of countries?</p>
+          <p class="a">On foot, by bicycle, wagon, open boat or caravan, with few resources. Mostly from <strong>low-income</strong> countries to <strong>neighboring low-income</strong> countries, so the poorest countries feel the impact most.</p>
+        </li>
+        <li class="fc-item" id="di-1970" data-focus="detail" data-notes="refugees-1970" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#distribution">
+          <p class="q">How many refugees were there in 1970 and 1980, and who were most of them in 1970?</p>
+          <p class="a"><strong>2.9 million</strong> in 1970, mostly <strong>Palestinian Arabs</strong> displaced by Israel's creation and the wars that followed. <strong>Over 8 million</strong> in 1980 (nearly triple).</p>
+        </li>
+        <li class="fc-item" id="di-2018" data-focus="detail" data-notes="displaced-2018 refugees-1970" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#distribution">
+          <p class="q">How many refugees did the UNHCR count in 2018, and how many were Palestinian Arabs in camps?</p>
+          <p class="a"><strong>25.4 million</strong>, including <strong>5.4 million</strong> Palestinian Arabs who have lived in camps since 1970.</p>
+        </li>
+        <li class="fc-item" id="di-fig324" data-focus="ap" data-notes="fig-3-24" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#distribution">
+          <p class="q">What does Fig. 3.24 map, and which places stand out?</p>
+          <p class="a">The average number of refugees from each <strong>country of origin</strong>, 2001–2018. Places with major <strong>political conflict</strong>, like Syria and Afghanistan, stand out.</p>
+        </li>
+        <li class="fc-item" id="di-idp" data-focus="ap" data-notes="idps" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#distribution">
+          <p class="q">What is the difference between a refugee and an internally displaced person (IDP)?</p>
+          <p class="a">A refugee has <strong>crossed an international border</strong> and is in another country. An IDP left home but <strong>stays inside their own country</strong>. Under the 1951 Convention, IDPs are <strong>not</strong> refugees.</p>
+        </li>
+        <li class="fc-item" id="di-idp-worse" data-focus="ap" data-notes="idp-unstable" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#distribution">
+          <p class="q">Why can IDPs' lives be even more unstable than refugees', and why are they often uncounted?</p>
+          <p class="a">They stay in the country <strong>where the crisis is happening</strong> (violence, flooding, famine). They're uncounted because they <strong>don't cross borders</strong>.</p>
+        </li>
+        <li class="fc-item" id="di-displaced" data-focus="detail" data-notes="displaced-2018" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#distribution">
+          <p class="q">How many IDPs, refugees and asylum seekers were there in 2018, and what share of the world does the book say was displaced?</p>
+          <p class="a"><strong>40 million</strong> IDPs, <strong>25.4 million</strong> refugees, <strong>3.1 million</strong> asylum seekers. The book says <strong>8.6%</strong> of the world. (The math gives under 1%; use 8.6% for the book's figure.)</p>
+        </li>
+        </ol>
+      </section>
+      <section id="syria" data-sec="syria" data-part="part-3-4" data-title="Areas of dislocation: Syria and Rwanda">
+        <h2>Areas of dislocation: Syria and Rwanda <span class="pages">pp. 85–86</span></h2>
+        <ol>
+        <li class="fc-item" id="sy-regions" data-focus="ap" data-notes="dislocation-regions" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#dislocation">
+          <p class="q">Which regions generate more than half of all refugees, and which six countries account for about 60% of UNHCR's refugees?</p>
+          <p class="a"><strong>North Africa and Southwest Asia</strong> and <strong>sub-Saharan Africa</strong>. The six: <strong>Afghanistan, Syria, Sudan, South Sudan, Somalia, the DR Congo</strong>.</p>
+        </li>
+        <li class="fc-item" id="sy-fled" data-focus="detail" data-notes="syria" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#syria">
+          <p class="q">How many Syrians fled abroad after the civil war began, when did it begin, and where did they go?</p>
+          <p class="a"><strong>5.6 million</strong> since <strong>2011</strong>, to <strong>Turkey, Lebanon, Jordan and Iraq</strong>, which already had large refugee populations or conflicts of their own.</p>
+        </li>
+        <li class="fc-item" id="sy-zaatari" data-focus="detail" data-notes="zaatari fig-3-23" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#syria">
+          <p class="q">What is Zaatari?</p>
+          <p class="a">A temporary <strong>UNHCR camp in Jordan</strong> near the Syrian border, only <strong>3 sq mi (7.8 sq km)</strong>, that became a more permanent home for over <strong>100,000</strong> refugees in harsh, cramped conditions.</p>
+        </li>
+        <li class="fc-item" id="sy-arsal" data-focus="detail" data-notes="arsal fig-3-25" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#syria">
+          <p class="q">What happened in Arsal, Lebanon?</p>
+          <p class="a"><strong>50,000–80,000</strong> Syrian refugees arrived and now <strong>outnumber locals</strong>; its power, waste and water systems strain to serve almost <strong>three times</strong> its original population. (ISIS controlled it 2014–2017.)</p>
+        </li>
+        <li class="fc-item" id="sy-idps" data-focus="detail" data-notes="syria" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#syria">
+          <p class="q">How many Syrians are internally displaced?</p>
+          <p class="a"><strong>6.6 million</strong>.</p>
+        </li>
+        <li class="fc-item" id="rw-war" data-focus="detail" data-notes="rwanda" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#rwanda">
+          <p class="q">What happened in Rwanda in the mid-1990s?</p>
+          <p class="a">A civil war: militant <strong>Hutu</strong> against the minority <strong>Tutsi</strong> and "moderate" Hutu. <strong>800,000 to 1 million</strong> killed; more than <strong>2 million</strong> fled to <strong>Zaire (DR Congo) and Tanzania</strong>; the strife spread to Burundi.</p>
+        </li>
+        <li class="fc-item" id="rw-return" data-focus="detail" data-notes="rwanda-return repatriation" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#rwanda">
+          <p class="q">What happened after Rwanda's civil war calmed in 1996?</p>
+          <p class="a">The UNHCR and the World Health Organization helped <strong>500,000</strong> Rwandans <strong>repatriate</strong>.</p>
+        </li>
+        </ol>
+      </section>
+      <section id="israel" data-sec="israel" data-part="part-3-4" data-title="Israel/Palestine">
+        <h2>Israel/Palestine <span class="pages">pp. 86–87</span></h2>
+        <ol>
+        <li class="fc-item" id="is-diaspora" data-focus="detail" data-notes="jewish-diaspora israel-migration" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#israel">
+          <p class="q">What started the Jewish diaspora, and when?</p>
+          <p class="a">Persecution under the <strong>Roman Empire</strong>, around <strong>70 CE</strong>, scattering Jews to Europe.</p>
+        </li>
+        <li class="fc-item" id="is-muslim" data-focus="detail" data-notes="israel-migration" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#israel">
+          <p class="q">Why did the land become sacred to Muslims, and how did people live there from 700 to the 1900s?</p>
+          <p class="a">About 600 years later, <strong>Muhammad ascended to heaven</strong> beside Judaism's holiest site. Muslims, Christians and Jews then lived in <strong>relative peace</strong>, except during the Crusades.</p>
+        </li>
+        <li class="fc-item" id="is-zionism" data-focus="ap" data-notes="zionism" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#israel">
+          <p class="q">What is Zionism, and why did it grow in the late 1800s?</p>
+          <p class="a">The movement for a <strong>national homeland for Jews</strong> between the Mediterranean and the Jordan River. It grew because of rising <strong>persecution of Jews in Europe</strong>, the roots of the Holocaust (6 million killed).</p>
+        </li>
+        <li class="fc-item" id="is-1910" data-focus="detail" data-notes="zionism israel-migration" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#israel">
+          <p class="q">How many Jews lived in the region in 1910, and how many had migrated by 1948?</p>
+          <p class="a">Fewer than <strong>50,000</strong> in 1910; as many as <strong>750,000</strong> had migrated by 1948.</p>
+        </li>
+        <li class="fc-item" id="is-balfour" data-focus="ap" data-notes="balfour" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#israel">
+          <p class="q">What was the Balfour Declaration, and when was Palestine a British mandate?</p>
+          <p class="a">A <strong>1917</strong> letter from a British official to a prominent Jewish family promising a Jewish homeland in Palestine. Britain ran Palestine as a League of Nations mandate <strong>1919–1948</strong>.</p>
+        </li>
+        <li class="fc-item" id="is-partition" data-focus="detail" data-notes="palestinian-refugees" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#israel">
+          <p class="q">What did the UN decide for the Palestinian mandate, and what happened when the 1948 borders were drawn?</p>
+          <p class="a">To divide it into <strong>Palestine and Israel</strong>. About <strong>600,000 Palestinian Arabs</strong> fled or were pushed out, becoming refugees in Jordan, Egypt, Syria and beyond.</p>
+        </li>
+        <li class="fc-item" id="is-permanent" data-focus="ap" data-notes="permanent-refugees" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#israel">
+          <p class="q">How do Palestinian refugees' situations differ in Jordan and Lebanon?</p>
+          <p class="a">In <strong>Jordan</strong>, they're so integrated they're considered <strong>permanent</strong> refugees. In <strong>Lebanon</strong>, they wait in camps and still count as <strong>temporary</strong> refugees.</p>
+        </li>
+        <li class="fc-item" id="is-1967" data-focus="ap" data-notes="settlements facts-on-ground fig-3-27" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#israel">
+          <p class="q">What did Israel do after the 1967 Six-Day War?</p>
+          <p class="a">Expanded its territorial control and built <strong>settlements</strong> for Jewish immigrants in Palestinian territories, which Murphy calls <strong>"facts on the ground"</strong> on strategic, defensible sites.</p>
+        </li>
+        <li class="fc-item" id="is-1991" data-focus="detail" data-notes="israel-pop" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#israel">
+          <p class="q">What migration followed the Soviet Union's breakup, and what is Israel's population?</p>
+          <p class="a"><strong>2 million Jews</strong> moved from the former Soviet Union to Israel. Israel: <strong>7.8 million</strong>, including almost <strong>2 million Arab Israelis</strong>, growing by immigration and high birth rates.</p>
+        </li>
+        <li class="fc-item" id="is-fig326" data-focus="detail" data-notes="fig-3-26" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#israel">
+          <p class="q">According to Fig. 3.26, what happened to the Gaza Strip and the Sinai, and what are the "Occupied Territories"?</p>
+          <p class="a">Israel returned <strong>Gaza</strong> to Palestine in <strong>2005</strong>; the <strong>Sinai</strong> went back to Egypt in <strong>1982</strong>. The Occupied Territories include the <strong>West Bank and Golan Heights</strong>.</p>
+        </li>
+        </ol>
+      </section>
+      <section id="sw-asia" data-sec="sw-asia" data-part="part-3-4" data-title="North Africa and Southwest Asia">
+        <h2>North Africa and Southwest Asia <span class="pages">pp. 87–88</span></h2>
+        <ol>
+        <li class="fc-item" id="sw-afghan" data-focus="ap" data-notes="afghan-largest swasia-region" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#sw-asia">
+          <p class="q">Which country produces the world's largest refugee flow, and how big a share?</p>
+          <p class="a"><strong>Afghanistan</strong>, after more than 40 years of conflict: about <strong>a quarter</strong> of all refugees worldwide.</p>
+        </li>
+        <li class="fc-item" id="sw-kurds" data-focus="detail" data-notes="kurds-1991" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#sw-asia">
+          <p class="q">What happened to Iraq's Kurds after the 1991 Gulf War?</p>
+          <p class="a">Threatened by Baghdad's forces, up to <strong>1.85 million</strong> fled toward and into <strong>Turkey and Iran</strong>. A U.S.-allied secure zone in northern Iraq only partly brought them back.</p>
+        </li>
+        <li class="fc-item" id="sw-iraq2003" data-focus="detail" data-notes="kurds-1991" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#sw-asia">
+          <p class="q">How many refugees and IDPs did the 2003 Iraq War produce?</p>
+          <p class="a">Over <strong>2 million refugees</strong> (mostly in Syria and Jordan) and <strong>2.8 million IDPs</strong>.</p>
+        </li>
+        <li class="fc-item" id="sw-kurds2011" data-focus="detail" data-notes="kurds-2011" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#sw-asia">
+          <p class="q">What happened to Syrian Kurds after 2011, and what Iraqi law helped them?</p>
+          <p class="a">About <strong>200,000</strong> became refugees in Iraq, where a <strong>1971</strong> law gives refugees the right to stay and protection. (Iraq also hosts Iranian refugees, including the MEK, exiled in 1980.)</p>
+        </li>
+        <li class="fc-item" id="sw-soviet" data-focus="ap" data-notes="afghan-double fig-3-28" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#sw-asia">
+          <p class="q">What did the Soviet invasion of Afghanistan (end of 1979) do to migration?</p>
+          <p class="a">Created a <strong>double migration stream</strong>: west into <strong>Iran</strong> (2.5 million in camps at the peak) and east into <strong>Pakistan</strong> (3.7 million in tent camps).</p>
+        </li>
+        <li class="fc-item" id="sw-stayed" data-focus="detail" data-notes="afghan-double" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#sw-asia">
+          <p class="q">After the Soviets withdrew (1989), what did most Afghan refugees do?</p>
+          <p class="a">Most of the more than <strong>6 million</strong> in Iran and Pakistan, about <strong>one-quarter</strong> of Afghanistan's people, <strong>stayed</strong> where they were.</p>
+        </li>
+        <li class="fc-item" id="sw-taliban" data-focus="ap" data-notes="taliban" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#sw-asia">
+          <p class="q">Who are the Taliban, and how did their 1996 takeover affect migration?</p>
+          <p class="a">An Islamic fundamentalist movement from northwest Pakistan. Several hundred thousand refugees returned, but their harsh rule caused a <strong>counter-migration</strong> into Iran, where Afghan refugees reached <strong>2.5 million</strong>.</p>
+        </li>
+        <li class="fc-item" id="sw-2001" data-focus="detail" data-notes="taliban swasia-every" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#sw-asia">
+          <p class="q">What happened to Afghan refugees around September 11, 2001?</p>
+          <p class="a">Afghanistan had become a base for the attackers. Before the U.S. response, <strong>tens of thousands</strong> crossed into Pakistan and Iran despite efforts to close the borders.</p>
+        </li>
+        </ol>
+      </section>
+      <section id="ss-africa" data-sec="ss-africa" data-part="part-3-4" data-title="Sub-Saharan Africa">
+        <h2>Sub-Saharan Africa <span class="pages">pp. 88–89</span></h2>
+        <ol>
+        <li class="fc-item" id="sa-west" data-focus="detail" data-notes="west-africa" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#ss-africa">
+          <p class="q">How has West Africa's refugee situation changed since 1997?</p>
+          <p class="a">Civil wars in <strong>Liberia and Sierra Leone</strong> sent <strong>1.5 million</strong> refugees to Guinea and the Ivory Coast in 1997; by <strong>2013</strong>, under <strong>270,000</strong>, thanks to stability and repatriation.</p>
+        </li>
+        <li class="fc-item" id="sa-colonial" data-focus="ap" data-notes="sudan-colonial" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#ss-africa">
+          <p class="q">Why do Sudan's borders matter to its conflicts?</p>
+          <p class="a">They exist because of <strong>European colonialism</strong> and enclose a largely Arab, Muslim north and a south of Christianity and traditional religions.</p>
+        </li>
+        <li class="fc-item" id="sa-war" data-focus="detail" data-notes="sudan-north-south" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#ss-africa">
+          <p class="q">What was Sudan's second civil war (1983–2005), and what did it cost?</p>
+          <p class="a">North (Arab, Muslim) against south (Black African, Christian or animist); genocide and the Janjaweed's scorched earth. Over <strong>2.2 million</strong> died; over <strong>5 million</strong> displaced, <strong>1.6 million</strong> to Uganda.</p>
+        </li>
+        <li class="fc-item" id="sa-oil" data-focus="detail" data-notes="sudan-north-south" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#ss-africa">
+          <p class="q">What pushed Sudan's north to compromise, and when was a peace deal reached?</p>
+          <p class="a">Oil exports from the south began in <strong>1999</strong>; world attention pushed the north to compromise. Temporary peace deal: <strong>2002</strong>.</p>
+        </li>
+        <li class="fc-item" id="sa-darfur" data-focus="ap" data-notes="darfur not-just-religion" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#ss-africa">
+          <p class="q">What happened in Darfur, and why does the book say it shows conflict isn't just religious?</p>
+          <p class="a">The Arab Muslim government and the Janjaweed waged genocide against <strong>non-Arab Muslims</strong>: over <strong>400,000</strong> killed, <strong>2.5 million</strong> displaced. It was <strong>Muslim against Muslim</strong>, so it's ethnic and political too.</p>
+        </li>
+        <li class="fc-item" id="sa-arabic" data-focus="detail" data-notes="darfur" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#ss-africa">
+          <p class="q">What share of northern Sudanese speak Arabic as their native language, and how many ethnic groups do Darfur's non-Arab Muslims belong to?</p>
+          <p class="a">Only <strong>two-thirds</strong>; the other third are Muslim but not ethnically Arab, in at least <strong>30</strong> ethnic groups.</p>
+        </li>
+        <li class="fc-item" id="sa-genocide" data-focus="ap" data-notes="genocide" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#ss-africa">
+          <p class="q">How does the 1948 Convention define genocide, and who called Darfur a genocide?</p>
+          <p class="a">Acts intended to destroy, in whole or in part, a <strong>national, ethnic, racial or religious group</strong>. U.S. Secretary of State <strong>Colin Powell</strong>, in <strong>2004</strong>.</p>
+        </li>
+        <li class="fc-item" id="sa-southsudan" data-focus="ap" data-notes="south-sudan border-irony" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#ss-africa">
+          <p class="q">What happened after South Sudan voted to secede in 2011?</p>
+          <p class="a">The new border <strong>generated new refugee flows</strong>; a six-month border war in <strong>2012</strong>; renewed violence displaced <strong>1.3 million</strong> of 12 million people, with over <strong>300,000</strong> fleeing abroad.</p>
+        </li>
+        <li class="fc-item" id="sa-camps" data-focus="detail" data-notes="fig-3-29" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#ss-africa">
+          <p class="q">According to Fig. 3.29's caption, how many refugees live in camps, and who runs them?</p>
+          <p class="a"><strong>6.6 million</strong>: <strong>4.6 million</strong> in camps run by the UNHCR and other NGOs; <strong>2 million</strong> in camps they built themselves with little support. (Photo: Bredjing, Chad, Darfur refugees.)</p>
+        </li>
+        <li class="fc-item" id="sa-drc" data-focus="detail" data-notes="drc" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#ss-africa">
+          <p class="q">What has happened in the DR Congo since 1998?</p>
+          <p class="a">Just under <strong>6 million</strong> died in violence spurred partly by refugee flows from Rwanda's 1994 war. In <strong>2009</strong>, the <strong>Lord's Resistance Army</strong> generated over <strong>1 million</strong> refugees.</p>
+        </li>
+        </ol>
+      </section>
+      <section id="south-asia" data-sec="south-asia" data-part="part-3-4" data-title="South and Southeast Asia">
+        <h2>South and Southeast Asia <span class="pages">p. 89</span></h2>
+        <ol>
+        <li class="fc-item" id="as-third" data-focus="ap" data-notes="south-asia-third" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#south-asia">
+          <p class="q">Where does South Asia rank for refugees, and why?</p>
+          <p class="a"><strong>Third</strong> among world regions, mainly because <strong>Pakistan</strong> hosts so many Afghan refugees (over 3 million in the 1980s; today more than 2 million Afghans live abroad, mostly in Pakistan and Iran).</p>
+        </li>
+        <li class="fc-item" id="as-srilanka" data-focus="detail" data-notes="sri-lanka" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#south-asia">
+          <p class="q">What caused Sri Lanka's civil war, and how many IDPs remain?</p>
+          <p class="a">The minority <strong>Tamils</strong> demanded an independent state on the <strong>Sinhalese</strong>-controlled island (war ended 2009). About 200,000 IDPs; about <strong>90,000</strong> still uprooted.</p>
+        </li>
+        <li class="fc-item" id="as-bangladesh" data-focus="ap" data-notes="bangladesh" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#south-asia">
+          <p class="q">Why is Bangladesh called "ground zero" for climate refugees?</p>
+          <p class="a"><strong>156.6 million</strong> people in a river delta one-fifth the size of France, mostly no more than <strong>6.1 m (20 ft)</strong> above sea level, with <strong>230</strong> major rivers: exposed to flooding and typhoons. <strong>17%</strong> may be underwater by 2050.</p>
+        </li>
+        <li class="fc-item" id="as-bang-human" data-focus="ap" data-notes="bangladesh-human india-wall" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#south-asia">
+          <p class="q">How have people made Bangladesh more vulnerable, and how has India responded to its migrants?</p>
+          <p class="a"><strong>Groundwater pumping</strong> makes cities sink; <strong>mangrove deforestation</strong> removed storm-surge barriers. India is building a <strong>border wall</strong> to keep environmental refugees out.</p>
+        </li>
+        <li class="fc-item" id="as-vietnam" data-focus="detail" data-notes="se-asia-quick" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#se-asia">
+          <p class="q">How many people fled Vietnam after its war ended, and when?</p>
+          <p class="a"><strong>1 to 2 million</strong>, after the war ended in <strong>1975</strong>.</p>
+        </li>
+        <li class="fc-item" id="as-khmer" data-focus="detail" data-notes="khmer-rouge" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#se-asia">
+          <p class="q">What did Pol Pot and the Khmer Rouge do in Cambodia?</p>
+          <p class="a">Ruled <strong>1975–1979</strong> and committed genocide: <strong>1.7 million</strong> killed (about a quarter of Cambodians), mainly in cities, targeting the educated and Western-influenced. Survivors fled to camps in <strong>Thailand</strong>, then the West.</p>
+        </li>
+        <li class="fc-item" id="as-myanmar" data-focus="detail" data-notes="myanmar-idps" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#se-asia">
+          <p class="q">Who lives in Southeast Asia's largest camps today?</p>
+          <p class="a"><strong>IDPs in Myanmar</strong>: victims of the <strong>2004 tsunami</strong>, the <strong>2008 cyclone</strong> and generals suppressing minorities.</p>
+        </li>
+        </ol>
+      </section>
+      <section id="europe" data-sec="europe" data-part="part-3-4" data-title="Europe and the Americas">
+        <h2>Europe and the Americas <span class="pages">pp. 89–90</span></h2>
+        <ol>
+        <li class="fc-item" id="eu-yugo" data-focus="detail" data-notes="yugoslavia" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#europe">
+          <p class="q">What was Europe's largest refugee crisis since World War II (as of the book), and how many refugees did UNHCR report in 1995?</p>
+          <p class="a">The <strong>breakup of Yugoslavia</strong> in the 1990s: <strong>6,056,600</strong> refugees, which some thought was inflated. Over <strong>100,000</strong> IDPs remain after the <strong>Dayton Accords</strong>.</p>
+        </li>
+        <li class="fc-item" id="am-colombia" data-focus="detail" data-notes="colombia" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#americas">
+          <p class="q">How many IDPs does Colombia have, why, and when was it passed by Syria?</p>
+          <p class="a">About <strong>5.7 million</strong>, from political violence tied to <strong>narcotics</strong>. It had the most IDPs in the world until <strong>2013</strong>, when Syria had 2 million more.</p>
+        </li>
+        <li class="fc-item" id="am-quakes" data-focus="detail" data-notes="quakes" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#americas">
+          <p class="q">What did the 2010 earthquakes in Chile and Haiti do?</p>
+          <p class="a"><strong>Chile</strong>: hundreds killed, <strong>2 million</strong> displaced. <strong>Haiti</strong> (six weeks earlier): <strong>200,000</strong> killed, <strong>1.5 million</strong> displaced.</p>
+        </li>
+        <li class="fc-item" id="am-haiti" data-focus="detail" data-notes="haiti" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#americas">
+          <p class="q">What happened when Hurricanes Matthew and Irma hit Haiti?</p>
+          <p class="a">Matthew (<strong>2016</strong>) killed <strong>546</strong> and affected <strong>2.1 million</strong>; Irma followed in <strong>2017</strong>. <strong>140,000</strong> households still lacked earthquake-resistant shelter.</p>
+        </li>
+        <li class="fc-item" id="am-barometer" data-focus="ap" data-notes="barometer" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#americas">
+          <p class="q">What does the book call refugee and IDP populations?</p>
+          <p class="a">A <strong>barometer of the world's political strife</strong>.</p>
+        </li>
+        </ol>
+      </section>
+      <section id="politics" data-sec="politics" data-part="part-3-5" data-title="The politics of migration">
+        <h2>The politics of migration <span class="pages">p. 90</span></h2>
+        <ol>
+        <li class="fc-item" id="pl-politics" data-focus="ap" data-notes="politics-vote where-you-stand" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#politics">
+          <p class="q">How do political parties use migration, and what shapes how people perceive it?</p>
+          <p class="a">Parties take <strong>anti-immigration stances</strong> to get their base to vote. Perceptions depend on <strong>where you live</strong> (border areas differ) and how often you interact with migrants.</p>
+        </li>
+        <li class="fc-item" id="pl-wall" data-focus="detail" data-notes="great-wall" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#politics">
+          <p class="q">What does the Great Wall of China show about migration politics?</p>
+          <p class="a">It's not new: in the <strong>1300s</strong>, China built it for defense, but also to keep <strong>Chinese in and Mongols out</strong>.</p>
+        </li>
+        <li class="fc-item" id="pl-australia" data-focus="ap" data-notes="white-australia racist-policy" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#politics">
+          <p class="q">What was Australia's Immigration Restriction Act?</p>
+          <p class="a">A <strong>1901</strong> law ending all nonwhite immigration, targeting <strong>Japanese, Chinese and South Asian</strong> migrants and barring <strong>South Pacific Islanders</strong> from the sugar plantations: the <strong>White Australia Policy</strong>, until the 1970s.</p>
+        </li>
+        </ol>
+      </section>
+      <section id="waves" data-sec="waves" data-part="part-3-5" data-title="Waves of immigration in the United States">
+        <h2>Waves of immigration in the United States <span class="pages">pp. 90–91</span></h2>
+        <ol>
+        <li class="fc-item" id="wv-first" data-focus="ap" data-notes="waves fig-3-30" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#waves">
+          <p class="q">What were the two waves of U.S. immigration in Fig. 3.30?</p>
+          <p class="a">First wave, <strong>1820–1930</strong>: mostly from <strong>Europe</strong>. Second wave, <strong>1930–present</strong>: mostly from <strong>Latin America and Asia</strong>.</p>
+        </li>
+        <li class="fc-item" id="wv-1900" data-focus="detail" data-notes="waves" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#waves">
+          <p class="q">Where did U.S. immigrants come from between 1820 and 1900?</p>
+          <p class="a">Almost all from <strong>Europe</strong>.</p>
+        </li>
+        <li class="fc-item" id="wv-europe" data-focus="ap" data-notes="europe-flip" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#waves">
+          <p class="q">What happened to European migration after the Great Depression?</p>
+          <p class="a">It slowed, and Europe became a region that <strong>received more migrants than it sent</strong> (guest workers).</p>
+        </li>
+        <li class="fc-item" id="wv-1960s" data-focus="ap" data-notes="waves act-1965" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#waves">
+          <p class="q">When did the source of U.S. immigrants change, and why?</p>
+          <p class="a">In the <strong>1960s</strong>, when new legislation passed. Since then, mainly from <strong>Latin America and Asia</strong>.</p>
+        </li>
+        <li class="fc-item" id="wv-2008" data-focus="detail" data-notes="fig-3-30" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#waves">
+          <p class="q">What happened to U.S. immigration after 2008?</p>
+          <p class="a">It <strong>fell</strong> after the financial crisis.</p>
+        </li>
+        </ol>
+      </section>
+      <section id="restrictions" data-sec="restrictions" data-part="part-3-5" data-title="Legal restrictions">
+        <h2>Legal restrictions <span class="pages">pp. 90–92</span></h2>
+        <ol>
+        <li class="fc-item" id="lr-legal" data-focus="ap" data-notes="legal-not-physical" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#restrictions">
+          <p class="q">Are most obstacles to migrants physical or legal?</p>
+          <p class="a"><strong>Legal</strong>.</p>
+        </li>
+        <li class="fc-item" id="lr-1882" data-focus="detail" data-notes="chinese-exclusion" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#restrictions">
+          <p class="q">What were the first restrictive U.S. immigration laws?</p>
+          <p class="a">The <strong>Oriental Exclusion Acts (1882–1907)</strong>, to stop Chinese immigration to California.</p>
+        </li>
+        <li class="fc-item" id="lr-1800s" data-focus="detail" data-notes="south-east-shift" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#restrictions">
+          <p class="q">Where did U.S. immigrants come from in the 1800s?</p>
+          <p class="a">Mostly <strong>northern</strong> (Scandinavia) and <strong>western</strong> Europe (Ireland, Great Britain, Germany, France); later in the century, more from <strong>southern and eastern</strong> Europe (Italy, Spain, Portugal, Russia, Poland).</p>
+        </li>
+        <li class="fc-item" id="lr-isolation" data-focus="ap" data-notes="isolationism nativism" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#restrictions">
+          <p class="q">What was the political mood in the U.S. after World War I, and why did Congress restrict immigration?</p>
+          <p class="a"><strong>Isolationism</strong> (staying out of foreign entanglements). Congress feared growing migration from southern and eastern Europe; many whites saw southern Europeans as darker-skinned and inferior.</p>
+        </li>
+        <li class="fc-item" id="lr-1921" data-focus="ap" data-notes="quota-1921" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#restrictions">
+          <p class="q">What did the 1921 quota law do, and whom did it favor?</p>
+          <p class="a">Set quotas at <strong>3%</strong> of each European nationality living in the U.S. in <strong>1910</strong>, favoring <strong>northern and western Europe</strong>.</p>
+        </li>
+        <li class="fc-item" id="lr-1924" data-focus="ap" data-notes="quota-1924" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#restrictions">
+          <p class="q">What did the Immigration Act of 1924 change?</p>
+          <p class="a">Lowered the quota to <strong>2%</strong>, made <strong>1890</strong> the base year, and cut the yearly total to <strong>150,000</strong>, discouraging southern and eastern Europeans further.</p>
+        </li>
+        <li class="fc-item" id="lr-1929" data-focus="ap" data-notes="national-origins" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#restrictions">
+          <p class="q">What did the 1929 National Origins Law do?</p>
+          <p class="a">Limited immigration to <strong>150,000</strong> a year and tied quotas to the national origins of the <strong>1920</strong> U.S. population, effectively blocking immigration from <strong>Asia</strong>.</p>
+        </li>
+        <li class="fc-item" id="lr-1930s" data-focus="detail" data-notes="national-origins fig-3-30" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#restrictions">
+          <p class="q">What happened to U.S. immigration in the 1930s, and why?</p>
+          <p class="a">It slowed to a <strong>trickle</strong>, because of the restrictive laws and the <strong>Great Depression</strong>.</p>
+        </li>
+        <li class="fc-item" id="lr-fig331" data-focus="detail" data-notes="fig-3-31" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#restrictions">
+          <p class="q">What does Fig. 3.31 show about the 1925–1927 quotas?</p>
+          <p class="a">The most migrants were allowed from <strong>western</strong> (Ireland, UK, Germany) and <strong>northern</strong> (Norway, Sweden, Denmark) Europe; a bias against <strong>southern</strong> (Portugal, Spain, Greece) and <strong>eastern</strong> Europeans.</p>
+        </li>
+        <li class="fc-item" id="lr-bracero" data-focus="ap" data-notes="bracero" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#restrictions">
+          <p class="q">What was the Bracero Program?</p>
+          <p class="a">A <strong>1942</strong> program inviting <strong>Mexicans</strong> to work in U.S. agriculture during World War II. Until it ended in <strong>1965</strong>, they went mainly to the <strong>Southwest and Florida</strong>.</p>
+        </li>
+        <li class="fc-item" id="lr-cyclical" data-focus="ap" data-notes="bracero-cyclical mexico-1965" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#restrictions">
+          <p class="q">How did Mexican migration change after 1965?</p>
+          <p class="a">Under Bracero it was often <strong>cyclical</strong> (work the planting and harvest, then go home). After 1965, Mexican migrants <strong>crossed and stayed</strong>.</p>
+        </li>
+        <li class="fc-item" id="lr-asia" data-focus="detail" data-notes="act-1952" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#restrictions">
+          <p class="q">When did Congress give China and Japan equal status with European countries?</p>
+          <p class="a">China in <strong>1943</strong>; Japan in <strong>1952</strong>.</p>
+        </li>
+        <li class="fc-item" id="lr-1952" data-focus="ap" data-notes="act-1952 refugees-1945" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#restrictions">
+          <p class="q">What did the 1952 Immigration and Nationality Act do, and why did far more people enter?</p>
+          <p class="a">Combined earlier laws, set quotas for <strong>all countries</strong>, capped the total at <strong>160,000</strong>. Far more entered as <strong>refugees</strong>, filling quotas years ahead: maybe over <strong>7 million</strong>, 1945–1970.</p>
+        </li>
+        <li class="fc-item" id="lr-1965" data-focus="ap" data-notes="act-1965" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#restrictions">
+          <p class="q">What did Congress do in 1965?</p>
+          <p class="a">Called the 1952 act a failure and <strong>abolished the quota system</strong>: <strong>170,000</strong> a year from outside the Western Hemisphere, <strong>120,000</strong> from the Americas. It also ended the Bracero Program.</p>
+        </li>
+        <li class="fc-item" id="lr-irca" data-focus="ap" data-notes="irca" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#restrictions">
+          <p class="q">What did the Immigration Reform and Control Act (IRCA) do, and when?</p>
+          <p class="a">In <strong>1986</strong>, gave permanent residence and a path to citizenship to <strong>2.6 million</strong> unauthorized migrants.</p>
+        </li>
+        <li class="fc-item" id="lr-mexico" data-focus="ap" data-notes="mexico-flow fig-3-32" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#restrictions">
+          <p class="q">Describe migration from Mexico and Central America to the U.S. since the 1970s.</p>
+          <p class="a">Accelerated in the <strong>1970s and 1980s</strong>, peaked around <strong>2000</strong> at close to <strong>1 million</strong> a year, then fell sharply after <strong>2008</strong>.</p>
+        </li>
+        <li class="fc-item" id="lr-share" data-focus="detail" data-notes="mexico-4pct fig-3-32" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#restrictions">
+          <p class="q">What share of the U.S. population are Mexican migrants, and what share of immigrants were Mexican before and after 2008?</p>
+          <p class="a">Close to <strong>4%</strong> of the U.S. population. Almost <strong>30%</strong> of immigrants before 2008; closer to <strong>25%</strong> since.</p>
+        </li>
+        </ol>
+      </section>
+      <section id="post-911" data-sec="post-911" data-part="part-3-5" data-title="Post–September 11">
+        <h2>Post–September 11 <span class="pages">pp. 92–93</span></h2>
+        <ol>
+        <li class="fc-item" id="ps-focus" data-focus="ap" data-notes="security-focus" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#post-911">
+          <p class="q">How did U.S. immigration policy and the Border Patrol's focus change after 9/11?</p>
+          <p class="a">Policy now centers on <strong>security</strong>. Before, the Border Patrol focused mainly on <strong>drug trafficking and human smuggling</strong>.</p>
+        </li>
+        <li class="fc-item" id="ps-liberty" data-focus="ap" data-notes="liberty-shield" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#post-911">
+          <p class="q">What was Operation Liberty Shield?</p>
+          <p class="a">A post-9/11 policy that automatically <strong>detained asylum seekers</strong> from <strong>33 countries</strong> where al-Qaeda or other terrorist groups operate.</p>
+        </li>
+        <li class="fc-item" id="ps-liberty-end" data-focus="detail" data-notes="liberty-shield" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#post-911">
+          <p class="q">Who criticized Operation Liberty Shield, and when did it end?</p>
+          <p class="a"><strong>Human Rights Watch</strong> (March 25, 2003), for suspicion based on nationality alone. The <strong>Department of Homeland Security</strong> quietly ended it on <strong>April 17, 2003</strong>.</p>
+        </li>
+        <li class="fc-item" id="ps-tighter" data-focus="ap" data-notes="border-tighter" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#post-911">
+          <p class="q">How do tighter U.S. border controls affect border regions?</p>
+          <p class="a">They affect not just migrants but <strong>business and commerce</strong> in border regions.</p>
+        </li>
+        <li class="fc-item" id="ps-europe" data-focus="ap" data-notes="europe-policy" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#post-911">
+          <p class="q">How did Europe's response to terrorism (Madrid 2004, London 2005) differ from the U.S. approach?</p>
+          <p class="a">The U.S. took a <strong>"hard"</strong> approach, expanding controls. Europe limited unauthorized migration into its shared free-movement space while promoting policies to help migrants <strong>buy in</strong> to the host society.</p>
+        </li>
+        <li class="fc-item" id="ps-integration" data-focus="ap" data-notes="integration" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#post-911">
+          <p class="q">What is an integration agreement? Give the reading's example.</p>
+          <p class="a">A requirement some migrants must meet before permanent status and social welfare. <strong>Austria</strong>: <strong>300 hours</strong> of language training and a civics course, hard on newly arrived migrants.</p>
+        </li>
+        <li class="fc-item" id="ps-debate" data-focus="ap" data-notes="policy-debate" data-href="/human-geo/quiz/reading-3.3-3.5/reading/#post-911">
+          <p class="q">What do opponents argue about U.S. and European security-based migration policies?</p>
+          <p class="a">They may do <strong>more harm than good</strong> by intensifying misunderstanding and hatred.</p>
+        </li>
+        </ol>
+      </section>
+    </div>
+  </main>
+
+  <!-- Explanation panel -->
+  <aside class="panel" id="panel" aria-hidden="true" aria-labelledby="panel-title" role="dialog">
+    <div class="panel-head">
+      <h2 id="panel-title"></h2>
+      <button class="panel-close" aria-label="Close">×</button>
+    </div>
+    <div class="panel-body" id="panel-body"></div>
+  </aside>
+
+  <script>
+    /* Theme toggle: system → light → dark → system. The pre-paint script in <head> is what
+       actually applies a stored choice; this only cycles it, so the two have to agree on the
+       storage key and on the attribute name. Choosing "system" REMOVES both rather than storing
+       a third value, which is what keeps the system preference the default and lets it go on
+       working after the visitor stops overriding it. */
+    (function () {
+      var KEY = "tjd:theme";
+      var LABEL = { light: "Switch to the dark theme", dark: "Switch to the light theme" };
+      /* The theme you are LOOKING AT, which is not the same as the one that is stored: with
+         nothing stored the page follows the system, and the button still has to flip away from
+         whatever that produced. Reading the effective theme is the whole reason one press is
+         enough - cycling the STORED value meant a visitor on a light system pressed once to go
+         from light to light, saw nothing happen, and had to press again. */
+      function shown() {
+        var t = document.documentElement.getAttribute("data-theme");
+        if (t === "light" || t === "dark") return t;
+        try { return matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"; }
+        catch (e) { return "light"; }
+      }
+      /* Safari tints its toolbar from theme-color, and it supported theme-color BEFORE it
+         supported the media attribute on it. Such a Safari ignores media and takes the FIRST
+         tag, which was the light one - so a dark page got a white band across the top of the
+         window, which is what "a white frame around the favicon" turned out to be. Setting
+         every tag to the color actually in use means it no longer matters which one a browser
+         picks, or whether it understands media at all. */
+      function chrome() {
+        var el = document.querySelectorAll('meta[name="theme-color"]');
+        var c = shown() === "dark" ? "#0d1117" : "#f7f7f5";
+        for (var i = 0; i < el.length; i++) el[i].setAttribute("content", c);
+      }
+      function bind() {
+        var btn = document.getElementById("themeToggle");
+        if (!btn) return;
+        chrome();
+        /* A JS property, not a data- attribute: Turbo restores Back/Forward pages from a cloned
+           snapshot that keeps attributes but drops listeners, so an attribute made the restored
+           button look bound when it was dead. */
+        if (btn._tjdBound) { btn.setAttribute("aria-label", LABEL[shown()]); return; }
+        btn._tjdBound = true;
+        btn.hidden = false;
+        btn.setAttribute("aria-label", LABEL[shown()]);
+        btn.addEventListener("click", function () {
+          var next = shown() === "dark" ? "light" : "dark";
+          document.documentElement.setAttribute("data-theme", next);
+          /* Agreeing with the system stores NOTHING, so the page goes back to following it.
+             Without this the override is permanent and invisible: one press months ago pins the
+             site to light forever, and a visitor whose phone is in dark mode gets flashed white
+             with no control that undoes it - the button only ever writes another override. This
+             is the way back, and it needs no third state on a two-state button: press until the
+             page matches your system and the override is gone. */
+          try {
+            var sys = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+            if (next === sys) localStorage.removeItem(KEY); else localStorage.setItem(KEY, next);
+          } catch (e) {}
+          btn.setAttribute("aria-label", LABEL[next]);
+          chrome();
+          /* Canvas pixels are not CSS and follow no token, so the demos that draw have to be told
+             to redraw. Nothing else needs this: everything else is a var() and has already
+             changed by the time this fires. */
+          dispatchEvent(new CustomEvent("tjd:themechange"));
+        });
+      }
+      /* Follow the system LIVE while nothing is stored. Someone reading at dusk with iOS set to
+         switch automatically had the page stay light until they reloaded it. */
+      try {
+        matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function () {
+          var stored = null;
+          try { stored = localStorage.getItem(KEY); } catch (e) {}
+          if (stored === "light" || stored === "dark") return;
+          document.documentElement.removeAttribute("data-theme");
+          chrome();
+          var b = document.getElementById("themeToggle");
+          if (b) b.setAttribute("aria-label", LABEL[shown()]);
+          dispatchEvent(new CustomEvent("tjd:themechange"));
+        });
+      } catch (e) {}
+
+      bind();
+      addEventListener("turbo:load", bind);
+      /* Following the system and the system flips: the toolbar tint has to follow it too. */
+      try {
+        var mqT = matchMedia("(prefers-color-scheme: dark)");
+        var onSys = function () { if (!document.documentElement.getAttribute("data-theme")) chrome(); };
+        if (mqT.addEventListener) mqT.addEventListener("change", onSys);
+        else if (mqT.addListener) mqT.addListener(onSys);
+      } catch (e) {}
+    })();
+  </script>
+</body>
+</html>

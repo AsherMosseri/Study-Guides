@@ -6,7 +6,7 @@ study.thejunkdrawerapp.com. Work directly on `main`.
 ```
 /                                   subject picker
 /human-geo/                         AP Human Geography hub
-/human-geo/quiz/                    reading-quiz study guides   e.g. /human-geo/quiz/reading-2.1-2.2/
+/human-geo/quiz/                    reading-quiz study guides   e.g. /human-geo/quiz/reading-3.3-3.5/
   <reading>/                        options page: What to study next, then Reading guide, Flashcards,
                                     Match, Practice quiz
   <reading>/reading/                the guide itself
@@ -31,7 +31,7 @@ assets/flashcards.js                flashcard deck: flip, swipe, Got it / Review
 assets/match.js                     matching game; a miss marks the linked flashcard Review
 assets/quiz.js                      practice quiz; a miss marks the linked flashcard Review
 assets/plan.js                      "What to study next" panel: reads every tool's saved progress
-assets/calc.js                      natural increase calculator
+assets/calc.js                      natural increase and gravity model calculators
 assets/dtm.js                       Blank DTM: drawing canvases, placed chart labels, word-for-word checking, line scoring
 assets/js/turbo.min.js              Turbo Drive (copied from the main site)
 tools/version-assets.py             stamps ?v=<hash> on every local .css/.js link
@@ -56,7 +56,7 @@ root-absolute (`/human-geo/quiz/`), so pages can move without breaking breadcrum
 ## Content rules
 
 **Connect only to what has already been read.** Every "Connects to", "Apply it", AP tip and
-explanation links back to material the reader has covered: Chapter 1, or earlier in the current
+explanation links back to material the reader has covered: earlier chapters, or earlier in the current
 chapter up to the end of the page's assigned reading. Never point ahead (later sections, chapters or
 AP units) and never lean on outside theories the book does not cover (Boserup, world-systems theory,
 the Columbian Exchange, demographic dividend...). If an AP term is useful but not in the reading,

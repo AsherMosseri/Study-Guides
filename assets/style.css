@@ -636,6 +636,8 @@ html[data-theme="dark"] .theme-toggle .i-dark { display: block; }
 .wp-line.proj { stroke-dasharray: 5 5; }
 .wp-dot { fill: var(--series-1); stroke: var(--card); stroke-width: 2; }
 .wp-dot.proj { fill: var(--card); stroke: var(--series-1); stroke-width: 2; }
+.wp-line.alt { stroke: var(--series-2); }
+.wave-band { fill: var(--term-bg); }
 .wp-label { fill: var(--text); font-size: 12px; font-weight: 600; }
 .svgchart .hit { fill: transparent; cursor: pointer; }
 .svgchart [data-note] { cursor: pointer; }
